@@ -2,6 +2,9 @@
   "pages":[
     "pages/zhongchou/zhongchou",
     "pages/index/index",
+    "pages/shop/shop",
+    "pages/order/order",
+    "pages/mine/mine",
     "pages/about/about"
   ],
   "window":{
@@ -9,5 +12,44 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/near.png",
+        "selectedIconPath": "img/near-selected.png",
+        "selectedColor": "#14c8dd"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "商家",
+        "iconPath": "img/article.png",
+        "selectedIconPath": "img/article-selected.png",
+        "selectedColor": "#ffffff"
+      },
+      {
+        "pagePath": "pages/zhongchou/zhongchou",
+        "text": "众筹",
+        "iconPath": "img/center.png",
+        "selectedIconPath": "img/center-selected.png",
+        "selectedColor": "#14c8dd"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "img/center.png",
+        "selectedIconPath": "img/center-selected.png",
+        "selectedColor": "#14c8dd"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "img/center.png",
+        "selectedIconPath": "img/center-selected.png",
+        "selectedColor": "#14c8dd"
+      }
+    ]
   }
 }

@@ -1,6 +1,21 @@
 //app.js
 App({
   onLaunch: function () {
+
+    //获取屏幕高度
+    wx.getSystemInfo({
+      success: function (res) {
+        wx.setStorage({
+          key: 'windowWidth',
+          data: res.windowWidth,
+        })
+        wx.setStorage({
+          key: 'windowHeight',
+          data: res.windowHeight,
+        })
+      }
+    });
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

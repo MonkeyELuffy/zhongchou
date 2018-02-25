@@ -1,4 +1,11 @@
 /* pages/zhongchou/zhongchou.wxss */
+image{
+  width: 100%;
+}
+/*banner  */
+.swiper-container{
+  width: 100%;
+}
 /*排序  */
 .tab{
   display: flex;
@@ -8,10 +15,94 @@
   width: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 32rpx;
   padding: 30rpx 0;
 }
 .tab-up-down{
   width: 50rpx;
   height: 50rpx;
+  margin-left: 20rpx;
+}
+/*数据列表  */
+.list{
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.item{
+  margin: 20rpx 0;
+}
+.item-image{
+  position: relative;
+  height: 320rpx;
+}
+.image-inner{
+  position: absolute;
+  z-index: 10;
+  bottom: 0rpx;
+}
+.status{
+  padding: 10rpx 20rpx;
+  margin: 20rpx;
+  border-radius: 10rpx;
+  background:linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+  color: #fff;
+  font-size: 28rpx;
+  width: 100rpx;
+  text-align: center;
+}
+.company{
+  padding: 10rpx 40rpx;
+  border-radius: 0 6rpx 0 0;
+  background-color: rgb(179, 179, 179);
+  color: #fff;
+  font-size: 28rpx;
+}
+.rang{
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rang-slider{
+  width: 80%;
+  margin: 0;
+}
+.rang-left,.rang-right{
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(45deg);
+}
+.rang-left{
+  background-color: pink;
+}
+.rang-right{
+  background-color: #ccc;
+}
+.rang-number{
+  color: pink;
+  font-size: 28rpx;
+  margin: 0 10%;
+}
+.detail{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20rpx auto;
+  width: 90%;
+}
+.detail-item{
+  font-size: 28rpx;
+  text-align: center;
+}
+.detail-value{
+  color: pink;
+  margin-bottom: 10rpx;
+}
+.detail-name{
+  color: #666;
 }

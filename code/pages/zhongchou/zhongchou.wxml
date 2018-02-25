@@ -18,7 +18,32 @@
     </view>
     <view class='tab-item'>
       <view class='tab-name'>分红比例</view>
-      <image class='tab-up-down' src='{{fenhongpaixu}}'></image>
+      <image class='tab-up-down' src='{{fenhongpaixu}}' bindtap='fenhongpaixu'></image>
     </view>
   </view>
+  <!--众筹列表  -->
+  <scroll-view class="list" style="height:{{windowHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+    <view class='item' wx:for='{{list}}' bindtap="goArticleDetail" data-page="articleDetail" data-id="{{item.id}}">
+      <image class='item-image' src='{{item.img}}'>
+        <view class='image-inner'>
+          <view class='status'>{{item.status}}</view>
+          <view class='company'>{{item.company}}</view>
+        </view>
+      </image>
+      <view class='rang'>
+        <view class='rang-left'></view>
+        <slider class='rang-slider' disabled value='{{item.value}}' activeColor='pink' block-size='14' block-color='pink'></slider>
+        <view class='rang-right'></view>
+      </view>
+      <view class='rang-number' style='padding-left:{{item.paddingLeft}};'>{{item.value}}%</view>
+      <view class='detail'>
+        <view class='detail-item' wx:for='{{item.detail}}'>
+          <view class='detail-value'>{{item.value}}</view>
+          <view class='detail-name'>{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <view style="width:100%;height:400rpx;"></view>
+  </scroll-view>
+
 </view>
