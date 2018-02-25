@@ -1,0 +1,24 @@
+<!--pages/zhongchou/zhongchou.wxml-->
+<view class='contain'>
+  <!--轮播图  -->
+  <view class="swiper-container">  
+    <swiper circular="true" interval="5000" duration="500"  autoplay="true"  current="{{swiperCurrent}}"  class="swiper" indicator-dots="true">  
+      <block wx:for="{{slider}}" wx:key="unique">  
+        <swiper-item>  
+          <image src="{{item.img}}" class="img" data-id="{{item.id}}" bindtap='clickSwiper'></image> 
+        </swiper-item>  
+      </block>  
+    </swiper>  
+  </view> 
+  <!--排序  -->
+  <view class='tab'>
+    <view class='tab-item'>
+      <view class='tab-name'>众筹金额</view>
+      <image class='tab-up-down' src='{{zhongchoupaixu}}' bindtap='zhongchoupaixu'></image>
+    </view>
+    <view class='tab-item'>
+      <view class='tab-name'>分红比例</view>
+      <image class='tab-up-down' src='{{fenhongpaixu}}'></image>
+    </view>
+  </view>
+</view>

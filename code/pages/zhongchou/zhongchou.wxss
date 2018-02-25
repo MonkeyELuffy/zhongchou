@@ -1,0 +1,17 @@
+/* pages/zhongchou/zhongchou.wxss */
+/*排序  */
+.tab{
+  display: flex;
+  align-items: center;
+}
+.tab-item{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  padding: 30rpx 0;
+}
+.tab-up-down{
+  width: 50rpx;
+  height: 50rpx;
+}
