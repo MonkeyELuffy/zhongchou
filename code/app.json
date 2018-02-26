@@ -1,7 +1,16 @@
 {
   "pages":[
-    "pages/zhongchou/zhongchou",
+    "pages/youhuiquan/youhuiquan",
+    "pages/huodong/huodong",
+    "pages/yaoqinghaoyou/yaoqinghaoyou",
+    "pages/zhongchoudetail/zhongchoudetail",
+    "pages/woyaozhongchou/woyaozhongchou",
+    "pages/shenqingruzhu/shenqingruzhu",
+    "pages/fenlei/fenlei",
+    "pages/switchcity/switchcity",
+    "pages/search/search",
     "pages/index/index",
+    "pages/zhongchou/zhongchou",
     "pages/shop/shop",
     "pages/order/order",
     "pages/mine/mine",

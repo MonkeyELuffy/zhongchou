@@ -1,40 +1,107 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+var app = getApp()
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+    slider: [{
+      img: '../../img/banner.png',
+      id: 0
+    }, {
+      img: '../../img/banner1.png',
+      id: 1
+    }],
+    saomiao:'../../img/saomiao.png',
+    positionValue:'乌鲁木齐',
+    positionImg:'../../img/position.png',
+    search_icon:'../../img/search.png',
+    nav_3List: [
+      {
+        id: 0,
+        img: '../../img/nav3-0.png',
+        text: '申请入驻',
+      },
+      {
+        id: 1,
+        img: '../../img/nav3-1.png',
+        text: '优惠券',
+      },
+      {
+        id: 2,
+        img: '../../img/nav3-2.png',
+        text: '邀请好友',
+      },
+      {
+        id: 3,
+        img: '../../img/nav3-3.png',
+        text: '活动',
+      },
+      {
+        id: 4,
+        img: '../../img/nav3-4.png',
+        text: '行业1',
+      },
+      {
+        id: 5,
+        img: '../../img/nav3-5.png',
+        text: '行业2',
+      },
+      {
+        id: 6,
+        img: '../../img/nav3-6.png',
+        text: '行业3',
+      },
+      {
+        id: 7,
+        img: '../../img/nav3-7.png',
+        text: '行业4',
+      },
+    ],
+    // 排序背景图
+    hangyepaixu: '../../img/paixu0.png',
+    xiaoliangpaixu: '../../img/paixu0.png',
+    julipaixu: '../../img/paixu0.png',
+    paixuList: ['../../img/paixu0.png', '../../img/paixu1.png', '../../img/paixu2.png'],
+    // 排序规则：0代表众筹金额升序、1降序，2代表分红比例升序、3降序,4代表一开始不排序。
+    nowPaiXu: 4,
+    // 底部数据列表
+    dataList: [
+      {
+        img: '../../img/saomiao.png',
+        name: '深圳市三九胃泰有限公司',
+        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: 'red' }],
+        haoping: '98',
+        sale: 1234,
+        dic: 12.3
+      },
+      {
+        img: '../../img/saomiao.png',
+        name: '深圳市三九胃泰有限公司',
+        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: 'red' }],
+        haoping: '98',
+        sale: 1234,
+        dic: 12.3
+      },
+      {
+        img: '../../img/saomiao.png',
+        name: '深圳市三九胃泰有限公司',
+        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: 'red' }],
+        haoping: '98',
+        sale: 1234,
+        dic: 12.3
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    ]
+
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+  },
+
 })

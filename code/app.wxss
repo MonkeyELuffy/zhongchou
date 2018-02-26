@@ -8,3 +8,28 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+image{
+  width: 100%;
+}
+.flex-all{
+  flex: 1 1 ;
+}
+.flex-none{
+  display: flex;
+  align-items: center;
+}
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-around{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

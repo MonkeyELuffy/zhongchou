@@ -1,1 +1,194 @@
-/**index.wxss**/
+.contain{
+  background-color: #eee;
+}
+
+/*banner  */
+.swiper-container{
+  width: 100%;
+}
+.top-nav{
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  padding: 30rpx;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+/*扫描  */
+.saomiao-contain{
+  background-color: rgba(217, 217, 217, 0.5);
+  padding: 10rpx;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  box-sizing: border-box;
+}
+.saomiao{
+  width: 36rpx;
+  height: 36rpx;
+}
+/*搜索框*/
+.search {
+  z-index: 100;
+  background-color: transparent;
+}
+.search input {
+  height: 60rpx;
+  background-color: #ddd;
+  opacity: 0.5;
+  color: #333;
+  font-size: 24rpx;
+  padding-left: 80rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #ddd;
+  margin-left: -50rpx;
+}
+.search .icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+/*定位  */
+.position{
+  border-radius: 50rpx;
+  background-color: rgba(217, 217, 217, 0.5);
+  color: red;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx;
+  height: 60rpx;
+  box-sizing: border-box;
+}
+.position-image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+/*八个小菜单*/
+.nav3-list {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 10rpx solid #eee;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  box-shadow: 0 8rpx 10rpx #ccc;
+  margin: 20rpx;
+  justify-content: space-between;
+}
+.nav3-list-image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav3-list .nav3-item {
+  width: 24%;
+  display: flex;
+  padding-bottom: 30rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.nav3-list .nav3-item image {
+ width: 100rpx;
+ height: 100rpx; 
+}
+.nav3-list .nav3-item .nav3-name {
+  font-size: 24rpx;
+  padding-top: 6rpx;
+  color: #666;
+}
+
+/*排序  */
+.tab{
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 10rpx solid #ddd;
+  border-top: 20rpx solid #ddd;
+}
+.tab-item{
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  padding: 30rpx 0;
+}
+.tab-up-down{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 20rpx;
+}
+
+/*数据列表  */
+.data-list{
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.item{
+  padding:20rpx 0 0 20rpx;
+}
+.item-image{
+  width: 180rpx;
+  height: 180rpx;
+  box-sizing: border-box;
+  margin-right: 30rpx;
+}
+.detail-name{
+  font-size: 36rpx;
+  font-weight: 700;
+}
+.label-contain{
+  font-size: 28rpx;
+}
+.label-item{
+  padding: 5rpx 20rpx;
+  border: 1rpx solid red;
+  margin-right: 8rpx;
+}
+.haoping{
+  font-size: 32rpx;
+  color: #666;
+}
+.sale-and-juli{
+  margin-top: 40rpx;
+  color: #999;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #999;
+  padding-bottom: 20rpx;
+}
+.juli{
+  padding-right: 20rpx;
+}
+
+/*客服  */
+.kefu{
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 32rpx;
+  text-align: center;
+  box-sizing: border-box;
+  background:linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+}
