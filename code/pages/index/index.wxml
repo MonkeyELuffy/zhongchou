@@ -8,7 +8,7 @@
     <!--搜索框-->
     <view class="search flex-center" >
       <image src="{{search_icon}}" class="icon" confirm-type="search"></image>
-      <input type="text" placeholder="请搜索您想要的" placeholder-style="color:#999;" confirm-type='search' bindconfirm='search' bindinput="input" value='{{search_key}}'/>
+      <input type="text" placeholder="请搜索您想要的" placeholder-style="color:#737373;" confirm-type='search' bindconfirm='search' bindinput="input" value='{{search_key}}'/>
     </view>
     <!--定位  -->
     <view class='position flex-center'>
@@ -83,7 +83,7 @@
         <view class='label-and-haoping-contain flex-none'>
           <!--标签  -->
           <view class='label-contain flex-center'>
-            <view class='label-item' wx:for='{{item.labels}}' style='color:{{item.bgColor === "red" ? "#fff" : "red"}};background-color:{{item.bgColor}};'>{{item.name}}</view>
+            <view class='label-item' wx:for='{{item.labels}}' style='color:{{item.bgColor === "#f68076" ? "#fff" : "#f68076"}};background-color:{{item.bgColor}};'>{{item.name}}</view>
           </view>
           <!--好评  -->
           <view class='haoping'>好评{{item.haoping}}%</view>

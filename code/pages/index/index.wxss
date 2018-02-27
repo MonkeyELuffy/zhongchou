@@ -1,6 +1,9 @@
 .contain{
   background-color: #eee;
 }
+.swiper{
+  height: 330rpx;
+}
 
 /*banner  */
 .swiper-container{
@@ -17,35 +20,32 @@
   box-sizing: border-box;
 }
 /*扫描  */
-.saomiao-contain{
-  background-color: rgba(217, 217, 217, 0.5);
-  padding: 10rpx;
-  border-radius: 50%;
-  width: 60rpx;
-  height: 60rpx;
-  box-sizing: border-box;
-}
 .saomiao{
-  width: 36rpx;
-  height: 36rpx;
+  width: 56rpx;
+  height: 56rpx;
 }
 /*搜索框*/
 .search {
+  flex: 1 1;
   z-index: 100;
   background-color: transparent;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 20rpx;
 }
 .search input {
+  flex: 1 1;
   height: 60rpx;
-  background-color: #ddd;
-  opacity: 0.5;
+  background-color: #fff;
   color: #333;
   font-size: 24rpx;
   padding-left: 80rpx;
   border-radius: 30rpx;
-  border: 2rpx solid #ddd;
-  margin-left: -50rpx;
 }
 .search .icon {
+  position: absolute;
+  left: 40rpx;
+  top: 14rpx;
   width: 30rpx;
   height: 30rpx;
 }
@@ -63,8 +63,8 @@
   box-sizing: border-box;
 }
 .position-image{
-  width: 40rpx;
-  height: 40rpx;
+  width: 26rpx;
+  height: 32rpx;
   margin-right: 10rpx;
 }
 
@@ -83,8 +83,6 @@
   justify-content: space-between;
 }
 .nav3-list-image {
-  width: 90rpx;
-  height: 90rpx;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
@@ -94,7 +92,7 @@
 .nav3-list .nav3-item {
   width: 24%;
   display: flex;
-  padding-bottom: 30rpx;
+  padding-bottom: 54rpx;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -117,6 +115,7 @@
   background-color: #fff;
   border-bottom: 10rpx solid #ddd;
   border-top: 20rpx solid #ddd;
+  color: #333;
 }
 .tab-item{
   width: 33%;
@@ -127,7 +126,7 @@
   padding: 30rpx 0;
 }
 .tab-up-down{
-  width: 50rpx;
+  width: 34rpx;
   height: 50rpx;
   margin-left: 20rpx;
 }
@@ -144,33 +143,38 @@
   padding:20rpx 0 0 20rpx;
 }
 .item-image{
-  width: 180rpx;
-  height: 180rpx;
+  width: 184rpx;
+  height: 184rpx;
   box-sizing: border-box;
   margin-right: 30rpx;
 }
 .detail-name{
-  font-size: 36rpx;
+  font-size: 32rpx;
+  color: #333;
   font-weight: 700;
+  padding-bottom: 4rpx;
 }
 .label-contain{
-  font-size: 28rpx;
+  font-size: 24rpx;
 }
 .label-item{
-  padding: 5rpx 20rpx;
-  border: 1rpx solid red;
+  padding: 5rpx 10rpx;
+  border: 1rpx solid #f68076;
   margin-right: 8rpx;
+  min-width: 76rpx;
+  text-align: center;
 }
 .haoping{
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #666;
+  padding-left: 10rpx;
 }
 .sale-and-juli{
   margin-top: 40rpx;
-  color: #999;
-  font-size: 32rpx;
-  border-bottom: 1rpx solid #999;
-  padding-bottom: 20rpx;
+  color: #b2b2b2;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #b2b2b2;
+  padding-bottom: 30rpx;
 }
 .juli{
   padding-right: 20rpx;

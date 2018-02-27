@@ -1,1 +1,150 @@
-/* pages/mine/mine.wxss */
+/* pages/equipmentShare/equipmentShare.wxss */
+.contain {
+  width: 100%;
+  height: 100vh;
+  background-color: #ddd;
+}
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #fff;
+  z-index: 100;
+}
+
+.bar {
+  width: 50%;
+  box-sizing: border-box;
+  color: #bfbfbf;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.bar image {
+  width: 60rpx;
+  height: 60rpx;
+}
+/*用户信息*/
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.user {
+  width: 100%;
+  position: relative;
+}
+.user-message{
+  padding: 20rpx;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.user-image-contain{
+  text-align: center;
+}
+.user-image {
+  width: 140rpx;
+  height: 140rpx;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user-name {
+  font-size: 28rpx;
+}
+.top-nav{
+  padding: 20rpx 30rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.top-nav-item{
+  text-align: center;
+}
+.top-nav-item-img{
+  width: 50rpx;
+  height: 50rpx;
+}
+.top-nav-item-name{
+  margin-top: 10rpx;
+}
+.top-nav-item-value{
+  color: red;
+  font-size: 32rpx;
+}
+
+.chongzhi{
+  font-size: 36rpx;
+  width: 160rpx;
+  padding: 60rpx 0rpx;
+  background:linear-gradient(to left, rgb(120, 233, 250),rgb(19, 191, 222));
+  color: #fff;
+}
+.order{
+  background-color: #fff;
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  padding: 10rpx 30rpx;
+}
+
+/*个人菜单*/
+.nav {
+  background-color:#ddd;
+}
+.center-nav {
+  position: relative;
+  background-color:#fff;
+  display:flex;
+  height: 76rpx;
+  align-items: center;
+  margin-bottom: 6rpx;
+  padding: 0 30rpx;
+}
+
+.gopage {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  z-index: 100;
+  background-color: transparent;
+}
+.center-nav .icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.center-nav .item {
+  padding-left:28rpx;
+  font-size: 24rpx;
+  word-spacing: 2rpx;
+  line-height: 80rpx;
+  color: #666;
+}
+
+.bottom-nav-clear {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+}
+
+.more {
+  position: absolute;
+  width: 34rpx;
+  height: 40rpx;
+  right: 30rpx;
+  top: 20rpx;
+  opacity: 0.5;
+}

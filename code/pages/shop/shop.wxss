@@ -1,1 +1,263 @@
-/* pages/shop/shop.wxss */
+page {
+  background-color: #fff;
+}
+
+/*搜索框*/
+.search {
+  width: 100%;
+  /* height: 60rpx; */
+  background-color: #fff;
+  position: fixed;
+  /* top: 20rpx; */
+  z-index: 100;
+}
+.search input {
+  position: relative;
+  width: 60%;
+  height: 60rpx;
+  margin: 40rpx auto;
+  background-color: #eee;
+   /* opacity: 0.8;  */
+  color: #666;
+  font-size: 24rpx;
+  padding-left: 80rpx;
+  border-radius: 30rpx;
+
+}
+.search .icon {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  left: 18%;
+  top: 54rpx;
+}
+
+/*横向排列的菜单*/
+.nav-title {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background-color: #fff;
+  color: #666;
+  font-size: 28rpx;
+  white-space: nowrap; 
+  box-shadow: 0rpx 0rpx 2rpx #ddd ;
+}
+.nav-item {
+  display: inline-block;
+  height: 80rpx;
+  width: 20%;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 0 20rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}
+/*菜单定位*/
+.nav-title-clear {
+  width: 100%;
+  height: 80rpx;
+}
+
+
+/*特价商品列表*/
+.tejia-contianer {
+  background-color: #fff;
+  position: relative;
+  width: 99%;
+  margin: 0 auto;
+  padding: 210rpx 0rpx 20rpx 0rpx;
+  border-bottom: 10rpx solid #eee;
+}
+.tejia-title {
+  width: 100%;
+  height: 50rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  margin: 30rpx 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.tejia-title image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.tejia-ul {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tejia-list {
+  text-align: center;
+  width: 30%;
+  padding: 20rpx 0rpx;
+}
+.tejia-list image {
+  width: 120rpx;
+  height: 120rpx;
+
+}
+.tejia-list .tejia-text {
+  font-size: 26rpx;
+  padding-bottom: 20rpx;
+}
+.tejia-list .tejia-price-total {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.tejia-list .tejia-price-total .tejia-price {
+  color: red;
+  font-size: 26rpx;
+}
+.tejia-list .tejia-price-total .tejia-total {
+  color: #aaa;
+  font-size: 20rpx;
+}
+
+/*商品分类*/
+.fenlei-contianer {
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 210rpx 0rpx 20rpx 0rpx;
+  box-sizing: border-box;
+}
+.fenlei-contianer .fenlei-title {
+  width: 100%;
+  height: 50rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  margin: 30rpx 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.fenlei-contianer .fenlei-title image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.fenlei-contianer .fenlei-ul {
+  position: relative;
+}
+
+.fenlei-contianer .fenlei-list {
+  width: 49%;
+  display:inline-block;
+}
+.fenlei-contianer .fenlei-list:nth-child(2n+1){
+  margin-right: 2%;
+}
+.fenlei-contianer .fenlei-list image {
+  width: 100%;
+  height: 180rpx;
+}
+.fenlei-contianer .fenlei-list .fenlei-text {
+  font-size: 24rpx;
+  padding: 26rpx 10rpx;
+  flex: 1 1;
+  border-bottom:2rpx solid #eee;
+}
+.fenlei-contianer .fenlei-list .fenlei-text .text {
+  font-size: 26rpx;
+}
+.fenlei-contianer .fenlei-list .fenlei-price-total {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.fenlei-contianer .fenlei-list .fenlei-price-total .fenlei-price {
+  color: red;
+  font-size: 26rpx;
+  padding: 0 10rpx;
+}
+.fenlei-contianer .fenlei-list .fenlei-price-total .fenlei-total {
+  color: #aaa;
+  font-size: 20rpx;
+  padding: 0 10rpx;
+}
+.biaozhi {
+  border: 2rpx solid #999;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  padding: 0 10rpx;
+  opacity: 0.4;
+}
+.label-contain{
+  font-size: 28rpx;
+}
+.label-item{
+  padding: 5rpx 20rpx;
+  border: 1rpx solid #f68076;
+  margin-right: 8rpx;
+}
+.haoping{
+  font-size: 32rpx;
+  color: #666;
+}
+
+
+/*footer*/
+.bottom-nav-clear {
+  width: 100%;
+  height: 140rpx;
+  background-color: transparent;
+}
+image {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #fff;
+  z-index: 100;
+}
+
+.bar {
+  width: 50%;
+  box-sizing: border-box;
+  color: #bfbfbf;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.bar image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+  
+.cart {  
+  padding: 300rpx 0 0 0;  
+  display: flex;  
+  justify-content: center;  
+  flex-direction: column;  
+  align-items: center;  
+  color: #999;  
+}  
+.no-more{
+  width: 100%;
+  font-size: 24rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  color: #999;
+  text-align: center;
+}

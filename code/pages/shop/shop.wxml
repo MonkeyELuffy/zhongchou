@@ -1,2 +1,34 @@
-<!--pages/shop/shop.wxml-->
-<text>pages/shop/shop.wxml</text>
+<!--顶部菜单-->
+<scroll-view class="nav-title" scroll-x style="width: 100%">
+    <view class="nav-item" wx:for="{{navItems}}" style="background: {{item.checked ? 'linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250))' : '#aaa' }}; " bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+ 
+
+<!--只保留竖直排列的商品样式  -->
+<view class="fenlei-contianer">
+  <scroll-view class="fenlei-ul flex-center" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+    <view class="fenlei-list" wx:for="{{fenlei_list}}"  bindtap="goDetailPage" data-page="product_detail" data-id="{{item.id}}">
+      <image src="{{item.img}}"></image>
+      <view class="fenlei-text">
+        <view class="text">
+          {{item.name}}
+        </view>
+        <view class='label-and-haoping-contain flex-none'>
+          <!--标签  -->
+          <view class='label-contain flex-center'>
+            <view class='label-item' wx:for='{{item.labels}}' style='color:{{item.bgColor === "#f68076" ? "#fff" : "#f68076"}};background-color:{{item.bgColor}};'>{{item.name}}</view>
+          </view>
+          <!--好评  -->
+          <view class='haoping'>好评{{item.haoping}}%</view>
+        </view>
+        <view class="fenlei-price-total">
+          <view class="fenlei-price">￥{{item.price}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="no-more">没有更多的数据了</view>  -->
+    <view style="width:100%;height:240rpx;"></view>
+  </scroll-view>
+</view> 

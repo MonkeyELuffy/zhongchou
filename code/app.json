@@ -1,5 +1,15 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/shop/shop",
+    "pages/mine/mine",
+    "pages/wodezhongchou/wodezhongchou",
+    "pages/wodetuiguang/wodetuiguang",
+    "pages/wodejifen/wodejifen",
+    "pages/address/address",
+    "pages/help/help",
+    "pages/shangjiarukou/shangjiarukou",
+    "pages/order/order",
     "pages/youhuiquan/youhuiquan",
     "pages/huodong/huodong",
     "pages/yaoqinghaoyou/yaoqinghaoyou",
@@ -9,11 +19,7 @@
     "pages/fenlei/fenlei",
     "pages/switchcity/switchcity",
     "pages/search/search",
-    "pages/index/index",
     "pages/zhongchou/zhongchou",
-    "pages/shop/shop",
-    "pages/order/order",
-    "pages/mine/mine",
     "pages/about/about"
   ],
   "window":{
@@ -27,38 +33,34 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "img/near.png",
-        "selectedIconPath": "img/near-selected.png",
-        "selectedColor": "#14c8dd"
+        "iconPath": "img/icon_shouye_u.png",
+        "selectedIconPath": "img/icon_shouye.png"
       },
       {
         "pagePath": "pages/shop/shop",
         "text": "商家",
-        "iconPath": "img/article.png",
-        "selectedIconPath": "img/article-selected.png",
-        "selectedColor": "#ffffff"
+        "iconPath": "img/icon_shangjia_u.png",
+        "selectedIconPath": "img/icon_shangjia.png"
       },
       {
         "pagePath": "pages/zhongchou/zhongchou",
         "text": "众筹",
-        "iconPath": "img/center.png",
-        "selectedIconPath": "img/center-selected.png",
-        "selectedColor": "#14c8dd"
+        "iconPath": "img/icon_zongchou_u.png",
+        "selectedIconPath": "img/icon_zongchou.png"
       },
       {
         "pagePath": "pages/order/order",
         "text": "订单",
-        "iconPath": "img/center.png",
-        "selectedIconPath": "img/center-selected.png",
-        "selectedColor": "#14c8dd"
+        "iconPath": "img/icon_dingdan_u.png",
+        "selectedIconPath": "img/icon_dingdan.png"
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "iconPath": "img/center.png",
-        "selectedIconPath": "img/center-selected.png",
-        "selectedColor": "#14c8dd"
+        "iconPath": "img/icon_wode_u.png",
+        "selectedIconPath": "img/icon_wode.png"
       }
-    ]
+    ],
+    "selectedColor": "#20c4e0"
   }
 }

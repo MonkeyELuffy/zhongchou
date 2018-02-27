@@ -70,25 +70,25 @@ Page({
     // 底部数据列表
     dataList: [
       {
-        img: '../../img/saomiao.png',
+        img: '../../img/test.png',
         name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: 'red' }],
+        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
         haoping: '98',
         sale: 1234,
         dic: 12.3
       },
       {
-        img: '../../img/saomiao.png',
+        img: '../../img/test.png',
         name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: 'red' }],
+        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
         haoping: '98',
         sale: 1234,
         dic: 12.3
       },
       {
-        img: '../../img/saomiao.png',
+        img: '../../img/test.png',
         name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: 'red' }],
+        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
         haoping: '98',
         sale: 1234,
         dic: 12.3

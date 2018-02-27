@@ -29,5 +29,4 @@
   background:linear-gradient( rgb(120, 233, 250),rgb(19, 191, 222));
   color: #fff;
   border-radius: 0 10rpx 10rpx 0;
-  width: 
 }
