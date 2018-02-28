@@ -3,10 +3,15 @@
 var app = getApp()
 Page({
   data: {
+    // 排序背景图
+    hangyepaixu: '../../img/paixu0.png',
+    xiaoliangpaixu: '../../img/paixu0.png',
+    julipaixu: '../../img/paixu0.png',
+    paixuList: ['../../img/paixu0.png', '../../img/paixu1.png', '../../img/paixu2.png'],
     search_key:'',
     default_image: '../../img/default-image.png',
     page: 0,
-    cate_id: 1,
+    cate_id: 0,
     search_icon: '../../img/search.png',
     navItems: [{
       name: '酒店',

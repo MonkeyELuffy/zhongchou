@@ -51,17 +51,30 @@ Page({
       bindDownLoad: true,
       orders:{
         data:[{
-          create_time:'2018-02-02',
-          goods:[
+          create_time:'2018-02-02 12:34',
+          img:'../../img/shangjia.png',
+          name:'猫人内衣旗舰店',
+          //订单状态
+          status:'待收货/自提',
+          //挨着时间的状态
+          timeStatus:'下单',
+          goods: [
             {
-              image:'../../img/banner.png',
-              name:'小米净化器',
-              goods_price:'15.9',
-              num:2
+              image: '../../img/banner.png',
+              name: '小米净化米净化米净化米净化米净化米净化米净化器',
+              goods_price: '15.9',
+              num: 2
+            },
+            {
+              image: '../../img/banner.png',
+              name: '小米净化米净化米净化米净化米净化米净化米净化器',
+              goods_price: '15.9',
+              num: 2
             }
           ]
         }]
-      }
+      },
+      btns: ['去付款','联系商家'],
     })
     //获取屏幕高度
     wx.getSystemInfo({

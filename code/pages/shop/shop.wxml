@@ -1,10 +1,27 @@
-<!--顶部菜单-->
-<scroll-view class="nav-title" scroll-x style="width: 100%">
-    <view class="nav-item" wx:for="{{navItems}}" style="background: {{item.checked ? 'linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250))' : '#aaa' }}; " bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}">
+<view class='top-contain'>
+  <!--顶部菜单-->
+  <scroll-view class="nav-title" scroll-x style="width: 100%">
+    <view class="nav-item" wx:for="{{navItems}}" style="background: {{item.checked ? 'linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250))' : '#ccc' }}; " bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}">
       {{item.name}}
     </view>
   </scroll-view>
  
+  <!--排序  -->
+  <view class='tab'>
+    <view class='tab-item'>
+      <view class='tab-name'>行业排序</view>
+      <image class='tab-up-down' src='{{hangyepaixu}}' bindtap='hangyepaixu'></image>
+    </view>
+    <view class='tab-item'>
+      <view class='tab-name'>销量排序</view>
+      <image class='tab-up-down' src='{{xiaoliangpaixu}}' bindtap='xiaoliangpaixu'></image>
+    </view>
+    <view class='tab-item'>
+      <view class='tab-name'>距离排序</view>
+      <image class='tab-up-down' src='{{julipaixu}}' bindtap='julipaixu'></image>
+    </view>
+  </view>
+</view>
 
 <!--只保留竖直排列的商品样式  -->
 <view class="fenlei-contianer">
@@ -23,8 +40,9 @@
           <!--好评  -->
           <view class='haoping'>好评{{item.haoping}}%</view>
         </view>
-        <view class="fenlei-price-total">
+        <view class="fenlei-price-total flex-between flex-all">
           <view class="fenlei-price">￥{{item.price}}</view>
+          <view class='juli'>{{item.dic}}km</view>
         </view>
       </view>
     </view>

@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/index/index",
+    "pages/order/order",
     "pages/shop/shop",
+    "pages/index/index",
     "pages/mine/mine",
     "pages/wodezhongchou/wodezhongchou",
     "pages/wodetuiguang/wodetuiguang",
@@ -9,7 +10,6 @@
     "pages/address/address",
     "pages/help/help",
     "pages/shangjiarukou/shangjiarukou",
-    "pages/order/order",
     "pages/youhuiquan/youhuiquan",
     "pages/huodong/huodong",
     "pages/yaoqinghaoyou/yaoqinghaoyou",

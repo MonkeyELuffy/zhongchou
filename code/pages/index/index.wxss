@@ -122,7 +122,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32rpx;
+  font-size: 28rpx;
   padding: 30rpx 0;
 }
 .tab-up-down{
@@ -181,10 +181,9 @@
 }
 
 /*客服  */
-.kefu{
+.kefu,.ruzhu{
   position: fixed;
   right: 40rpx;
-  bottom: 40rpx;
   width: 100rpx;
   height: 100rpx;
   line-height: 100rpx;
@@ -194,5 +193,52 @@
   font-size: 32rpx;
   text-align: center;
   box-sizing: border-box;
+}
+.kefu{
+  bottom: 40rpx;
   background:linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+}
+.ruzhu{
+  bottom: 160rpx;
+  background:linear-gradient(to right,rgb(255, 141, 151), rgb(250, 180, 180));
+}
+
+.nav2{
+  padding: 20rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+  color: #fff;
+}
+.nav2-item{
+  height: 194rpx;
+  margin-bottom: 10rpx;
+}
+.nav2-left{
+  font-size: 32rpx;
+  height: 194rpx;
+  width: 244rpx;
+  position: relative;
+  margin-right: 8rpx;
+  padding: 30rpx 0 0 30rpx;
+  box-sizing: border-box;
+}
+.nav2-img{
+  width: 130rpx;
+  height: 100rpx;
+  position: absolute;
+  z-index: 100;
+  right: 40rpx;
+  bottom: 20rpx;
+}
+.nav2-right{
+  flex-wrap: wrap;
+}
+.nav2-right-item{
+  font-size: 30rpx;
+  width: 49.5%;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  display: inline-block;
+  margin: 2rpx 0;
 }

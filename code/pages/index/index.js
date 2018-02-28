@@ -93,6 +93,84 @@ Page({
         sale: 1234,
         dic: 12.3
       }
+    ],
+    nav2List: [{
+      name: '酒店',
+      img:'../../img/jiudian.png',
+      leftColor:'#00bcd5',
+      rightColor:'#5cdff2',
+      rightList: [{
+        name: '分类1',
+        id: 0
+      }, {
+        name: '分类2',
+        id: 1
+      }, {
+        name: '分类3',
+        id: 2
+      }, {
+        name: '分类4',
+        id: 3
+      }
+      ]
+    }, {
+        name: '酒店',
+        img: '../../img/lvyou.png',
+        leftColor: '#7ce261',
+        rightColor: '#a2ea8e',
+      rightList: [{
+        name: '分类1',
+        id: 0
+      }, {
+        name: '分类2',
+        id: 1
+      }, {
+        name: '分类3',
+        id: 2
+      }, {
+        name: '分类4',
+        id: 3
+      }
+      ]
+      }, {
+        name: '酒店',
+        img: '../../img/canyin.png',
+        leftColor: '#f8c751',
+        rightColor: '#fdda7b',
+        rightList: [{
+          name: '分类1',
+          id: 0
+        }, {
+          name: '分类2',
+          id: 1
+        }, {
+          name: '分类3',
+          id: 2
+        }, {
+          name: '分类4',
+          id: 3
+        }
+        ]
+    }, {
+        name: '酒店',
+        img: '../../img/fushi.png',
+        leftColor: '#fc928c',
+        rightColor: '#fdb2af',
+      rightList: [{
+        name: '分类1',
+        id: 0
+      }, {
+        name: '分类2',
+        id: 1
+      }, {
+        name: '分类3',
+        id: 2
+      }, {
+        name: '分类4',
+        id: 3
+      }
+      ]
+    },
     ]
 
   },

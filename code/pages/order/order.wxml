@@ -1,7 +1,7 @@
 <!--pages/oder/oder.wxml-->
 <view class="contain">
   <view class="nav-title">
-    <view class="nav-item" wx:for="{{navItems}}" style="color: {{item.checked ? 'red' : '#666' }}; " bindtap="checked" wx:for-index="index" data-index="{{index}}">
+    <view class="nav-item" wx:for="{{navItems}}" style="color: {{item.checked ? '#e61c04' : '#737373' }}; " bindtap="checked" wx:for-index="index" data-index="{{index}}">
       {{item.name}}
     </view>
   </view>
@@ -11,15 +11,17 @@
 
     <!--订单标题-->
     <view class="order-title">
-      <view class="order-number">单号：{{item.ordersn}}</view>
-      <view class="order-time">{{item.create_time}}</view>
+      <view class='shop-name-img flex-between'>
+        <image class='shop-img' src='{{item.img}}'></image>
+        <view class='shop-name'>{{item.name}}</view>
+      </view>
+      <view class="status">{{item.status}}</view>
     </view>
 
     <!--订单详情-->
     <view class="order-detail" wx:for="{{item.goods}}" wx:for-item="good">
       <!--产品图片-->
       <view class="order-img">
-        <!-- <image src="{{good.image ? imgurl+good.image : default_image}}"></image> -->
         <image src="{{good.image}}"></image>
       </view>
       <!--产品介绍-->
@@ -27,22 +29,22 @@
         <view class="order-text">{{good.name}} {{good.norms || ""}}</view>
         <view class="order-price">
           <view class="order-real-price">￥{{good.goods_price}}
-            <view class="order-before-price">￥{{good.original_price}}</view>
-            <view class="order-quantity">运费：{{good.delivery_money}}</view>
-            
           </view>
           <view class="order-quantity">x{{good.num}}</view>
         </view>
       </view>
     </view>
       <!--合计价格-->
-      <view class="total-price">
+      <!-- <view class="total-price">
         <view class="total-price-text">合计：</view>
         <view class="total-price-real">￥{{item.goods_total}}</view>
-        <!-- <view class="total-price-before">￥{{item.original_total}}</view> -->
-      </view>
+      </view> -->
       <!--按钮-->
-      <view class="button-group">
+      <view class="button-group flex-between">
+        <view class='time-status flex-between'>
+          <view class='time'>{{item.create_time}}</view>
+          <view class='timeStatus'>{{item.timeStatus}}</view>
+        </view>
         <button wx:for="{{btns}}" data-ordersn="{{item.ordersn}}" data-now_all_price="{{item.goods_total}}" wx:for-item="itemName" bindtap="clickBtn" data-page="{{itemName}}" >{{itemName}}</button>
       </view>
       <!--物流-->
