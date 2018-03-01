@@ -1,4 +1,10 @@
 /**app.wxss**/
+page{
+  background-color: #eee;
+}
+button::after{
+  border-width: 0;
+}
 .container {
   height: 100%;
   display: flex;

@@ -142,9 +142,8 @@ image {
 
 .more {
   position: absolute;
-  width: 34rpx;
+  width: 20rpx;
   height: 40rpx;
   right: 30rpx;
   top: 20rpx;
-  opacity: 0.5;
 }

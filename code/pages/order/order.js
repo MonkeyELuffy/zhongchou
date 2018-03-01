@@ -50,14 +50,15 @@ Page({
     this.setData({
       bindDownLoad: true,
       orders:{
-        data:[{
-          create_time:'2018-02-02 12:34',
-          img:'../../img/shangjia.png',
-          name:'猫人内衣旗舰店',
+        data: [{
+          tel:'18888888888',
+          create_time: '2018-02-02 12:34',
+          img: '../../img/shangjia.png',
+          name: '猫人内衣旗舰店',
           //订单状态
-          status:'待收货/自提',
+          status: '待收货/自提',
           //挨着时间的状态
-          timeStatus:'下单',
+          timeStatus: '下单',
           goods: [
             {
               image: '../../img/banner.png',
@@ -72,7 +73,77 @@ Page({
               num: 2
             }
           ]
-        }]
+        }, {
+          tel: '1886666666',
+          create_time: '2018-02-02 12:34',
+          img: '../../img/shangjia.png',
+          name: '猫人内衣旗舰店',
+          //订单状态
+          status: '待收货/自提',
+          //挨着时间的状态
+          timeStatus: '下单',
+          goods: [
+            {
+              image: '../../img/banner.png',
+              name: '小米净化米净化米净化米净化米净化米净化米净化器',
+              goods_price: '15.9',
+              num: 2
+            },
+            {
+              image: '../../img/banner.png',
+              name: '小米净化米净化米净化米净化米净化米净化米净化器',
+              goods_price: '15.9',
+              num: 2
+            }
+          ]
+          }, {
+            tel: '1883333333',
+            create_time: '2018-02-02 12:34',
+            img: '../../img/shangjia.png',
+            name: '猫人内衣旗舰店',
+            //订单状态
+            status: '待收货/自提',
+            //挨着时间的状态
+            timeStatus: '下单',
+            goods: [
+              {
+                image: '../../img/banner.png',
+                name: '小米净化米净化米净化米净化米净化米净化米净化器',
+                goods_price: '15.9',
+                num: 2
+              },
+              {
+                image: '../../img/banner.png',
+                name: '小米净化米净化米净化米净化米净化米净化米净化器',
+                goods_price: '15.9',
+                num: 2
+              }
+            ]
+        }, {
+          tel: '1999999999',
+          create_time: '2018-02-02 12:34',
+          img: '../../img/shangjia.png',
+          name: '猫人内衣旗舰店',
+          //订单状态
+          status: '待收货/自提',
+          //挨着时间的状态
+          timeStatus: '下单',
+          goods: [
+            {
+              image: '../../img/banner.png',
+              name: '小米净化米净化米净化米净化米净化米净化米净化器',
+              goods_price: '15.9',
+              num: 2
+            },
+            {
+              image: '../../img/banner.png',
+              name: '小米净化米净化米净化米净化米净化米净化米净化器',
+              goods_price: '15.9',
+              num: 2
+            }
+          ]
+        },
+        ]
       },
       btns: ['去付款','联系商家'],
     })
@@ -232,7 +303,7 @@ Page({
         now_list = true;
       }
       that.setData({
-        orders: {},
+        // orders: {},
         orderList: [],
         page: 0,
         bindDownLoad: true,
@@ -242,7 +313,7 @@ Page({
         now_list: now_list,
         bindDownLoad: true,
       })
-      that.loadData(index + 1);
+      // that.loadData(index + 1);
     }
   },
   goPage: function () {
@@ -380,55 +451,66 @@ Page({
       //     })
       //   }
       // }
-      if (e.target.dataset.page === '付款') {
-        var ordersn = e.target.dataset.ordersn;
-        var orders = that.data.orders
-        var goods_price
-        for (var i in orders.data) {
-          if (orders.data[i].ordersn === ordersn) {
-            console.log('订单总价', orders.data[i].goods_total)
-            goods_price = orders.data[i].goods_total
-          }
-        }
-
-
-        let extData = wx.getExtConfigSync();
-        let appid = extData.authorizer_appid;
-        wx.request({
-          header: {
-            'data': appid
-          },
-          url: app.globalData.rootUrl + '/goods/pay',
-          method: "POST",
-          data: {
-            user_id: user_id,
-            ordersn: ordersn,
-            goods_price: goods_price,
-          },
-          success: function (res) {
-            console.log('发送订单给后台之后返回的字段', res.data)
-            console.log('未支付订单的再支付', {
-              user_id: user_id,
-              ordersn: ordersn,
-              goods_price: goods_price,
-            })
-            var pay = res.data
-            //发起支付
-            var timeStamp = pay.timeStamp;
-            var packages = pay.package;
-            var paySign = pay.paySign;
-            var nonceStr = pay.nonceStr;
-            var param = { "timeStamp": timeStamp, "package": packages, "paySign": paySign, "signType": "MD5", "nonceStr": nonceStr };
-            that.pay(param)
-            //清空各类数据
-            var kong = {}
-            wx.setStorageSync('now_youhuiquan', kong)
-            wx.setStorageSync('yuanshi_price', '')
-            wx.setStorageSync('coupons_id', '')
-            wx.setStorageSync('coupons_price', '')
-            wx.setStorageSync('goods_id', '')
-          }
+      if (e.target.dataset.page === '联系商家') {
+        var tel = e.target.dataset.tel;
+        wx.makePhoneCall({
+          phoneNumber: tel
         })
+      }
+      if (e.target.dataset.page === '去付款') {
+
+        wx.navigateTo({
+          url: "../orderDetail/orderDetail"
+        });
+
+
+        // var ordersn = e.target.dataset.ordersn;
+        // var orders = that.data.orders
+        // var goods_price
+        // for (var i in orders.data) {
+        //   if (orders.data[i].ordersn === ordersn) {
+        //     console.log('订单总价', orders.data[i].goods_total)
+        //     goods_price = orders.data[i].goods_total
+        //   }
+        // }
+
+        // let extData = wx.getExtConfigSync();
+        // let appid = extData.authorizer_appid;
+        // wx.request({
+        //   header: {
+        //     'data': appid
+        //   },
+        //   url: app.globalData.rootUrl + '/goods/pay',
+        //   method: "POST",
+        //   data: {
+        //     user_id: user_id,
+        //     ordersn: ordersn,
+        //     goods_price: goods_price,
+        //   },
+        //   success: function (res) {
+        //     console.log('发送订单给后台之后返回的字段', res.data)
+        //     console.log('未支付订单的再支付', {
+        //       user_id: user_id,
+        //       ordersn: ordersn,
+        //       goods_price: goods_price,
+        //     })
+        //     var pay = res.data
+        //     //发起支付
+        //     var timeStamp = pay.timeStamp;
+        //     var packages = pay.package;
+        //     var paySign = pay.paySign;
+        //     var nonceStr = pay.nonceStr;
+        //     var param = { "timeStamp": timeStamp, "package": packages, "paySign": paySign, "signType": "MD5", "nonceStr": nonceStr };
+        //     that.pay(param)
+        //     //清空各类数据
+        //     var kong = {}
+        //     wx.setStorageSync('now_youhuiquan', kong)
+        //     wx.setStorageSync('yuanshi_price', '')
+        //     wx.setStorageSync('coupons_id', '')
+        //     wx.setStorageSync('coupons_price', '')
+        //     wx.setStorageSync('goods_id', '')
+        //   }
+        // })
       }
     }
 
