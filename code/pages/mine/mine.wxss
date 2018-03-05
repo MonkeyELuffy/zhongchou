@@ -48,25 +48,27 @@ image {
   position: relative;
 }
 .user-message{
-  padding: 20rpx;
+  padding: 20rpx 20rpx 20rpx 40rpx;
   background-color: #fff;
   margin-bottom: 10rpx;
+  border-top: 10rpx solid #eee;
 }
 .user-image-contain{
   text-align: center;
 }
 .user-image {
-  width: 140rpx;
-  height: 140rpx;
+  width: 115rpx;
+  height: 115rpx;
   position: relative;
   border-radius: 50%;
   overflow: hidden;
 }
 .user-name {
-  font-size: 28rpx;
+  font-size: 30rpx;
+  color: #333;
 }
 .top-nav{
-  padding: 20rpx 30rpx;
+  padding: 20rpx 30rpx 20rpx 70rpx;
   font-size: 28rpx;
   background-color: #fff;
   margin-bottom: 10rpx;
@@ -79,11 +81,13 @@ image {
   height: 50rpx;
 }
 .top-nav-item-name{
-  margin-top: 10rpx;
+  margin-top: 38rpx;
+  font-size: 26rpx;
+  color: #333;
 }
 .top-nav-item-value{
-  color: red;
-  font-size: 32rpx;
+  color: #e61c04;
+  font-size: 36rpx;
 }
 
 .chongzhi{
@@ -97,7 +101,8 @@ image {
   background-color: #fff;
   margin-bottom: 10rpx;
   font-size: 30rpx;
-  padding: 10rpx 30rpx;
+  padding: 10rpx 40rpx;
+  color: #333;
 }
 
 /*个人菜单*/
@@ -108,10 +113,10 @@ image {
   position: relative;
   background-color:#fff;
   display:flex;
-  height: 76rpx;
+  height: 90rpx;
   align-items: center;
   margin-bottom: 6rpx;
-  padding: 0 30rpx;
+  padding: 0 40rpx;
 }
 
 .gopage {
@@ -123,11 +128,11 @@ image {
   background-color: transparent;
 }
 .center-nav .icon {
-  width: 40rpx;
-  height: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .center-nav .item {
-  padding-left:28rpx;
+  padding-left:30rpx;
   font-size: 24rpx;
   word-spacing: 2rpx;
   line-height: 80rpx;

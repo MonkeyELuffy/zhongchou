@@ -14,10 +14,10 @@ Page({
       value:44,
       name:'关注'
     },{
-      img:'../../img/msg.png',
+        img:'../../img/center/xiaoxi.png',
       name:'消息'
     },{
-      img:'../../img/saomiao.png',
+        img:'../../img/center/saoyisao.png',
       name:'扫一扫'
     }],
     walletDetail: [{
@@ -31,19 +31,19 @@ Page({
         name: '优惠券'
       }],
     orderNav: [{
-      img: '../../img/msg.png',
+      img: '../../img/center/daifukuan.png',
       name: '待付款'
     }, {
-      img: '../../img/msg.png',
+        img: '../../img/center/daifahuo.png',
       name: '待发货'
       }, {
-        img: '../../img/msg.png',
+        img: '../../img/center/daishouhuo.png',
         name: '待收货'
     }, {
-      img: '../../img/msg.png',
+        img: '../../img/center/daipingjia.png',
       name: '待评价'
       }, {
-        img: '../../img/msg.png',
+        img: '../../img/center/tuikuan.png',
         name: '退款/售后'
       },],
     user_name:'请登录',
@@ -53,12 +53,12 @@ Page({
     level_icon: '../../img/center/huangguan.png',
     bg: '../../img/user_bg.png',
     center_nav: [{
-      icon: '../../img/center/order.png',
+      icon: '../../img/center/zhongcou.png',
       name: '我的众筹',
       page: 'wodezhongchou'
     },
     {
-      icon: '../../img/center/youhuiquan.png',
+      icon: '../../img/center/tuiguang.png',
       name: '我的推广',
       page: 'wodetuiguang'
     },
@@ -68,22 +68,22 @@ Page({
       page: 'wodejifen'
     },
     {
-      icon: '../../img/center/shoucang.png',
+      icon: '../../img/center/dizhi.png',
       name: '收货地址',
       page: 'address'
     },
     {
-      icon: '../../img/center/suggestion.png',
+      icon: '../../img/center/kehufuwu.png',
       name: '客户服务',
       page: 'help'
     },
     {
-      icon: '../../img/center/help.png',
+      icon: '../../img/center/guanyuwomen.png',
       name: '关于我们',
       page: 'about'
     },
     {
-      icon: '../../img/center/erji.png',
+      icon: '../../img/center/rukou.png',
       name: '商家入口',
       page: 'shangjiarukou'
     }],

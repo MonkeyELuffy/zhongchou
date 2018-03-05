@@ -91,10 +91,10 @@ image {
 }
 /*底部评价按钮*/
 .button {
-  width: 450rpx;
+  width: 500rpx;
   height: 100rpx;
   background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
-  border-radius: 40rpx;
+  border-radius: 50rpx;
   color: #fff;
   font-size: 34rpx;
   line-height: 100rpx;
@@ -104,10 +104,10 @@ image {
   margin-top: 60rpx;
   margin-bottom: 60rpx;
 }
-.button:active {
+/* .button:active {
   background-color: rgba(255, 0, 0, 0.8);
   color: #fff;
-}
+} */
 
 /*订单详情*/
   .order-detail {

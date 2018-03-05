@@ -22,7 +22,7 @@
     </view>
 
     <!--账户信息  -->
-    <view class='top-nav flex-all flex-between' style='padding:0 0 0 30rpx;'>
+    <view class='top-nav flex-all flex-between' style='padding:0 0 0 40rpx;'>
       <view class='top-nav-item' wx:for='{{walletDetail}}'>
         <view class='top-nav-item-value'>{{item.value}}</view>
         <image hidden='{{!item.img}}' class='top-nav-item-img' src='{{item.img}}'></image>
@@ -34,7 +34,7 @@
 
     <!--订单管理  -->
     <view class='order'>订单管理</view>
-    <view class='top-nav flex-all flex-between'>
+    <view class='top-nav flex-all flex-between' style='padding-left:40rpx;'>
       <view class='top-nav-item' wx:for='{{orderNav}}'>
         <view class='top-nav-item-value'>{{item.value}}</view>
         <image hidden='{{!item.img}}' class='top-nav-item-img' src='{{item.img}}'></image>

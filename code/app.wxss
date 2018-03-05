@@ -39,3 +39,8 @@ image{
   align-items: center;
   justify-content: space-around;
 }
+.flex-end{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
