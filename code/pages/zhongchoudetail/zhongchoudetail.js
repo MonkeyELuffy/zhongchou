@@ -1,4 +1,10 @@
 // pages/zhongchoudetail/zhongchoudetail.js
+const util = require('../../utils/util.js');
+const bannerTemp = require('../../utils/bannerTemp.js');
+const zhongchouItem = require('../../utils/zhongchouItem.js');
+const loadListData = require('../../utils/loadListData.js');
+const basic = require('../../utils/basic.js');
+const app = getApp()
 Page({
 
   /**
@@ -6,10 +12,10 @@ Page({
    */
   data: {
     slider: [{
-      img: '../../img/banner.png',
+      img_src: '../../img/banner.png',
       id: 0
     }, {
-      img: '../../img/banner1.png',
+        img_src: '../../img/banner1.png',
       id: 1
     }],
     zhongchouInfo:{
