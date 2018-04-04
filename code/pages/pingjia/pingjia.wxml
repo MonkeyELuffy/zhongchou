@@ -5,16 +5,17 @@
   <view class="order-detail">
     <!--产品图片-->
     <view class="order-img">
-      <image src="{{pingjia_goods.img}}"></image>
+      <image src="{{imgHttp + (goodslist[0].logo_url || goodslist[0].goods_logo)}}"></image>
     </view>
     <!-- 产品介绍 -->
     <view class="order-text-price">
-      <view class="order-text">{{pingjia_goods.name}}</view>
+      <view class="order-text">{{goodslist[0].goods_name}}</view>
+      <view class="order-text">{{goodslist[0].spec_info || ""}}</view>
       <view class="order-price">
-        <view class="order-real-price">￥{{pingjia_goods.goods_price}}
-          <!-- <view class="order-before-price">￥{{pingjia_goods.original_price}}</view> -->
+        <view class="order-real-price">￥{{goodslist[0].goods_price}}
+          <!-- <view class="order-before-price">￥{{goodslist[0].original_price}}</view> -->
         </view>
-        <view class="order-quantity">x{{pingjia_goods.num}}</view>
+        <view class="order-quantity">x{{goodslist[0].goods_number}}</view>
       </view>
     </view>
   </view>
@@ -31,10 +32,10 @@
     <textarea class="valuation-text" placeholder="请输入对商品的评价" placeholder-style="color:#bbb;" bindinput="changeText"/>
   </view>
 
-  <view class="image-contain">
+  <!-- <view class="image-contain">
     <image wx:for-index="index" data-index="{{index}}" class="add-img" wx:for="{{pics}}" bindtap="clickImage" src="{{item}}" data-src="{{item}}" mode="aspecFill"><image src='../../img/del.png' class='del-img'  bindtap="deleteImag"  data-index="{{index}}"></image></image> 
     <image src="{{add}}" class="add-image" bindtap="addImg"></image>
-  </view>
+  </view> -->
 
   <view class="button" bindtap="submit">确定</view>
   <view style="width:100%;height:2rpx;"></view>

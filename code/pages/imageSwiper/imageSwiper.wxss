@@ -6,4 +6,8 @@
 /*banner  */
 .swiper-container{
   width: 100%;
+  border-bottom:10rpx solid #eee;
+}
+.img{
+  height: 100%;
 }

@@ -1,11 +1,7 @@
 // pages/personCenter/personCenter.js
 var app = getApp()
-
+var util = require('../../utils/util.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     userInfo: [{
       key: '更换头像',
@@ -13,7 +9,7 @@ Page({
       image: 'img/about.png',
       can_change: true
     }, {
-      key: '修改昵称',
+      key: '真实姓名',
       value: '张三',
       can_change: false
     }, {
@@ -27,26 +23,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 获取用户头像
-    var that = this
-    var userImg
-    var userInfo = this.data.userInfo;
-
-    wx.getStorage({
-      key: 'userInfo',
-      success: function (res) {
-        userInfo[0]["image"] = res.data.avatar
-        userInfo[1]["value"] = res.data.user_name
-        userInfo[2]["value"] = res.data.mobile
-        userInfo[3]["value"] = res.data.level
-        that.setData({
-          userInfo: userInfo
-        })
-      }
+    var that = this;
+    var globalDatauserInfo = app.globalData.userInfo
+    var userInfo = this.data.userInfo
+    userInfo[0]["image"] = globalDatauserInfo.img_url
+    userInfo[1]["value"] = globalDatauserInfo.rel_name
+    userInfo[2]["value"] = globalDatauserInfo.phone
+    that.setData({
+      userInfo: userInfo
     })
   },
-
-
   // 修改手机号和昵称
   changeNameAndMobil: function (e) {
     var that = this;
@@ -58,56 +44,43 @@ Page({
   sure: function (e) {
     var that = this
     var go = function (e) {
-      var user_id = wx.getStorageSync('user_id');
-      var user_name = that.data.userInfo[1].value
-      var mobile = that.data.userInfo[2].value
-      var avatar = that.data.userInfo[0].image
+      var rel_name = that.data.userInfo[1].value
+      var phone = that.data.userInfo[2].value
+      var openid = app.globalData.openid
+      // var avatar = that.data.userInfo[0].image
       var reg = /^1[3|5|7|8]\d{9}$/;
-      if (!mobile || !reg.test(mobile)) {
+      if (!phone || !reg.test(phone)) {
         wx.showToast({
           title: '请输入正确的手机号',
           content: '1000',
         })
-
       } else {
-        var userInfo = wx.getStorage({
-          key: 'userInfo',
-          success: function (res) {
-            res.data.avatar = avatar
-            res.data.user_name = user_name
-            res.data.mobile = mobile
-            console.log(user_name, mobile, avatar)
-            var new_userInfo = res.data
-            wx.setStorage({
-              key: 'userInfo',
-              data: new_userInfo,
-            })
-            wx.navigateBack();
-          },
-        })
-        let extData = wx.getExtConfigSync();
-        let appid = extData.authorizer_appid;
-        wx.request({
-          header: {
-            'data': appid
-          },
-          url: app.globalData.rootUrl + '/info/update_info',
-          data: {
-            user_id: user_id,
-            user_name: user_name,
-            mobile: mobile,
-            // avatar: avatar,
-          },
-          success: function (res) {
-            console.log('response:', res.data.code)
-            console.log('response:', res.data.message)
-          }
-        })
+        var data = {
+          openid: openid,
+          phone: phone,
+          rel_name: rel_name,
+        }
+        //请求用户地址
+        util.httpPost(app.globalUrl + app.Memberid, data, this.processData);
       }
     }
-
     var data = { go, e }
     this.clickTooFast(data)
+  },
+  processrData: function (res) {
+    if (res.suc == 'y') {
+      console.log(res.data)
+      app.globalData.userInfo = res.data
+      app.globalData.userInfo.token = res.data.id
+      wx.showToast({
+        title: '保存成功'
+      })
+      wx.navigateBack()
+    } else {
+      wx.showToast({
+        title: res.msg,
+      })
+    }
   },
   //修改头像
   changeImg: function () {

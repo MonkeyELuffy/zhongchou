@@ -1,10 +1,8 @@
 /* pages/zhongchoudetail/zhongchoudetail.wxss */
+@import "../imageSwiper/imageSwiper.wxss";
+
 .contain{
   background-color: #fff;
-}
-/*banner  */
-.swiper-container{
-  width: 100%;
 }
 
 .rang{

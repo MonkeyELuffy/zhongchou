@@ -1,4 +1,6 @@
 /* pages/search/search.wxss */
+@import "../paixuTemplate/paixuTemplate.wxss";
+@import "../dataItemTemp/dataItemTemp.wxss";
 
 .top-nav{
   width: 100%;
@@ -8,7 +10,6 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  border-bottom: 10rpx solid #eee;
   background-color: #fff;
 }
 /*搜索框*/
@@ -22,7 +23,7 @@
   height: 60rpx;
   background-color: #eee;
   opacity: 0.5;
-  color: #333;
+  color: #666;
   font-size: 24rpx;
   padding-left: 80rpx;
   border-radius: 30rpx;
@@ -43,77 +44,4 @@
   height: 60rpx;
   box-sizing: border-box;
   color:#333;
-}
-
-
-/*排序  */
-.tab{
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-bottom: 10rpx solid #eee;
-  color: #333;
-}
-.tab-item{
-  width: 33%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28rpx;
-  padding: 30rpx 0;
-}
-.tab-up-down{
-  width: 22rpx;
-  height: 38rpx;
-  margin-left: 20rpx;
-}
-/*数据列表  */
-.data-list{
-  width: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.label-and-haoping-contain{
-  padding-top: 10rpx;
-}
-.item{
-  padding:20rpx 0 0 20rpx;
-  background-color: #fff;
-}
-.item-image{
-  width: 180rpx;
-  height: 180rpx;
-  box-sizing: border-box;
-  margin-right: 30rpx;
-  align-self: flex-start;
-}
-.detail-name{
-  font-size: 36rpx;
-  font-weight: 600;
-}
-.label-contain{
-  font-size: 24rpx;
-}
-.label-item{
-  padding: 4rpx 10rpx;
-  border: 1rpx solid #f68076;
-  margin-right: 8rpx;
-  min-width: 76rpx;
-  text-align: center;
-}
-.haoping{
-  font-size: 32rpx;
-  color: #666;
-}
-.sale-and-juli{
-  margin-top: 40rpx;
-  color: #999;
-  font-size: 32rpx;
-  border-bottom: 1rpx solid #aaa;
-  padding-bottom: 20rpx;
-}
-.juli{
-  padding-right: 20rpx;
 }

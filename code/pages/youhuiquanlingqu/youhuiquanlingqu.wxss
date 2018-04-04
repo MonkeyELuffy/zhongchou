@@ -53,8 +53,9 @@ page {
 }
 .fenlei-contianer .fenlei-list {
   padding: 20rpx 40rpx;
-  margin-bottom: 20rpx;
+  margin: 20rpx;
   background-color: #fff;
+  border-radius: 8rpx;
 }
 /*分类item各自的style  */
 .type{

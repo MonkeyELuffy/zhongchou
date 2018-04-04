@@ -49,7 +49,7 @@ image {
 
 .xiaoziti{
   font-size: 26rpx;
-  color: #898989;
+  color: #737373;
 }
 
 /*信息  */
@@ -152,8 +152,8 @@ image {
   }
 /*清除浮动*/
 .clear {
-  width: 10px;
-  height: 50px;
+  width: 20rpx;
+  height: 100rpx;
 }
 
 page {
@@ -161,7 +161,7 @@ page {
 }
 
 .cart {
-  padding: 100px 0 0 0;
+  padding: 200rpx 0 0 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -170,13 +170,13 @@ page {
 }
 
 .cart image {
-  width: 66px;
-  height: 66px;
-  margin-bottom: 20px;
+  width: 132rpx;
+  height: 132rpx;
+  margin-bottom: 40rpx;
 }
 
 .baoyou {
-  font-size: 18px;
+  font-size: 36rpx;
   color: #db2929;
   padding: 2rpx;
 }
@@ -184,14 +184,14 @@ page {
 .goods {
   position: relative;
   background: #fff;
-  padding: 10px 10px 0 0px;
+  padding: 20rpx 20rpx 0 0;
   display: flex;
   border-bottom: 2rpx solid #eee;
 }
 
 .goods image {
-  width: 80px;
-  height: 80px;
+  width: 160rpx;
+  height: 160rpx;
 }
 
 .goods .good-cont {
@@ -199,14 +199,9 @@ page {
   flex: 1;
   flex-direction: column;
   color: #555;
-  font-size: 14px;
-  padding: 5px;
-  height: 80px;
-}
-
-.goods .good-cont .goods-navigator {
-  display: flex;
-  flex: 2;
+  font-size: 28rpx;
+  padding: 10rpx;
+  height: 160rpx;
 }
 
 .goods .good-cont .good-price {
@@ -217,7 +212,7 @@ page {
 }
 
 .goods .good-cont .good-price .price {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #ec5151;
 }
 
@@ -228,12 +223,12 @@ page {
 }
   .goods .good-cont .good-price .btn-box .delete {
     position: absolute;
-    right: 20px;
-    top: 8px;
+    right: 40rpx;
+    top: 16rpx;
   }
 .goods .good-cont .good-price .btn-box .delete image {
-  width: 15px;
-  height: 15px;
+  width: 30rpx;
+  height: 30rpx;
   border: 0;
   margin: 0;
 }
@@ -248,21 +243,21 @@ page {
 
 .goods .good-cont .good-price .btn input {
   margin: 0;
-  width: 40px;
+  width: 80rpx;
   text-align: center;
-  font-size: 16px;
-  height: 20px;
+  font-size: 32rpx;
+  height: 40rpx;
 }
 
 .goods .good-cont .good-price .btn button {
   margin: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 30px;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 60rpx;
   box-sizing: border-box;
-  border: 1px solid #999;
-  padding: 0px;
-  line-height: 20px;
+  border: 2rpx solid #999;
+  padding: 0;
+  line-height: 40rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -270,25 +265,25 @@ page {
 }
 
 .total {
-  height: 40px;
+  height: 80rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   z-index: 10;
   background-color: #fff;
-  border: 0rpx;
-  margin: 0rpx;
+  border: 0;
+  margin: 0;
 }
 
 .total .total_text {
   display: flex;
   color: #333;
   height: 100%;
-  line-height:40px;
-  margin-left: 10px;
+  line-height:80rpx;
+  margin-left: 20rpx;
   font-size: 30rpx;
   font-weight: bold;
 }
@@ -300,11 +295,10 @@ page {
 .total .total_js {
   color: #fff;
   background: #ec5151;
-  /* height: 30px; */
   margin: 0;
    height: 100%; 
-  border-radius: 0px;
-  line-height: 40px;
+  border-radius: 0;
+  line-height: 80rpx;
   width: 100%;
   font-size: 30rpx;
 }
@@ -334,7 +328,7 @@ page {
 
 .type{
   padding: 20rpx 30rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   background-color: #fff;
   margin-bottom: 4rpx;
   border-top: 10rpx solid #eee;
@@ -342,7 +336,7 @@ page {
 
 .daodian{
   background-color: #fff;
-  font-size: 26rpx;
+  font-size: 30rpx;
   color: #333;
 }
 .daodian-item{
@@ -425,4 +419,24 @@ page {
   }
   button::after{
     border-width: 0;
+  }
+
+  /*入住时间表  */
+  .table-contain{
+    font-size: 26rpx;
+    color: #333;
+    text-align: center;
+    padding: 20rpx 40rpx;
+  }
+  .table-item{
+    flex: 1 1 ;
+    padding: 19rpx 0;
+    border-right: 2rpx solid #666;
+  }
+  .th,.td,.tf{
+    border-top: 2rpx solid #666;
+    border-left: 2rpx solid #666;
+  }
+  .tf{
+    border-bottom: 2rpx solid #666;
   }

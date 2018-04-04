@@ -1,15 +1,9 @@
 <!--pages/zhongchoudetail/zhongchoudetail.wxml-->
+<import src="../imageSwiper/imageSwiper.wxml"/>
+
 <view class='contain'>
-  <!--轮播图  -->
-  <view class="swiper-container">  
-    <swiper circular="true" interval="5000" duration="500"  autoplay="true"  current="{{swiperCurrent}}"  class="swiper" indicator-dots="true">  
-      <block wx:for="{{slider}}" wx:key="unique">  
-        <swiper-item>  
-          <image src="{{item.img}}" class="img" data-id="{{item.id}}" bindtap='clickSwiper'></image> 
-        </swiper-item>  
-      </block>  
-    </swiper>  
-  </view> 
+  <!--轮播图组件  --> 
+  <template is="imageSwiper" data="{{slider}}" ></template>
   <!--基本信息  -->
   <view class='info-contain'>
     <view class='name'>{{zhongchouInfo.name}}</view>

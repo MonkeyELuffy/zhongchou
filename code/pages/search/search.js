@@ -1,145 +1,168 @@
 // pages/search/search.js
+var util = require('../../utils/util.js');
+var paixuTemp = require('../../utils/paixuTemp.js');
+var dataItemTemp = require('../../utils/dataItemTemp.js');
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    scrollHeight: app.globalData.scrollHeight,
+    allData: app.globalData.allPaiXuData,
     search_icon: '../../img/search.png',
-    dataList: [
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      },
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      },
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      },
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      },
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      },
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      },
-      {
-        img: '../../img/test.png',
-        name: '深圳市三九胃泰有限公司',
-        labels: [{ name: '铝制品', bgColor: '#fff' }, { name: '满减', bgColor: '#f68076' }],
-        haoping: '98',
-        sale: 1234,
-        dic: 12.3
-      }
-    ],
-    // 排序背景图
-    hangyepaixu: '../../img/paixu0.png',
-    xiaoliangpaixu: '../../img/paixu0.png',
-    julipaixu: '../../img/paixu0.png',
-    paixuList: ['../../img/paixu0.png', '../../img/paixu1.png', '../../img/paixu2.png'],
-    // 排序规则：0代表众筹金额升序、1降序，2代表分红比例升序、3降序,4代表一开始不排序。
-    nowPaiXu: 4,
+    dataList: [],
+    search_key:'',
+    page_no: 1,
+    total_page: 1
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    var that = this;
+    var that = this
+    var search_key = JSON.parse(options.search_key)
     //数据初始化
     that.setData({
       bindDownLoad: true,
-      page: 0,
+      search_key: search_key,
+      dataList: [],
     })
-    //获取屏幕高度
-    wx.getSystemInfo({
-      success: function (res) {
-        console.info(res.windowHeight);
+    var params = {
+      page_no: 1,
+      page_size: 15,
+      cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude,
+      seller_name: that.data.search_key
+    }
+    that.loadData(params);
+  },
+  // 下拉加载更多购物车数据
+  bindDownLoad: function (e) {
+    var params = {
+      page_no: this.data.page_no,
+      page_size: 15,
+      cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude,
+      seller_name: this.data.search_key
+    }
+    this.loadData(params)
+  },
+  /*===========
+  加载数据
+  ===========*/
+  loadData: function (params) {
+    var that = this
+    console.log(that.data.page_no, '??',that.data.total_page)
+    if (that.data.bindDownLoad && parseInt(that.data.page_no) <= parseInt(that.data.total_page)) {
+      that.setData({
+        bindDownLoad: false
+      })
+      //加载数据
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      //获取订单信息
+      util.httpPost(app.globalUrl + app.STORELIST, params, that.processStoreData);
+      //1000ms之后才可以继续加载，防止加载请求过多
+      setTimeout(function () {
         that.setData({
-          windowHeight: res.windowHeight
-        });
+          bindDownLoad: true
+        })
+      }, 1000)
+    }
+    if (that.data.bindDownLoad && parseInt(that.data.page_no) > parseInt(that.data.total_page)) {
+      wx.showToast({
+        title: '没有更多数据了',
+      })
+    }
+  },
+  processStoreData(res) {
+    if (res.suc == 'y') {
+      var dataList = this.data.dataList
+      console.log('获取商铺list成功', res.data);
+      wx.hideLoading()
+      for (var i in res.data.list) {
+        res.data.list[i].store_img_src = app.globalImageUrl + res.data.list[i].store_img_src
       }
-    });
+      //获取数据之后需要改变page和totalPage数值，保障上拉加载下一页数据的page值，其余没有需要修改的数据
+      dataList = dataList.concat(res.data.list)
+      this.setData({
+        page_no: this.data.page_no + 1,
+        total_page: res.data.total_page,
+        dataList: dataList,
+      })
+    } else {
+      console.log('获取商铺list错误', res);
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  // 输入搜索文字
+  input: function (e) {
+    var search_key = e.detail.value
+    this.setData({
+      search_key: search_key
+    })
+    wx.setStorageSync("search_key", search_key);
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  // 确认搜索
+  search: function (e) {
+    var that = this
+    var search_key = this.data.search_key
+    if (search_key.replace(/(^\s*)|(\s*$)/g, "").length == 0) {
+      wx.showToast({
+        title: '请输入您要搜索的商品',
+        duration: 1000
+      })
+    } else {
+      var go = function (e) {
+        console.log(search_key)
+        //搜索需要清空dataList
+        that.setData({
+          dataList: [],
+          page_no: 1,
+          total_page:1,
+        })
+        var params = {
+          page_no: that.data.page_no,
+          page_size: 15,
+          cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude,
+          seller_name: search_key
+        }
+        that.loadData(params)
+      }
+      var data = { go, e }
+      that.clickTooFast(data)
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  /*==========
+  防止快速点击
+  ===========*/
+  clickTooFast: function (data) {
+    var lastTime = this.data.lastTime
+    var curTime = data.e.timeStamp
+    if (lastTime > 0) {
+      if (curTime - lastTime < 1000) {
+        console.log('点击太快了')
+        return
+      } else {
+        data.go(data.e)
+      }
+    } else {
+      data.go(data.e)
+    }
+    this.setData({
+      lastTime: curTime
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  // 点击子数据
+  clickItem: function (e) {
+    var that = this
+    var item = e.currentTarget.dataset.item
+    dataItemTemp.clickItem(e, that, item)
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  hangyepaixu: function (e) {
+    var that = this
+    paixuTemp.hangyepaixu(e, that)
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  xiaoliangpaixu: function (e) {
+    var that = this
+    paixuTemp.xiaoliangpaixu(e, that)
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
+  julipaixu: function (e) {
+    var that = this
+    paixuTemp.julipaixu(e, that)
+  },
 })
