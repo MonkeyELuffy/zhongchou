@@ -11,7 +11,7 @@
   background-color: #fff;
   color: #333;
   font-size: 28rpx;
-  padding: 40rpx;
+  padding: 0 40rpx;
   margin-bottom: 100rpx;
   box-shadow: 0 4rpx 4rpx #aaa;
 }
@@ -20,6 +20,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-bottom:40rpx;
 }
 /*充值选项*/
 .recharge-item {
@@ -35,24 +36,33 @@
 }
 
 .recharge-type-contain{
-  margin-bottom: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  padding: 30rpx 0;
+  border-bottom: 2rpx solid #eee;
 }
 .title{
   font-size: 28rpx;
   color: #333;
+  padding: 30rpx 0;
+}
+.hasborder{
+  font-size: 30rpx;
+  color: #333;
+  border-bottom: 2rpx solid #eee;
 }
 .choose{
   padding: 20rpx 40rpx;
 }
 image{
-  width: 60rpx;
+  width: 56rpx;
   height: 50rpx;
   margin-right: 40rpx;
 }
 .button {
   width: 500rpx;
   height: 100rpx;
-  background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+  background: linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
   border-radius: 50rpx;
   color: #fff;
   font-size: 34rpx;

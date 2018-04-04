@@ -93,8 +93,8 @@ image {
 .button {
   width: 500rpx;
   height: 100rpx;
-  background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
-  border-radius: 50rpx;
+  background: linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
+  border-radius: 40rpx;
   color: #fff;
   font-size: 34rpx;
   line-height: 100rpx;
@@ -135,7 +135,7 @@ image {
   }
   .order-text {
     width: 100%;
-    height: 80rpx;
+    padding-bottom: 20rpx;
     font-size: 24rpx;
     color: #666;
   }

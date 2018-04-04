@@ -1,0 +1,34 @@
+<import src="../paixuTemplate/paixuTemplate.wxml"/>
+<import src="../noMoreData/noMoreData.wxml"/>
+<scroll-view class="fenlei-ul flex-center fenlei-contianer" style="max-height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+  <view class='top-contain'>
+    <!--排序组件  -->
+    <template is="paixuTemplate" data="{{allData}}"></template>
+  </view>
+
+  <view class="fenlei-list" wx:for="{{dataList}}"  bindtap="goDetailPage" data-page="product_detail" data-seller_id="{{item.seller_id}}">
+    <view class='img-contain'>
+      <image src="{{item.store_img_src}}"></image>
+    </view>
+    <view class="fenlei-text">
+      <view class="text">
+        {{item.seller_name}}
+      </view>
+      <view class='label-and-haoping-contain flex-none'>
+        <!--标签  -->
+        <view class='label-contain flex-center'>
+          <view class='label-item' wx:for='{{item.special}}' >{{item == 1 ? '满减' : (item == 2 ? '折扣' : (item == 3 ? '品牌' : '星级'))}}</view>
+        </view>
+        <!--好评  -->
+        <!-- <view class='haoping'>好评{{item.haoping}}%</view> -->
+      </view>
+      <view class="fenlei-price-total flex-between flex-all">
+        <view class="fenlei-price">{{item.store_star}}星级</view>
+        <view class='juli'>{{item.cur_space}}</view>
+      </view>
+    </view>
+  </view>
+  <!--nomoreData  -->
+  <template is="noMoreData"></template>
+  <view style="width:100%;height:40rpx;"></view>
+</scroll-view>

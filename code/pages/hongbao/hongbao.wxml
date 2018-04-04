@@ -1,7 +1,7 @@
 <!--pages/cashOutDetail/cashOutDetail.wxml-->
 <view class="contain">
   
-  <view class="recharge-money">{{cashOutMoney}}</view>
+  <view class="recharge-money">{{userInfo.pack_amount}}</view>
 
   <view class="fenlei-contianer">
     <scroll-view class="fenlei-ul" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">

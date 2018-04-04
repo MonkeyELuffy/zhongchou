@@ -99,7 +99,7 @@ page {
   margin-top: 40rpx;
   color: #b2b2b2;
   font-size: 28rpx;
-  border-bottom: 1rpx solid #b2b2b2;
+  border-bottom: 1rpx solid #ddd;
   padding-bottom: 30rpx;
 }
 .juli{
@@ -128,4 +128,8 @@ page {
 .choose-all{
   position: absolute;
   left: 20rpx;
+}
+
+.guanli{
+  margin: 0 10rpx;
 }

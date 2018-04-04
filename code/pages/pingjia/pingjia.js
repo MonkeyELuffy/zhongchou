@@ -1,5 +1,6 @@
 // pages/valuation/valuation.js
 
+var util = require('../../utils/util.js');
 var app = getApp();
 var imgsrc = []
 Page({
@@ -7,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgHttp: app.globalImageUrl,
+    starlevel:0,
     lock_submit: false,
     lock: false,
     pics: [],
@@ -26,12 +29,7 @@ Page({
         img: '../../img/chaping.png'
       },],
 
-    pingjia_goods: {
-      img:'../../img/test.png',
-      name:'小米机器人小米机器人小米机器人小米机器人',
-      goods_price:'12.34',
-      num:'2'
-    },
+    goodslist: [],
     add: '../../img/add_image.png'
 
   },
@@ -40,65 +38,22 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onLoad: function () {
-    // var pingjia_goods = wx.getStorageSync('pingjia_goods')
-    // pingjia_goods.image = app.globalData.imgUrl + '/' + pingjia_goods.image
-    // this.setData({
-    //   pingjia_goods: pingjia_goods
-    // })
-  },
-
-  /* ===设备质量评分=== */
-  selectRightOne: function (e) {
-    var keyOne = e.currentTarget.dataset.keyone
-    if (this.data.keyOne === e.currentTarget.dataset.keyone) {
-      //点击最后一颗星星则为0
-      keyOne = 0;
-    }
-    console.log("设备质量得" + keyOne + "分")
+  onLoad: function (options) {
+    var item = JSON.parse(options.item)
+    console.log('订单数据', item)
     this.setData({
-      keyOne: keyOne
-    })
-
-  },
-  /* ===配送速度评分=== */
-  selectRightTwo: function (e) {
-    var keyTwo = e.currentTarget.dataset.keytwo
-    if (this.data.keyTwo === e.currentTarget.dataset.keytwo) {
-      //点击最后一颗星星则为0
-      keyTwo = 0;
-    }
-    console.log("配送速度得" + keyTwo + "分")
-    this.setData({
-      keyTwo: keyTwo
-    })
-  },
-  /* ===服务态度评分=== */
-  selectRightThree: function (e) {
-    var keyThree = e.currentTarget.dataset.keythree
-    if (this.data.keyThree === e.currentTarget.dataset.keythree) {
-      //点击最后一颗星星则为0
-      keyThree = 0;
-    }
-    console.log("服务态度得" + keyThree + "分")
-    this.setData({
-      keyThree: keyThree
+      goodslist: item.goodslist || item.items_list,
+      order_id: item.order_id,
+      order_bn: item.order_bn,
     })
   },
   // 提交评价
   submit: function (e) {
-
-
     var that = this
     var go = function (e) {
-      var user_id = wx.getStorageSync('user_id')
-      var pics = that.data.pics;
-      var goods_id = wx.getStorageSync('pingjia_goods_id')
-      var ordersn = wx.getStorageSync('pingjia_ordersn')
-      var now_ordersn = wx.getStorageSync('now_ordersn')
-      if (that.data.keyOne === 0 || (that.data.keyTwo === 0 || that.data.keyThree === 0)) {
+      if (that.data.starlevel === 0) {
         wx.showToast({
-          title: '请输入评分',
+          title: '请选择星级',
           content: '1000'
         })
       } else if (!that.data.content || that.data.content === '') {
@@ -114,63 +69,37 @@ Page({
           that.setData({
             lock_submit: true
           })
-          let extData = wx.getExtConfigSync();
-          let appid = extData.authorizer_appid;
-          wx.request({
-            header: {
-              'data': appid
-            },
-            url: app.globalData.rootUrl + '/order/comment',
-            data: {
-              user_id: user_id,
-              goods_id: goods_id,
-              ordersn: ordersn,
-              goods: that.data.keyOne,
-              speed: that.data.keyTwo,
-              service: that.data.keyThree,
-              content: that.data.content,
-            },
-            success: function (res) {
-
-              app.uploadimg({
-                url: app.globalData.rootUrl + '/order/imageupload',//这里是你图片上传的接口
-                path: pics,//这里是选取的图片的地址数组
-                eva_id: res.data.id
-              });
-
-              console.log('提交评价的返回字段', res.data)
-              console.log('提交评价的返回字段id', res.data.id)
-              console.log('提交评价的请求字段', {
-                user_id: user_id,
-                goods_id: goods_id,
-                ordersn: now_ordersn,
-                goods: that.data.keyOne,
-                speed: that.data.keyTwo,
-                service: that.data.keyThree,
-                content: that.data.content,
-              })
-              setTimeout(function () {
-                wx.showToast({
-                  title: '评价完成',
-                  content: '1000',
-                })
-                that.setData({
-                  pics: []
-                })
-              }, 5600)
-              setTimeout(function () {
-                wx.navigateBack()
-              }, 6600)
-            }
-          })
+          var data = {
+            order_id: that.data.order_id,
+            order_bn: that.data.order_bn,
+            member_id: app.globalData.member_id,
+            content: that.data.content,
+            starlevel: that.data.starlevel,
+          }
+          util.httpPost(app.globalUrl + app.addEvaluate, data, that.processData);
         }
       }
     }
-
-
     var data = { go, e }
     this.clickTooFast(data)
-
+  }, 
+  processData: function (res) {
+    if (res.suc == 'y') {
+      wx.showToast({
+        title: res.msg,
+      })
+      setTimeout(function(){
+        // 返回订单页面
+        wx.navigateBack({
+          delta: 2
+        })
+      },1000)
+    } else {
+      console.log('评价错误', res);
+      wx.showToast({
+        title: res.msg,
+      })
+    }
   },
   //添加图片
   addImg: function (e) {//这里是选取图片的方法
@@ -202,7 +131,6 @@ Page({
         })
       }
     }
-
     var data = { go, e }
     this.clickTooFast(data)
 
@@ -242,7 +170,8 @@ Page({
     }
     pingjiaList[index].checked = true;
     this.setData({
-      pingjiaList: pingjiaList
+      pingjiaList: pingjiaList,
+      starlevel: 3 - index
     })
   },
   //上传图片
@@ -307,6 +236,5 @@ Page({
       lastTime: curTime
     })
   }
-
 
 })
