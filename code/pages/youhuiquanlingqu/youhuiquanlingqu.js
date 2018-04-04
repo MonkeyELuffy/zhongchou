@@ -21,7 +21,7 @@ Page({
         id: 2,
         checked: false,
       }],
-    youhuiquan_list: [{ title: '通用型', value: 50, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送', used: false, cpns_id: 2 }, { title: '通用型', value: 150, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送', used: false, cpns_id:3}],
+    youhuiquan_list: [{ title: '通用型', value: 50, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送', used: false }, { title: '通用型', value: 150, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送', used: false}],
     //返回分页数据的总页数
     total_page:1
   },
@@ -46,11 +46,16 @@ Page({
   },
   //进入详情
   goDetail: function (e) {
-    var that = this
     var go = function (e) {
-      var cpns_id = e.currentTarget.dataset.cpns_id
-      wx.setStorageSync('cpns_id', cpns_id);
-      wx.navigateBack();
+      var title = e.currentTarget.dataset.title
+      var id = e.currentTarget.dataset.id
+      var time = e.currentTarget.dataset.time
+      var author = e.currentTarget.dataset.author
+      var params = { title: title, id: id, time: time, author: author }
+      params = JSON.stringify(params)
+      wx.navigateTo({
+        url: '/pages/articleDetail/articleDetail?params=' + params,
+      })
     }
     var data = { go, e }
     this.clickTooFast(data)

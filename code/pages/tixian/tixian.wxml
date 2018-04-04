@@ -1,8 +1,8 @@
 <!--pages/tixian/tixian.wxml-->
 <view class='contain' wx:if='{{!showSuccess}}'>
   <view class='title'>提现金额</view>
-  <input type='number'></input>
-  <view class="button" bindtap="tixian">确定</view>
+  <input></input>
+  <view class="button" bindtap="submit">确定</view>
 </view>
 
 <!--提现成功之后显示  -->

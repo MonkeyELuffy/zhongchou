@@ -1,85 +1,105 @@
 // pages/address/address.js
 var app = getApp()
-var util = require('../../utils/util.js');
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     edit: '../../img/address_con_edit.png',
     del: '../../img/address_con_delete.png',
+    // useing: '../../img/useing.png',
     checkedImg: '../../img/moren.png',
     unCheckedImg:'../../img/unCheckedImg.png',
-    address: [],
-  },
-  onShow:function(){
-    var data = {
-      member_id: app.globalData.member_id
-    }
-    //请求用户地址
-    util.httpPost(app.globalUrl + app.GETADDRESS, data, this.processAddrData);
-  },
-  processAddrData: function (res) {
-    if (res.suc == 'y') {
-      console.log('获取用户地址成功', res.data);
-      var address = res.data.list
-      for (var i in address){
-        address[i].checked = address[i].status == '1' ? true : false
+    address: [
+      {
+        add:"撒大苏打实打实的",
+        areaInfo:"北京市 市辖区 东城区",
+        name:"算了",
+        tel:"18888888888",
+        id:1,
+        checked:true,
+      },
+      {
+        add: "撒大苏打实打实的",
+        areaInfo: "四川省 成都市 高新区",
+        name: "老王",
+        tel: "18899999999",
+        id: 2,
+        checked: false,
       }
-      this.setData({
-        address: address
-      })
-    } else {
-      console.log('获取用户地址错误', res);
-    }
+    ],
+    //当前默认的地址id
+    nowAddressId:0,
   },
-  // 选择地址
-  // 如果用户的从订单页面跳转过来，则可以选择地址；
-  // 如果是从管理地址进来的，则点击没有效果；
-  // 选择地址之后调用接口，重新获取订单数据，然后返回
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function (e) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 600)
+    this.setData({
+      now_address_id: wx.getStorageSync('address_id')
+    })
+    // this.addressList(e)
+
+  },
+  //请求地址信息
+  addressList:function(e) {
+    var that = this
+    var address = []
+    wx.request({
+      url: app.globalData.rootUrl + '/info/my_address',
+      data: {
+        user_id: user_id
+      },
+      success: function (res) {
+        console.log("我的地址的返回", res.data)
+        console.log("user_id", user_id)
+        for (var i in res.data.data.data) {
+          address.push(res.data.data.data[i])
+        }
+        console.log('组装后的地址', address)
+        wx.setStorageSync('address', address)
+        that.setData({
+          address: address
+        })
+      }
+    })
+  },
+  //选择地址
   choose: function (e) {
     var that = this
     var go = function (e) {
-      if (app.globalData.enterAddressFromOrder){
-        //地址id
-        var id = e.currentTarget.dataset.id;
-        // 返回之前修改app.globalData.enterAddressFromOrder
-        app.globalData.enterAddressFromOrder = false;
-        var params = {
-          address_id: id,
-          // 此时需要修改ship_type，告诉后台当前的ship_type值为快递配送，而不是到店自提；
-          ship_type: 2,
-          token: app.globalData.userInfo.token,
-          buy_key: app.globalData.buy_key
-        }
-        util.httpPost(app.globalUrl + app.CONFIRMINFO, params, that.processSubmitData);
-      }
+      var index = e.currentTarget.dataset.index;
+      //地址id
+      var id = e.currentTarget.dataset.id;
+      wx.setStorageSync('address_id', id);
+      var address = that.data.address;
+      wx.setStorageSync('now_address', address[index])
+
+      wx.navigateBack();
     }
+
     var data = { go, e }
     this.clickTooFast(data)
   },
-  processSubmitData: function (res) {
-    if (res.suc == 'y') {
-      console.log('获取最新订单数据成功', res.data);
-      this.goPayPage(res.data)
-    } else {
-      console.log('获取最新订单数据错误', res);
-      wx.showModal({
-        title: '提醒',
-        content: res.msg,
-      })
-    }
-  },
-  //返回结算页面
-  goPayPage: function (orderData) {
+  goPage: function (e) {
     var that = this
-    app.globalData.orderData = orderData
-    wx.navigateBack()
-  },
-  addAdderss: function (e) {
-    var that = this
+    console.log(e.target.dataset.page)
     var go = function (e) {
+      var gopage = e.target.dataset.page
+      var url = "../" + gopage + "/" + gopage
       wx.navigateTo({
-        url: "../add_address/add_address" 
+        url: url
       })
     }
+
     var data = { go, e }
     this.clickTooFast(data)
   },
@@ -87,70 +107,82 @@ Page({
   editAddress: function (e) {
     var that = this
     var go = function (e) {
-      var item = e.currentTarget.dataset.item
-      wx.navigateTo({
-        url: '../editAddress/editAddress?item=' + JSON.stringify(item)
+      var edit_id = e.target.dataset.id
+      wx.setStorageSync('edit_id', edit_id)
+      var address = that.data.address
+      var now_edit_address
+      // 获取此时编辑的地址信息
+      for (var i in address) {
+        if (address[i].id === edit_id) {
+          now_edit_address = address[i]
+          break
+        }
+      }
+      wx.setStorageSync('now_edit_address', now_edit_address)
+      wx.redirectTo({
+        url: '../editAddress/editAddress'
       })
     }
+
     var data = { go, e }
     this.clickTooFast(data)
   },
   //删除地址
   delAddress: function (e) {
+
     var that = this
     var go = function(e) {
-      var item = e.currentTarget.dataset.item
-      var address = that.data.address
-      wx.showModal({
-        title: '确认删除',
-        content: '是否删除选中地址？',
-        success: function (res) {
-          if (res.confirm) {
-            var params = {
-              member_id: app.globalData.member_id,
-              address_id: item.id
+      var address_id = e.target.dataset.id
+      var now_address_id = wx.getStorageSync('address_id')
+      if (address_id === now_address_id) {
+        wx.showToast({
+          title: '使用中的地址不可删除',
+          content: '1000',
+        })
+      } else {
+        wx.showModal({
+          title: '确认删除',
+          content: '是否删除选中地址？',
+          success: function (res) {
+            if (res.confirm) {
+              try {
+                let extData = wx.getExtConfigSync();
+                let appid = extData.authorizer_appid;
+                wx.request({
+                  header: {
+                    'data': appid
+                  },
+                  url: app.globalData.rootUrl + '/info/delete_address',
+                  method: "POST",
+                  data: {
+                    address_id: address_id
+                  },
+                  success(res) {
+                    wx.showToast({
+                      title: '删除成功',
+                      duration: 1000
+                    })
+                    console.log('删除地址的返回字段', res.data)
+
+                    that.addressList(e)
+                  }
+                })
+              } catch (e) {
+                console.log(e)
+              }
+              console.log('用户点击确定')
+            } else if (res.cancel) {
+              console.log('用户点击取消')
             }
-            util.httpPost(app.globalUrl + app.DELADDRESS, params, that.processDelData);
-          } else if (res.cancel) {
-            console.log('用户点击取消')
           }
-        }
-      })
-    }
-    var data = { go, e }
-    this.clickTooFast(data)
-  },
-  processDelData(res){
-    if (res.suc == 'y') {
-      console.log('删除用户地址成功', res.data);
-      this.onShow();
-    } else {
-      console.log('删除用户地址错误', res);
-    }
-  },
-  chooseMoRen(e) {
-    var that = this
-    var go = function (e) {
-      var item = e.currentTarget.dataset.item
-      if (!item.checked){
-        var params = {
-          member_id: app.globalData.member_id,
-          address_id: item.id
-        }
-        util.httpPost(app.globalUrl + app.EXAMINEADDRESS, params, that.processExamineData);
+        })
       }
     }
+
     var data = { go, e }
     this.clickTooFast(data)
   },
-  processExamineData(res) {
-    if (res.suc == 'y') {
-      console.log('切换用户地址成功', res.data);
-      this.onShow();
-    } else {
-      console.log('切换用户地址错误', res);
-    }
-  },
+
   /*==========
   防止快速点击
   ===========*/

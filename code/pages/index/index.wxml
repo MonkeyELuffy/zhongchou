@@ -1,51 +1,79 @@
 <import src="../imageSwiper/imageSwiper.wxml"/>
-<import src="../paixuTemplate/paixuTemplate.wxml"/>
-<import src="../navTemp/navTemp.wxml"/>
-<import src="../dataItemTemp/dataItemTemp.wxml"/>
-<import src="../noMoreData/noMoreData.wxml"/>
-
-  <scroll-view class="data-list" style="max-height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
 <view class='contain'>
   <!--扫描、搜索、定位  -->
   <view class='top-nav'>
     <!--扫描  -->
     <view class='saomiao-contain flex-center'>
-      <image class='saomiao' src='{{saomiao}}' bindtap='saoyisao'></image>
+      <image class='saomiao' src='{{saomiao}}'></image>
     </view>
     <!--搜索框-->
     <view class="search flex-center" >
       <image src="{{search_icon}}" class="icon" confirm-type="search"></image>
-      <input type="text" placeholder="搜索您想要的" placeholder-style="color:#737373;" confirm-type='search' bindconfirm='search' bindinput="input" value='{{search_key}}'/>
+      <input type="text" placeholder="请搜索您想要的" placeholder-style="color:#737373;" confirm-type='search' bindconfirm='search' bindinput="input" value='{{search_key}}'/>
     </view>
     <!--定位  -->
     <view class='position flex-center'>
       <image class='position-image' src='{{positionImg}}'></image>
-      <view class="position-value" bindtap="switchCity" >{{positionValue || '定位中'}}</view>
+      <view class='position-value'>{{positionValue}}</view>
     </view>
   </view>
-  
   <!--轮播图组件  --> 
   <template is="imageSwiper" data="{{slider: slider1}}" ></template>
 
-  <!--菜单组件  -->
-  <template is="navTemp"  data="{{nav_3List}}"></template>
+  <!--八个小菜单  -->
+  <view class="nav3-list">
+    <view class="nav3-item" wx:for="{{nav_3List}}" bindtap="fenlei" data-id="{{item.id}}">
+      <view class="nav3-list-image">
+        <image src="{{item.img}}"></image>
+      </view>
+      <view class="nav3-name">{{item.text}}</view>
+    </view>
+  </view>
 
   <!--轮播图组件  --> 
   <template is="imageSwiper" data="{{slider: slider2}}" ></template>
 
-  <!--排序组件  -->
-  <template is="paixuTemplate" data="{{allData}}"></template>
+  <!--排序  -->
+  <view class='tab'>
+    <view class='tab-item'>
+      <view class='tab-name'>行业排序</view>
+      <image class='tab-up-down' src='{{hangyepaixu}}' bindtap='hangyepaixu'></image>
+    </view>
+    <view class='tab-item'>
+      <view class='tab-name'>销量排序</view>
+      <image class='tab-up-down' src='{{xiaoliangpaixu}}' bindtap='xiaoliangpaixu'></image>
+    </view>
+    <view class='tab-item'>
+      <view class='tab-name'>距离排序</view>
+      <image class='tab-up-down' src='{{julipaixu}}' bindtap='julipaixu'></image>
+    </view>
+  </view>
 
   <!--数据列表  -->
-  <!--子数据组件  -->
-  <template is="dataItemTemp" data="{{dataList}}" ></template>
+  <scroll-view class="data-list" style="height:{{windowHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+    <!--子数据  -->
+    <view class='item  flex-none' wx:for='{{dataList}}' bindtap="goArticleDetail" data-page="articleDetail" data-id="{{item.id}}">
+      <image class='item-image' src='{{item.img}}'></image>
+      <view class='detail flex-all'>
+        <view class='detail-name'>{{item.name}}</view>
+        <view class='label-and-haoping-contain flex-none'>
+          <!--标签  -->
+          <view class='label-contain flex-center'>
+            <view class='label-item' wx:for='{{item.labels}}' style='color:{{item.bgColor === "#f68076" ? "#fff" : "#f68076"}};background-color:{{item.bgColor}};'>{{item.name}}</view>
+          </view>
+          <!--好评  -->
+          <view class='haoping'>好评{{item.haoping}}%</view>
+        </view>
+        <!--销量和距离  -->
+        <view class='sale-and-juli flex-between'>
+          <view class='sale'>销量({{item.sale}})</view>
+          <view class='juli'>距离：{{item.dic}}km</view>
+        </view>
+      </view>
+    </view>
+    <view style="width:100%;height:400rpx;"></view>
+  </scroll-view>
 
-  <!--nomoreData  -->
-  <template is="noMoreData"></template>
-
-  <view style="width:100%;height:40rpx;"></view>
-
-  <view class='kefu' bindtap='kefu'>客服</view>
+  <view class='kefu'>客服</view>
 
 </view>
-  </scroll-view>

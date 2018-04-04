@@ -95,20 +95,6 @@ Page({
       console.log(delList);
     }
   },
-  //取消
-  quxiao: function () {
-    var dataList = this.data.dataList;
-    for (var i in dataList) {
-      dataList[i].checked = false
-    }
-    this.setData({
-      showDel: false,
-      dataList: dataList,
-      dataList: dataList,
-      chooseAll: false,
-      bottomBtn: '管理'
-    })
-  },
   // 全选
   chooseAll: function (e) {
     var that = this;

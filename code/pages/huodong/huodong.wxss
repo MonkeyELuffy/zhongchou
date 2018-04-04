@@ -7,11 +7,11 @@
   box-shadow: 0 8rpx 8rpx #ccc;
   margin-bottom: 20rpx;
   color: #333;
-  font-size: 30rpx;
+  font-size: 32rpx;
 }
 .img{
   height: 360rpx;
 }
 .name{
-  padding: 30rpx 60rpx;
+  padding: 40rpx 60rpx;
 }

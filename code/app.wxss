@@ -44,32 +44,3 @@ image{
   align-items: center;
   justify-content: flex-end;
 }
-.flex{
-  display: flex;
-}
-.swiper-container{
-  width: 100%;
-}
-.more {
-  position: absolute;
-  width: 20rpx;
-  height: 40rpx;
-  right: 30rpx;
-  top: 20rpx;
-}
-/* 整个页面无数据时展示的缺省样式 */
-.noData{
-  position:fixed;
-  top:50%;
-  text-align:center;
-  width:100%;
-  font-size:30rpx;
-  z-index: 11;
-}
-/*分页数据没有更多数据时候的展示字段  */
-.noMoreData{
-  text-align: center;
-  font-size: 28rpx;
-  color: #999;
-  padding: 40rpx 0;
-}

@@ -1,3 +1,0 @@
-/* pages/search/search.wxss */
-@import "../paixuTemplate/paixuTemplate.wxss";
-@import "../dataItemTemp/dataItemTemp.wxss";

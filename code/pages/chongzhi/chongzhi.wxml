@@ -9,9 +9,9 @@
         <view>{{item.name}}</view>
       </view>
     </view>
-    <view class='title hasborder flex-between'>
+    <view class='title flex-between'>
       <view>充值金额(元)</view>
-      <input type='number' placeholder='请输入充值金额' placeholder-style='color:#d4d4d4;' bindinput='input' value='{{amount}}'></input>
+      <input placeholder='请输入充值金额' placeholder-style='color:#999;'></input>
     </view>
     <view class="recharge-items">
       <view class="recharge-item" bindtap="chooseNum" data-index="{{index}}"  wx:for="{{rechargeItem}}" wx:for-index="index" style="color:{{item.selected ? '#333' : '#aaa'}}; border-color:{{item.selected ?  'rgb(19, 191, 222)' : '#aaa'}}">

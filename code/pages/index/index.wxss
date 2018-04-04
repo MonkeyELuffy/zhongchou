@@ -1,8 +1,3 @@
-@import "../paixuTemplate/paixuTemplate.wxss";
-@import "../navTemp/navTemp.wxss";
-@import "../dataItemTemp/dataItemTemp.wxss";
-@import "../imageSwiper/imageSwiper.wxss";
-
 .contain{
   background-color: #eee;
 }
@@ -58,7 +53,7 @@
 .position{
   border-radius: 50rpx;
   background-color: rgba(217, 217, 217, 0.5);
-  color: #e61c04;
+  color: red;
   font-size: 28rpx;
   display: flex;
   align-items: center;
@@ -69,8 +64,69 @@
 }
 .position-image{
   width: 26rpx;
-  height: 40rpx;
+  height: 32rpx;
   margin-right: 10rpx;
+}
+
+/*八个小菜单*/
+.nav3-list {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  box-shadow: 0 8rpx 10rpx #ccc;
+  margin: 20rpx;
+  justify-content: space-between;
+}
+.nav3-list-image {
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav3-list .nav3-item {
+  width: 24%;
+  display: flex;
+  padding-bottom: 54rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav3-list .nav3-item image {
+ width: 100rpx;
+ height: 100rpx; 
+}
+.nav3-list .nav3-item .nav3-name {
+  font-size: 24rpx;
+  padding-top: 6rpx;
+  color: #666;
+}
+
+/*排序  */
+.tab{
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 10rpx solid #ddd;
+  border-top: 20rpx solid #ddd;
+  color: #333;
+}
+.tab-item{
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  padding: 30rpx 0;
+}
+.tab-up-down{
+  width: 22rpx;
+  height: 38rpx;
+  margin-left: 20rpx;
 }
 
 /*数据列表  */
@@ -80,6 +136,50 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+}
+.label-and-haoping-contain{
+  padding-top: 10rpx;
+}
+.item{
+  padding:20rpx 0 0 20rpx;
+}
+.item-image{
+  width: 184rpx;
+  height: 184rpx;
+  box-sizing: border-box;
+  margin-right: 30rpx;
+  align-self: flex-start;
+}
+.detail-name{
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 700;
+  padding-bottom: 4rpx;
+}
+.label-contain{
+  font-size: 24rpx;
+}
+.label-item{
+  padding: 4rpx 10rpx;
+  border: 1rpx solid #f68076;
+  margin-right: 8rpx;
+  min-width: 76rpx;
+  text-align: center;
+}
+.haoping{
+  font-size: 28rpx;
+  color: #666;
+  padding-left: 10rpx;
+}
+.sale-and-juli{
+  margin-top: 40rpx;
+  color: #b2b2b2;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #b2b2b2;
+  padding-bottom: 30rpx;
+}
+.juli{
+  padding-right: 20rpx;
 }
 
 /*客服  */
@@ -98,7 +198,11 @@
 }
 .kefu{
   bottom: 40rpx;
-  background:linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
+  background:linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+}
+.ruzhu{
+  bottom: 160rpx;
+  background:linear-gradient(to right,rgb(255, 141, 151), rgb(250, 180, 180));
 }
 
 .nav2{

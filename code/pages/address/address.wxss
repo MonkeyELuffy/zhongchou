@@ -50,16 +50,16 @@ image {
   /* margin-top: -25rpx; */
 }
 .button {
-  width: 100%;
-  height: 100rpx;
   position: fixed;
-  bottom: 0;
-  background: linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
+  bottom: 0rpx;
+  width: 100%;
+  background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
   color: #fff;
-  font-size: 34rpx;
-  line-height: 100rpx;
-  margin: 0 auto;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  padding: 34rpx 0;
   text-align: center;
+  font-weight: 600;
 }
 /* .button:active {
   background-color: rgba(255, 0, 0, 0.8);

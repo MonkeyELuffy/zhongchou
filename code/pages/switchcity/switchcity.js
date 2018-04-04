@@ -155,9 +155,11 @@ Page({
   // },
 
   bindCounty: function(e) {
+    console.log(e);
     this.setData({ county: e.currentTarget.dataset.city })
-    appInstance.globalData.defaultCounty = this.data.county
+    // appInstance.globalData.defaultCounty = this.data.county
     console.log('筛选的县级城市信息', appInstance.globalData.defaultCounty);
+    console.log('筛选的县级城市信息',appInstance.globalData.defaultCounty);
     var now_lat = e.target.dataset.lat
     var now_lng = e.target.dataset.lng
     console.log('最终选择的位置经纬度是',now_lat,'  ',now_lng)

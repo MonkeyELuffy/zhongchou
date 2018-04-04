@@ -78,12 +78,12 @@ image {
   text-align: center;
 }
 .top-nav-item-img{
-  width: 68rpx;
-  height: 68rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 .top-nav-item-name{
   margin-top: 14rpx;
-  font-size: 30rpx;
+  font-size: 26rpx;
   color: #333;
 }
 .top-nav-item-value{
@@ -108,7 +108,7 @@ image {
   font-size: 36rpx;
   width: 160rpx;
   padding: 60rpx 0rpx;
-  background:linear-gradient(to right, rgb(120, 233, 250),rgb(19, 191, 222));
+  background:linear-gradient(to left, rgb(120, 233, 250),rgb(19, 191, 222));
   color: #fff;
 }
 .order{

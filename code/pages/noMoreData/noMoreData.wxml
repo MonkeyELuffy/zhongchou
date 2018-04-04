@@ -1,4 +1,0 @@
-<!--pages/noMoreData/noMoreData.wxml-->
-<template name="noMoreData">
-  <view class="noMoreData">没有更多数据了</view>
-</template>

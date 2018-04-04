@@ -1,6 +1,6 @@
 // pages/equipmentShare/equipmentShare.js
+var hasgo = true;
 var app = getApp()
-var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -13,46 +13,36 @@ Page({
     }],
     walletDetail: [{
       value: 123.34,
-      name: '账户余额',
-      page: 'wodezhanghu'
+      name: '账户余额'
     }, {
       value: 44.43,
-      name: '红包',
-      page: 'hongbao'
+      name: '红包'
       }],
     orderNav: [{
-      img: '../../img/center/wode_dizhi.png',
-      name: '收货地址',
-      page:'address'
+      img: '../../img/center/daifukuan.png',
+      name: '收货地址'
     }, {
-        img: '../../img/center/wode_youhui.png',
-        name: '优惠券',
-        page: 'youhuiquanlingqu'
+        img: '../../img/center/daifahuo.png',
+      name: '优惠券'
       }, {
-        img: '../../img/center/wode_kefu.png',
-        name: '客户服务',
-        page: 'kehufuwu'
+        img: '../../img/center/daishouhuo.png',
+        name: '客户服务'
     }, {
-        img: '../../img/center/wode_xiaoxi.png',
-        name: '消息中心',
-        page: 'msgCenter'
+        img: '../../img/center/daipingjia.png',
+      name: '消息中心'
       }, {
-        img: '../../img/center/wode_liulan.png',
-        name: '浏览记录',
-        page: 'liulanjilu'
+        img: '../../img/center/tuikuan.png',
+        name: '浏览记录'
     }, {
-        img: '../../img/center/wode_jilu.png',
-      name: '关注记录',
-      page: 'wodeguanzhu'
+      img: '../../img/center/tuikuan.png',
+      name: '关注记录'
       }, {
-        img: '../../img/center/wode_guanyu.png',
-        name: '关于我们',
-        page: 'about'
+        img: '../../img/center/tuikuan.png',
+        name: '关于我们'
     }, {
-        img: '../../img/center/wode_yijian.png',
-      name: '意见反馈',
-      page: 'kehufuwu'
-    }],
+      img: '../../img/center/tuikuan.png',
+      name: '意见反馈'
+    },],
     user_name:'请登录',
     avatar:'../../img/user_img.png',
     level: '会员级别',
@@ -60,31 +50,93 @@ Page({
     level_icon: '../../img/center/huangguan.png',
     bg: '../../img/user_bg.png',
   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow: function () {
-    console.log('app.globalData.userInfo',app.globalData.userInfo)
+    var that = this;
+    // var shouquan = wx.getStorageSync('shouquan')
+    // this.setData({
+    //   shouquan: shouquan
+    // })
     this.setData({
-      userInfo: app.globalData.userInfo
+      shouquan: true
     })
+
+    // if (!shouquan) {
+    //   wx.showModal({
+    //     title: '提醒',
+    //     content: '您尚未登录，无法使用此功能，请删除小程序之后重新授权'
+    //   })
+    // } else {
+    //   var default_user_image = wx.getStorageSync('userInfo').avatarUrl
+    //   var user_id = wx.getStorageSync('user_id');
+    //   // 获取用户信息
+    //   let extData = wx.getExtConfigSync();
+    //   let appid = extData.authorizer_appid;
+    //   wx.request({
+    //     header: {
+    //       'data': appid
+    //     },
+    //     url: app.globalData.rootUrl + '/info/my_info',
+    //     data: {
+    //       user_id: user_id
+    //     },
+    //     success: function (res) {
+    //       console.log('个人中心返回数据', res.data)
+    //       var userInfo = wx.getStorageSync('userInfo') || ''
+    //       userInfo.level = res.data.member
+    //       userInfo.user_name = res.data.user_name
+    //       userInfo.avatar = default_user_image
+    //       userInfo.mobile = res.data.mobile || ''
+    //       wx.setStorage({
+    //         key: "userInfo",
+    //         data: userInfo
+    //       })
+    //       that.setData({
+    //         user_name: userInfo.user_name,
+    //         level: userInfo.level,
+    //         avatar: userInfo.avatar
+    //       })
+    //       console.log('response:', res.data.code)
+    //     }
+    //   })
+    //   wx.getStorage({
+    //     key: 'userInfo',
+    //     success: function (res) {
+    //       that.setData({
+    //         user_name: res.data.user_name,
+    //         level: res.data.level,
+    //         avatar: res.data.avatar
+    //       })
+    //       console.log('center show')
+    //     },
+    //   })
+    // }
+    
   },
-  saoyisao: function () {
-    wx.scanCode({
-      onlyFromCamera: true,
-      success: (res) => {
-        console.log(res)
-      }
-    })
-  },
+
+
   //页面跳转
   goPage: function (e) {
     var that = this
     var go = function(e){
       var url = e.currentTarget.dataset.page
-      url = '../' + url + '/' + url
-      console.log(url)
-      wx.navigateTo({
-        url: url
-      })
+      console.log(e)
+      if (url === 'kefu') {
+        wx.makePhoneCall({
+          phoneNumber: '13603004836' //仅为示例，并非真实的电话号码
+        })
+      } else {
+        url = '../' + url + '/' + url
+        console.log(url)
+        wx.navigateTo({
+          url: url
+        })
+      }
     }
+
     var data = { go, e }
     this.clickTooFast(data)
   },

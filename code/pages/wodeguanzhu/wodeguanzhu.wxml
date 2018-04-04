@@ -40,6 +40,5 @@
       <view>全选</view>
     </view>
     <view class='guanli' bindtap='guanli'>{{bottomBtn}}</view>
-    <view wx:if='{{showDel}}' class='guanli' bindtap='quxiao'>取消</view>
   </view>
 </view> 
