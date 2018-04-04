@@ -1,0 +1,9 @@
+/* pages/imageSwiper/imageSwiper.wxss */
+.swiper{
+  height: 300rpx;
+}
+
+/*banner  */
+.swiper-container{
+  width: 100%;
+}

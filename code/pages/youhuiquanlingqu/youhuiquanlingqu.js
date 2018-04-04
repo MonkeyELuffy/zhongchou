@@ -21,7 +21,7 @@ Page({
         id: 2,
         checked: false,
       }],
-    youhuiquan_list: [{ title: '通用型', value: 50, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送' }, { title: '通用型', value: 150, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送' }],
+    youhuiquan_list: [{ title: '通用型', value: 50, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送', used: false }, { title: '通用型', value: 150, disc: '订单总金额高于代金券即可使用', time: '2018-09-09', form: '活动赠送', used: false}],
     //返回分页数据的总页数
     total_page:1
   },
@@ -73,13 +73,13 @@ Page({
       that.setData({
         article_type: article_type,
         page: 0,
-        youhuiquan_list: [],
+        // youhuiquan_list: [],
         bindDownLoad: true,
         total_page: 1,
         index: index,
         name: name
       })
-      that.loadData(index)
+      // that.loadData(index)
       that.changeStyle(index)
     }
 

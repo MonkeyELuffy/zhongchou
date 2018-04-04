@@ -1,3 +1,4 @@
+<import src="../imageSwiper/imageSwiper.wxml"/>
 <view class='contain'>
   <!--扫描、搜索、定位  -->
   <view class='top-nav'>
@@ -16,30 +17,8 @@
       <view class='position-value'>{{positionValue}}</view>
     </view>
   </view>
-  
-  <!--轮播图  --> 
-  <view class="swiper-container">
-    <swiper circular="true" current="{{swiperCurrent}}"  class="swiper" indicator-dots="true">  
-      <block wx:for="{{slider}}" wx:key="unique">  
-        <swiper-item>  
-          <image src="{{item.img}}" class="img" data-id="{{item.id}}" bindtap='clickSwiper'></image> 
-        </swiper-item>  
-      </block>  
-    </swiper>  
-  </view> 
-
-
-  <!--四列菜单  -->
-  <view class='nav2'>
-    <view wx:for='{{nav2List}}' class='nav2-item flex-between'>
-      <view class='nav2-left' style='background-color:{{item.leftColor}}'>{{item.name}}
-        <image class='nav2-img' src='{{item.img}}'></image>
-      </view>
-      <view class='nav2-right flex-between flex-all'>
-        <view class='nav2-right-item' style='background-color:{{item.rightColor}}' wx:for='{{item.rightList}}' wx:for-item="data" data-id='{{data.id}}'>{{item.name}}-{{data.name}}</view>
-      </view>
-    </view>
-  </view>
+  <!--轮播图组件  --> 
+  <template is="imageSwiper" data="{{slider: slider1}}" ></template>
 
   <!--八个小菜单  -->
   <view class="nav3-list">
@@ -51,18 +30,8 @@
     </view>
   </view>
 
-
-  <!--轮播图  --> 
-  <view class="swiper-container">
-    <swiper circular="true" current="{{swiperCurrent}}"  class="swiper" indicator-dots="true">  
-      <block wx:for="{{slider}}" wx:key="unique">  
-        <swiper-item>  
-          <image src="{{item.img}}" class="img" data-id="{{item.id}}" bindtap='clickSwiper'></image> 
-        </swiper-item>  
-      </block>  
-    </swiper>  
-  </view> 
-
+  <!--轮播图组件  --> 
+  <template is="imageSwiper" data="{{slider: slider2}}" ></template>
 
   <!--排序  -->
   <view class='tab'>
@@ -105,7 +74,6 @@
     <view style="width:100%;height:400rpx;"></view>
   </scroll-view>
 
-  <view class='ruzhu'>入驻</view>
   <view class='kefu'>客服</view>
 
 </view>

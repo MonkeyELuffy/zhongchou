@@ -1,11 +1,18 @@
+<import src="../imageSwiper/imageSwiper.wxml"/>
 <view class='top-contain'>
-  <!--顶部菜单-->
-  <scroll-view class="nav-title" scroll-x style="width: 100%">
-    <view class="nav-item" wx:for="{{navItems}}" style="background: {{item.checked ? 'linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250))' : '#ccc' }}; " bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}">
-      {{item.name}}
-    </view>
-  </scroll-view>
  
+  <!--轮播图组件  --> 
+  <template is="imageSwiper"  data="{{slider}}"></template>
+  
+  <view class="nav3-list">
+    <view class="nav3-item" wx:for="{{nav_3List}}" bindtap="fenlei" data-id="{{item.id}}">
+      <view class="nav3-list-image">
+        <image src="{{item.img}}"></image>
+      </view>
+      <view class="nav3-name">{{item.text}}</view>
+    </view>
+  </view>
+  
   <!--排序  -->
   <view class='tab'>
     <view class='tab-item'>

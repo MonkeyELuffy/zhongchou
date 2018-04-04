@@ -32,7 +32,7 @@
       </image>
       <view class='rang'>
         <view class='rang-left'></view>
-        <slider class='rang-slider' disabled value='{{item.value}}' activeColor='pink' block-size='14' block-color='pink'></slider>
+        <slider class='rang-slider' disabled value='{{item.value}}' activeColor='#f67f79' block-size='14' block-color='#f67f79'></slider>
         <view class='rang-right'></view>
       </view>
       <view class='rang-number' style='padding-left:{{item.paddingLeft}};'>{{item.value}}%</view>

@@ -7,7 +7,7 @@ page {
   z-index: 100;
   background-color: #fff;
   color: #666;
-  font-size: 36rpx;
+  font-size: 32rpx;
   white-space: nowrap; 
   box-shadow: 0rpx 0rpx 2rpx #ddd ;
   padding: 20rpx 40rpx;
@@ -154,10 +154,10 @@ page {
   width: 100%;
   padding: 40rpx;
   box-sizing: border-box;
-  font-size: 34rpx;
+  font-size: 30rpx;
   background-color: #fff;
   border-bottom: 4rpx solid #eee;
-  line-height: 60rpx;
+  line-height: 50rpx;
 }
 .A{
   color: #333;

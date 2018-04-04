@@ -7,12 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    slider: [{
+    slider1: [{
       img: '../../img/banner.png',
       id: 0
     }, {
       img: '../../img/banner1.png',
       id: 1
+      }],
+    slider2: [{
+      img: '../../img/banner.png',
+      id: 2
+    }, {
+      img: '../../img/banner1.png',
+      id: 3
     }],
     saomiao:'../../img/saomiao.png',
     positionValue:'乌鲁木齐',
@@ -94,92 +101,15 @@ Page({
         dic: 12.3
       }
     ],
-    nav2List: [{
-      name: '酒店',
-      img:'../../img/jiudian.png',
-      leftColor:'#00bcd5',
-      rightColor:'#5cdff2',
-      rightList: [{
-        name: '分类1',
-        id: 0
-      }, {
-        name: '分类2',
-        id: 1
-      }, {
-        name: '分类3',
-        id: 2
-      }, {
-        name: '分类4',
-        id: 3
-      }
-      ]
-    }, {
-        name: '酒店',
-        img: '../../img/lvyou.png',
-        leftColor: '#7ce261',
-        rightColor: '#a2ea8e',
-      rightList: [{
-        name: '分类1',
-        id: 0
-      }, {
-        name: '分类2',
-        id: 1
-      }, {
-        name: '分类3',
-        id: 2
-      }, {
-        name: '分类4',
-        id: 3
-      }
-      ]
-      }, {
-        name: '酒店',
-        img: '../../img/canyin.png',
-        leftColor: '#f8c751',
-        rightColor: '#fdda7b',
-        rightList: [{
-          name: '分类1',
-          id: 0
-        }, {
-          name: '分类2',
-          id: 1
-        }, {
-          name: '分类3',
-          id: 2
-        }, {
-          name: '分类4',
-          id: 3
-        }
-        ]
-    }, {
-        name: '酒店',
-        img: '../../img/fushi.png',
-        leftColor: '#fc928c',
-        rightColor: '#fdb2af',
-      rightList: [{
-        name: '分类1',
-        id: 0
-      }, {
-        name: '分类2',
-        id: 1
-      }, {
-        name: '分类3',
-        id: 2
-      }, {
-        name: '分类4',
-        id: 3
-      }
-      ]
-    },
-    ]
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
 
+  clickSwiper: function (e) {
+    console.log(e.target.dataset.id)
+  },
 })

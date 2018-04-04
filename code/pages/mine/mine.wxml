@@ -4,7 +4,7 @@
   <view class="user">
     <view class="user-message flex-between" >
       <!--头像昵称  -->
-      <view class="user-image-contain">
+      <view class="user-image-contain flex-between">
         <!-- <image src="{{avatar}}" data-page="user_message" bindtap="goPage"></image> -->
         <image class="user-image" src="../../img/banner.png" data-page="user_message" bindtap="goPage"></image>
         <view class="user-name">
@@ -12,7 +12,7 @@
         </view>
       </view>
       <!--头像右侧菜单  -->
-      <view class='top-nav flex-all flex-between'>
+      <view class='top-nav flex-between'>
         <view class='top-nav-item' wx:for='{{topNav}}'>
           <view class='top-nav-item-value'>{{item.value}}</view>
           <image hidden='{{!item.img}}' class='top-nav-item-img' src='{{item.img}}'></image>
@@ -34,21 +34,11 @@
 
     <!--订单管理  -->
     <view class='order'>订单管理</view>
-    <view class='top-nav flex-all flex-between' style='padding-left:40rpx;'>
+    <view class='bottom-nav top-nav flex-all flex-between'>
       <view class='top-nav-item' wx:for='{{orderNav}}'>
         <view class='top-nav-item-value'>{{item.value}}</view>
         <image hidden='{{!item.img}}' class='top-nav-item-img' src='{{item.img}}'></image>
         <view class='top-nav-item-name'>{{item.name}}</view>
-      </view>
-    </view>
-    <!--主菜单  -->
-    <view class="nav">
-      <view class="center-nav"  wx:for="{{center_nav}}"  bindtap="{{shouquan ? 'goPage' : 'none'}}" data-page="{{item.page}}">
-        <image src="{{item.icon}}" class="icon" ></image>
-        <view class="item">
-          {{item.name}}
-        </view>
-        <image src="{{more}}" class="more"></image>        
       </view>
     </view>
     

@@ -8,15 +8,6 @@ Page({
    */
   data: {
     topNav:[{
-      value:36,
-      name:'浏览'
-    },{
-      value:44,
-      name:'关注'
-    },{
-        img:'../../img/center/xiaoxi.png',
-      name:'消息'
-    },{
         img:'../../img/center/saoyisao.png',
       name:'扫一扫'
     }],
@@ -26,68 +17,38 @@ Page({
     }, {
       value: 44.43,
       name: '红包'
-      }, {
-        value: 4,
-        name: '优惠券'
       }],
     orderNav: [{
       img: '../../img/center/daifukuan.png',
-      name: '待付款'
+      name: '收货地址'
     }, {
         img: '../../img/center/daifahuo.png',
-      name: '待发货'
+      name: '优惠券'
       }, {
         img: '../../img/center/daishouhuo.png',
-        name: '待收货'
+        name: '客户服务'
     }, {
         img: '../../img/center/daipingjia.png',
-      name: '待评价'
+      name: '消息中心'
       }, {
         img: '../../img/center/tuikuan.png',
-        name: '退款/售后'
-      },],
+        name: '浏览记录'
+    }, {
+      img: '../../img/center/tuikuan.png',
+      name: '关注记录'
+      }, {
+        img: '../../img/center/tuikuan.png',
+        name: '关于我们'
+    }, {
+      img: '../../img/center/tuikuan.png',
+      name: '意见反馈'
+    },],
     user_name:'请登录',
     avatar:'../../img/user_img.png',
     level: '会员级别',
     // 用户等级icon
     level_icon: '../../img/center/huangguan.png',
     bg: '../../img/user_bg.png',
-    center_nav: [{
-      icon: '../../img/center/zhongcou.png',
-      name: '我的众筹',
-      page: 'wodezhongchou'
-    },
-    {
-      icon: '../../img/center/tuiguang.png',
-      name: '我的推广',
-      page: 'wodetuiguang'
-    },
-    {
-      icon: '../../img/center/jifen.png',
-      name: '我的积分',
-      page: 'wodejifen'
-    },
-    {
-      icon: '../../img/center/dizhi.png',
-      name: '收货地址',
-      page: 'address'
-    },
-    {
-      icon: '../../img/center/kehufuwu.png',
-      name: '客户服务',
-      page: 'help'
-    },
-    {
-      icon: '../../img/center/guanyuwomen.png',
-      name: '关于我们',
-      page: 'about'
-    },
-    {
-      icon: '../../img/center/rukou.png',
-      name: '商家入口',
-      page: 'shangjiarukou'
-    }],
-    more: '../../img/more.png'
   },
 
   /**

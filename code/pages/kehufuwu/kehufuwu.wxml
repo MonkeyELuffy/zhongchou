@@ -1,10 +1,10 @@
 
 <!--顶部菜单-->
 <view class="nav-title flex-center" style="width: 100%">
-    <view class="nav-item flex-all" wx:for="{{navItems}}" style="color: {{item.checked ? '#f67f79' : '#737373' }};" bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}">
-      {{item.name}}
-    </view>
+  <view class="nav-item flex-all" wx:for="{{navItems}}" style="color: {{item.checked ? '#f67f79' : '#737373' }};" bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}">
+    {{item.name}}
   </view>
+</view>
 
   <!--通知公告  -->
 <view class="fenlei-contianer">

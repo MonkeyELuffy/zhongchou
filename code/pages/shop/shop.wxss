@@ -96,7 +96,7 @@ page {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 210rpx 0rpx 20rpx 0rpx;
+  padding: 0rpx 0rpx 20rpx 0rpx;
   box-sizing: border-box;
 }
 .fenlei-contianer .fenlei-title {
@@ -205,14 +205,13 @@ page {
   padding: 30rpx 0;
 }
 .tab-up-down{
-  width: 34rpx;
-  height: 50rpx;
+  width: 22rpx;
+  height: 38rpx;
   margin-left: 20rpx;
 }
 
 .top-contain{
   width: 100%;
-  position: fixed;
   z-index: 100;
   background-color: #ddd;
 }
@@ -220,4 +219,39 @@ page {
 .juli{
   font-size: 20rpx;
   color: #999;
+}
+
+.nav3-list {
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+  box-shadow: 0 8rpx 10rpx #ccc;
+  justify-content: space-between;
+}
+.nav3-list-image {
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav3-list .nav3-item {
+  width: 24%;
+  display: flex;
+  padding-bottom: 54rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav3-list .nav3-item image {
+ width: 100rpx;
+ height: 100rpx; 
+}
+.nav3-list .nav3-item .nav3-name {
+  font-size: 24rpx;
+  padding-top: 6rpx;
+  color: #666;
 }

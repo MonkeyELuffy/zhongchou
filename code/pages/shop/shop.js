@@ -3,6 +3,13 @@
 var app = getApp()
 Page({
   data: {
+    slider: [{
+      img: '../../img/banner.png',
+      id: 0
+    }, {
+      img: '../../img/banner1.png',
+      id: 1
+    }],
     // 排序背景图
     hangyepaixu: '../../img/paixu0.png',
     xiaoliangpaixu: '../../img/paixu0.png',
@@ -12,32 +19,28 @@ Page({
     default_image: '../../img/default-image.png',
     page: 0,
     cate_id: 0,
-    search_icon: '../../img/search.png',
-    navItems: [{
-      name: '酒店',
-      id: 0,
-      checked: true
-    }, {
-      name: '旅游',
-      id: 1,
-      checked: false
-      }, {
-        name: '民宿',
+    search_icon: '../../img/search.png', nav_3List: [
+      {
+        id: 0,
+        img: '../../img/nav3-0.png',
+        text: '申请入驻',
+      },
+      {
+        id: 1,
+        img: '../../img/nav3-1.png',
+        text: '优惠券',
+      },
+      {
         id: 2,
-        checked: false
-    }, {
-      name: '古镇',
-      id: 3,
-      checked: false
-      }, {
-        name: '餐厅',
-        id: 4,
-        checked: false
-    }, {
-      name: '温泉',
-      id: 5,
-      checked: false
-    }],
+        img: '../../img/nav3-2.png',
+        text: '邀请好友',
+      },
+      {
+        id: 3,
+        img: '../../img/nav3-3.png',
+        text: '活动',
+      }
+    ],
     fenlei_list: [
       {
         img: '../../img/banner.png',
@@ -302,6 +305,9 @@ Page({
     }, 1000)
   },
 
+  clickSwiper: function (e) {
+    console.log(e.target.dataset.id)
+  },
   /*==========
   防止快速点击
   ===========*/

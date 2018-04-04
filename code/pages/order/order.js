@@ -1,4 +1,4 @@
--21// pages/oder/oder.js
+// pages/oder/oder.js
 
 var app = getApp()
 Page({
@@ -7,6 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    orderTypeList: [{
+      name: '酒店订单',
+      order: 'jiudian',
+      checked: true
+    }, {
+      name: '餐饮订单',
+      order: 'canyin',
+      checked: false
+    }],
+    //当前订单类型
+    nowOrderType:'jiudian',
     default_image: '../../img/default-image.png',
     index:0,
     page: 0,
@@ -40,6 +51,52 @@ Page({
       checked: false
     }]
 
+  },
+  //选择订单类型
+  chooseOrderType:function(e){
+    var nowOrderType = e.currentTarget.dataset.order;
+    var orderTypeList = this.data.orderTypeList;
+    var navItems
+    if (nowOrderType == 'jiudian'){
+      orderTypeList[0].checked = true
+      orderTypeList[1].checked = false
+      navItems = [{
+        name: '待付款',
+        checked: true
+      }, {
+        name: '待收货',
+        checked: false
+      }, {
+        name: '待评价',
+        checked: false
+      }, {
+        name: '退款/售后',
+        checked: false
+      }]
+    }else{
+      orderTypeList[1].checked = true
+      orderTypeList[0].checked = false
+      navItems = [{
+        name: '待付款',
+        checked: true
+      }, {
+        name: '待收货',
+        checked: false
+        }, {
+          name: '待评价',
+          checked: false
+      }, {
+        name: '已完成',
+        checked: false
+      }, {
+        name: '售后',
+        checked: false
+      }]
+    }
+    this.setData({
+      orderTypeList: orderTypeList,
+      navItems: navItems
+    })
   },
 
   /**

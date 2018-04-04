@@ -1,0 +1,9 @@
+<!--pages/add_address/add_address.wxml-->
+<view class="message">
+  <view class="message-list" wx:for="{{list}}">
+    <view class="text" id="{{item.id}}">{{item.text}}:</view>
+    <input type="{{item.text === '电话' ? 'number' : 'text'}}" placeholder="{{item.placeholder}}" bindinput="change" wx:for-index="index" data-index="{{index}}"  />
+  </view>
+</view>
+
+<view class="button" bindtap="add">保存</view>

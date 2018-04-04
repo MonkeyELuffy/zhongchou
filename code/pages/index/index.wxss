@@ -2,7 +2,7 @@
   background-color: #eee;
 }
 .swiper{
-  height: 330rpx;
+  height: 300rpx;
 }
 
 /*banner  */
@@ -74,7 +74,6 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  border-bottom: 10rpx solid #eee;
   padding-top: 40rpx;
   box-sizing: border-box;
   border-radius: 10rpx;
@@ -96,7 +95,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 .nav3-list .nav3-item image {
  width: 100rpx;
@@ -126,8 +124,8 @@
   padding: 30rpx 0;
 }
 .tab-up-down{
-  width: 34rpx;
-  height: 50rpx;
+  width: 22rpx;
+  height: 38rpx;
   margin-left: 20rpx;
 }
 
@@ -139,6 +137,9 @@
   justify-content: space-between;
   flex-direction: column;
 }
+.label-and-haoping-contain{
+  padding-top: 10rpx;
+}
 .item{
   padding:20rpx 0 0 20rpx;
 }
@@ -147,6 +148,7 @@
   height: 184rpx;
   box-sizing: border-box;
   margin-right: 30rpx;
+  align-self: flex-start;
 }
 .detail-name{
   font-size: 32rpx;
@@ -158,7 +160,7 @@
   font-size: 24rpx;
 }
 .label-item{
-  padding: 5rpx 10rpx;
+  padding: 4rpx 10rpx;
   border: 1rpx solid #f68076;
   margin-right: 8rpx;
   min-width: 76rpx;

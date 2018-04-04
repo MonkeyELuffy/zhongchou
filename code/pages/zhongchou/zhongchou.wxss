@@ -78,13 +78,13 @@ image{
   transform: rotate(45deg);
 }
 .rang-left{
-  background-color: pink;
+  background-color: #f67f79;
 }
 .rang-right{
   background-color: #ccc;
 }
 .rang-number{
-  color: pink;
+  color: #f67f79;
   font-size: 28rpx;
   margin: 0 10%;
 }
@@ -100,7 +100,7 @@ image{
   text-align: center;
 }
 .detail-value{
-  color: pink;
+  color: #f67f79;
   margin-bottom: 10rpx;
 }
 .detail-name{

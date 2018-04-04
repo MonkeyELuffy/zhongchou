@@ -1,1 +1,5 @@
-{"navigationBarTitleText": "商城"}
+{"navigationBarTitleText": "商城",
+  "usingComponents": {
+    "imageSwiper": "../../pages/image-swiper/image-swiper"
+  }
+}

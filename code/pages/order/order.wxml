@@ -2,7 +2,7 @@
 <view class="contain">
   <!--我的订单  -->
   <view class='my-order flex-between'>
-    <view class='text'>我的订单</view>
+    <view wx:for='{{orderTypeList}}' style="color: {{item.checked ? '#e61c04' : '#737373' }}; " class='text' bindtap='chooseOrderType' data-order='{{item.order}}'>{{item.name}}</view>
     <image class='more' src='../../img/more.png'></image>
   </view>
   <view class="nav-title">
@@ -73,7 +73,5 @@
       <!-- <view class="no-more">没有更多的数据了</view>  -->
   </scroll-view>
   
-
-  <view class="classname"></view>
 </view>
 
