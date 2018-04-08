@@ -1,40 +1,56 @@
 <!--pages/zhongchoudetail/zhongchoudetail.wxml-->
 <import src="../imageSwiper/imageSwiper.wxml"/>
+<import src="../zhongchoujinduItem/zhongchoujinduItem.wxml"/>
+<import src="../pingjiaItem/pingjiaItem.wxml"/>
 
-<view class='contain'>
-  <!--轮播图组件  --> 
-  <template is="imageSwiper" data="{{slider}}" ></template>
-  <!--基本信息  -->
-  <view class='info-contain'>
-    <view class='name'>{{zhongchouInfo.name}}</view>
-    <view class='state'>{{zhongchouInfo.state}}</view>
-    <view class='desc'>{{zhongchouInfo.desc}}</view>
-  </view>
-  <!--横线  -->
-  <view class='rang'>
-    <view class='rang-left'></view>
-    <slider class='rang-slider' disabled value='{{zhongchouInfo.value}}' activeColor='#f67f79' block-size='14' block-color='#f67f79'></slider>
-    <view class='rang-right'></view>
-  </view>
-  <view class='rang-number' style='padding-left:{{zhongchouInfo.paddingLeft}};'>{{zhongchouInfo.value}}%</view>
-  <view class='detail'>
-    <view class='detail-item' wx:for='{{zhongchouInfo.detail}}'>
-      <view class='detail-value'>{{item.value}}</view>
-      <view class='detail-name'>{{item.name}}</view>
+<scroll-view style="max-height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+  <view class='contain'>
+    <!--轮播图组件  --> 
+    <template is="imageSwiper" data="{{slider}}" ></template>
+    <!--基本信息  -->
+    <view class='info-contain'>
+      <view class='name'>{{zhongchouInfo.name}}</view>
+      <view class='state'>{{zhongchouInfo.state}}</view>
+      <view class='desc'>{{zhongchouInfo.desc}}</view>
+    </view>
+    <!--众筹进度组件  -->
+    <template is="zhongchoujinduItem" data="{{data:zhongchouInfo}}"></template>
+    <!--中部tab菜单  -->
+    <view class="nav-title flex-center" style="width: 100%">
+      <view class="nav-item flex-all"  wx:for="{{navItems}}" style="color: {{item.checked ? '#f67f79' : '#737373' }};" bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}">
+        {{item.name}}
+      </view>
+    </view>
+    <!--底部信息展示  -->
+    <!--详情  -->
+    <view class='detail-contain' hidden='{{!navItems[0].checked}}'>
+      <image class='detail-img' wx:for='{{zhongchouInfo.img}}' src='{{item}}'></image>
+    </view>
+    <!--进展  -->
+    <view class='pingjia-item flex-between' hidden='{{!navItems[1].checked}}' wx:for='{{jinzhanList}}'>
+      <image class='user-img' src='{{item.img_url}}'></image>
+      <view class='jinzhan flex-all flex-between'>
+        <view class='jinzhan-name'>{{item.nickname}}</view>
+        <view class='jinzhan-num'>{{item.num}}</view>
+      </view>
+    </view>
+
+    <!--留言  -->
+    <view class='pingjia-item flex-between' hidden='{{!navItems[2].checked}}' wx:for='{{pingjiaList}}'>
+      <!--评价组件  --> 
+      <template is="pingjiaItem" data="{{item}}" ></template>  
+    </view>
+
+    <!--按钮  -->
+    <view class="bottom-btn">
+      <view class='left flex flex-all'>
+        <view class='icon-contain'>
+          <image class='image' src="{{carIcon}}"></image>
+          <view class='kefu'>客服</view>
+        </view>
+        <view class='ing flex-all'>进行中</view>
+      </view>
+      <view class="woyaozhongchou" >我要众筹</view>
     </view>
   </view>
-
-  <!--中部tab菜单  -->
-  <view class="nav-title flex-center" style="width: 100%">
-    <view class="nav-item flex-all" wx:for="{{navItems}}" style="color: {{item.checked ? '#f67f79' : '#737373' }};" bindtap="checked" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}">
-      {{item.name}}
-    </view>
-  </view>
-  <!--底部信息展示  -->
-  <!--详情  -->
-
-  <!--进展  -->
-
-  <!--留言  -->
-
-</view>
+</scroll-view>

@@ -11,6 +11,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    jinzhanList:[{
+      img_url: "../../img/car.png",
+      nickname: "张学友",
+      num:666
+    }],
+    pingjiaList: [{
+      content: "好好吃的样子呢",
+      ctime_str: "2018-04-01 20:26",
+      img_url: "../../img/car.png",
+      nickname: "张学友"
+    }],
+    carIcon: '../../img/car.png',
     slider: [{
       img_src: '../../img/banner.png',
       id: 0
@@ -19,6 +31,7 @@ Page({
       id: 1
     }],
     zhongchouInfo:{
+      img: ['../../img/banner.png', '../../img/banner.png', '../../img/banner.png'],
       name:'广西三生铝制品有限公司',
       state:'进行中',
       desc:'项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍',
@@ -58,8 +71,17 @@ Page({
       }],
       
   },
-
-
+  onLoad(options){
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.info(res.windowHeight);
+        that.setData({
+          scrollHeight: res.windowHeight - 96 * res.screenWidth / 750
+        })
+      }
+    });
+  },
   /* ===选择顶部菜单 */
   checked: function (e) {
     var that = this

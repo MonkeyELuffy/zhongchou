@@ -1,17 +1,11 @@
-// pages/shenqingruzhu/shenqingruzhu.js
+// pages/zhongchoujinduItem/zhongchoujinduItem.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nowAddr:'湖北省武汉市武汉火车站666号',
-    nowType:'旅游业',
-    img1:'../../img/banner.png',
-    img2:'../../img/banner.png',
-    more:'../../img/more.png',
-    icon1: '../../img/xingming.png',
-    icon2:'../../img/yanzheng.png',
+  
   },
 
   /**

@@ -1,0 +1,6 @@
+<!--pages/zhongchoupinglun/zhongchoupinglun.wxml-->
+<view class='contain'>
+  <textarea placeholder='留个评价，给他点赞' placeholder-class='textarea-placeholder'></textarea>
+  <view class="button" bindtap="sure">确定</view>
+  <view class='des'>《确定后会签订协议》</view>
+</view>

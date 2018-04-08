@@ -1,17 +1,33 @@
-// pages/shenqingruzhu/shenqingruzhu.js
+// pages/canyuzhongchou/canyuzhongchou.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nowAddr:'湖北省武汉市武汉火车站666号',
-    nowType:'旅游业',
-    img1:'../../img/banner.png',
-    img2:'../../img/banner.png',
-    more:'../../img/more.png',
-    icon1: '../../img/xingming.png',
-    icon2:'../../img/yanzheng.png',
+    zhongchouInfo: {
+      img: ['../../img/banner.png', '../../img/banner.png', '../../img/banner.png'],
+      name: '广西三生铝制品有限公司',
+      state: '进行中',
+      desc: '项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍项目介绍',
+      value: 80,
+      //百分百位置
+      paddingLeft: '61%',
+      detail: [
+        {
+          name: '众筹金额',
+          value: '20w'
+        },
+        {
+          name: '参与人数',
+          value: '290'
+        },
+        {
+          name: '结束时间',
+          value: '2018-03-03'
+        },
+      ]
+    },
   },
 
   /**

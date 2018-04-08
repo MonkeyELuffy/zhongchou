@@ -86,6 +86,10 @@ App({
       success: function (res) {
         console.info(res.windowHeight);
         that.globalData.scrollHeight =  res.windowHeight
+        // mult，乘法系数，用于设置scroll-view的px高度时，裁剪对应的rpx高度的其余标签；
+        // 如在可视高度范围内，有一个底部或者顶部固定高度为100rpx的fixed定位标签；
+        // 则scroll高度为scrollHeight - 100 * mult；
+        that.globalData.mult =  res.screenWidth / 750
       }
     });
   },

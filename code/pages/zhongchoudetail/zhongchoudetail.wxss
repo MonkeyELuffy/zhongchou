@@ -1,63 +1,34 @@
 /* pages/zhongchoudetail/zhongchoudetail.wxss */
 @import "../imageSwiper/imageSwiper.wxss";
+@import "../zhongchoujinduItem/zhongchoujinduItem.wxss";
+@import "../pingjiaItem/pingjiaItem.wxss";
 
 .contain{
   background-color: #fff;
 }
-
-.rang{
-  margin-top: 20rpx;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.rang-slider{
-  width: 80%;
-  margin: 0;
-}
-.rang-left,.rang-right{
-  width: 20rpx;
-  height: 20rpx;
-  transform: rotate(45deg);
-}
-.rang-left{
-  background-color: #f67f79;
-}
-.rang-right{
-  background-color: #ccc;
-}
-.rang-number{
-  color: #f67f79;
+/*众筹说明  */
+.name{
   font-size: 28rpx;
-  margin: 0 10%;
+  color: #333;
+  padding: 0 40rpx;
 }
-
-
-.detail{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20rpx auto;
-  margin-bottom: 0;
-  width: 90%;
-}
-.detail-item{
+.state{
+  padding: 10rpx 20rpx;
+  margin: 20rpx 40rpx;
+  border-radius: 10rpx;
+  background:linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+  color: #fff;
   font-size: 28rpx;
+  width: 100rpx;
   text-align: center;
-  padding-bottom: 10rpx;
 }
-.detail-value{
-  color: #f67f79;
-  margin-bottom: 10rpx;
-}
-.detail-name{
-  color: #666;
+.desc{
+  font-size: 24rpx;
+  color: #999;
+  padding: 0 40rpx;
 }
 /*横向排列的菜单*/
 .nav-title {
-  position: fixed;
-  z-index: 100;
   background-color: #fff;
   color: #666;
   font-size: 30rpx;
@@ -72,4 +43,67 @@
   height: 80rpx;
   text-align: center;
   line-height: 80rpx;
+}
+/*详情  */
+.detail-img{
+  width:100%;
+  height: 300rpx; 
+}
+/*进展  */
+.jinzhan{
+  font-size: 28rpx;
+  color: #333;
+  padding-right: 40rpx;
+}
+
+/*底部按钮  */
+.bottom-btn{
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 1;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  color: #fff;
+  font-size: 32rpx;
+}
+.left{
+  background-color: #f67f79;
+  padding-right: 230rpx;
+}
+.icon-contain{
+  padding:10rpx 0rpx 10rpx 50rpx;
+  text-align: center;
+}
+.image{
+  width: 50rpx;
+  height: 50rpx;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.kefu{
+  font-size: 20rpx;
+}
+.ing{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.woyaozhongchou{
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 230rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #fa3f06;
+}
+
+.pingjia-item{
+  padding: 20rpx 30rpx 0 30rpx;
+  background-color: #fff;
 }

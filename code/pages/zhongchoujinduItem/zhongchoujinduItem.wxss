@@ -1,0 +1,46 @@
+/* pages/zhongchouItem/zhongchouItem.wxss */
+.rang{
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rang-slider{
+  width: 80%;
+  margin: 0;
+}
+.rang-left,.rang-right{
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotate(45deg);
+}
+.rang-left{
+  background-color: #f67f79;
+}
+.rang-right{
+  background-color: #ccc;
+}
+.rang-number{
+  color: #f67f79;
+  font-size: 28rpx;
+  margin: 0 10%;
+}
+.detail{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20rpx auto;
+  width: 90%;
+}
+.detail-item{
+  font-size: 28rpx;
+  text-align: center;
+}
+.detail-value{
+  color: #f67f79;
+  margin-bottom: 10rpx;
+}
+.detail-name{
+  color: #666;
+}

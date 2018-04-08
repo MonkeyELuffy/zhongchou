@@ -1,8 +1,14 @@
 {
   "pages":[
+    "pages/shenqingruzhu/shenqingruzhu",
     "pages/index/index",
+    "pages/canyuzhongchou/canyuzhongchou",
+    "pages/zhongchoupinglun/zhongchoupinglun",
+    "pages/zhongchoudetail/zhongchoudetail",
+    "pages/pingjiaItem/pingjiaItem",
     "pages/liulanjilu/liulanjilu",
     "pages/zhongchouItem/zhongchouItem",
+    "pages/zhongchoujinduItem/zhongchoujinduItem",
     "pages/mine/mine",
     "pages/pingjiaList/pingjiaList",
     "pages/noMoreData/noMoreData",
@@ -42,7 +48,6 @@
     "pages/tixian/tixian",
     "pages/about/about",
     "pages/search/search",
-    "pages/zhongchoudetail/zhongchoudetail",
     "pages/kehufuwu/kehufuwu",
     "pages/wodezhongchou/wodezhongchou",
     "pages/wodeguanzhu/wodeguanzhu",
@@ -55,7 +60,6 @@
     "pages/yaoqinghaoyou/yaoqinghaoyou",
     "pages/woyaozhongchou/woyaozhongchou",
     "pages/zhongchou/zhongchou",
-    "pages/shenqingruzhu/shenqingruzhu",
     "pages/shop/shop",
     "pages/switchcity/switchcity"
   ],

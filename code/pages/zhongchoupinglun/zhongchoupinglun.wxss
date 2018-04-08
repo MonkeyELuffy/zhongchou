@@ -1,0 +1,36 @@
+/* pages/zhongchoupinglun/zhongchoupinglun.wxss */
+.contain{
+  width: 100%;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #fff;
+}
+.button {
+  width: 500rpx;
+  height: 100rpx;
+  background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 60rpx;
+  margin-bottom: 20rpx;
+}
+.des{
+  font-size: 24rpx;
+  text-align: center;
+  color: #999;
+}
+textarea{
+  margin: 30rpx 40rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid rgb(19, 191, 222);
+  font-size: 28rpx;
+  color: #666;
+  padding: 30rpx 40rpx;
+}
+.textarea-placeholder{
+  color: #999;
+}

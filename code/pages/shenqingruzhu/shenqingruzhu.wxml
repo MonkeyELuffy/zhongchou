@@ -1,2 +1,28 @@
 <!--pages/shenqingruzhu/shenqingruzhu.wxml-->
-<text>pages/shenqingruzhu/shenqingruzhu.wxml</text>
+<view class='contain'>
+  <view class='name'>店铺名称</view>
+  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder'></input>
+  <view class='name'>行业类别</view>
+  <view class='choose flex-between'>
+    <view class='choose-text'>行业选择</view>
+    <view class='hangye-type'>{{nowType}}</view>
+    <image class='more' src='{{more}}'></image>
+  </view>
+  <view class='name'>实名认证</view>
+  <view class='input-contain flex'>
+    <image class='input-icon' src='{{icon1}}'></image>
+    <input class='admin-input' placeholder='请输入管理员姓名'></input>
+  </view>
+  <view class='input-contain flex'>
+    <image class='input-icon' src='{{icon2}}'></image>
+    <input class='admin-input' placeholder='请输入管理员身份证'></input>
+  </view>
+  <image class='up-img' src='{{img1}}' bindtap='chooseImg1'></image>
+  <view class='name'>执照认证</view>
+  <image class='up-img' src='{{img2}}' bindtap='chooseImg2'></image>
+  <view class='name'>地理定位</view>
+   <map></map> 
+  <view class='addr-value'>地址：{{nowAddr}}</view>
+
+</view>
+<view class="button" >下一步</view>
