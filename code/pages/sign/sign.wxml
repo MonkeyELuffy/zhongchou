@@ -1,0 +1,27 @@
+<!--pages/sign/sign.wxml-->
+<import src="../imageSwiper/imageSwiper.wxml"/>
+
+<!--轮播图组件  --> 
+<template is="imageSwiper" data="{{slider}}" ></template>
+
+<view class='interview'>邀请人：{{interviewName}}</view>
+<!--注册类型选择  -->
+<view class='sign-contain flex-around'>
+  <view class='sign-type' wx:for='{{signType}}' wx:key='index' style='color:{{item.checked ? "rgb(19, 191, 222)" : "#999"}};background-color:{{item.checked ? "#fff" : "#eee"}}' bindtap='checkedType' data-index='{{index}}'>{{item.name}}</view>
+</view>
+<!--注册表单  -->
+<form>
+  <view class='input-contain flex' style='border-radius:{{signType[0].checked ? " 0 8rpx 0 0" : " 8rpx 0 0 0"}}'>
+    <image class='input-icon' src='{{icon1}}'></image>
+    <input class='admin-input flex-all' type='number' value="{{phoneNum}}"   bindinput="inputPhoneNum"  maxlength="11" placeholder='请输入手机号'></input>
+  </view>
+  <view class='input-contain flex-between'>
+    <view class='flex flex-all'>
+      <image class='input-icon' src='{{icon2}}'></image>
+      <input class='admin-input flex-all' type='number' value="{{checkNum}}" bindinput="inputCheckNum"  maxlength="6" placeholder='请输入验证码'></input>
+    </view>
+    <view class='check-num' bindtap='getCheckNum'>{{Countdown}}</view>
+  </view>
+</form>
+
+<view class="button" >注册</view>

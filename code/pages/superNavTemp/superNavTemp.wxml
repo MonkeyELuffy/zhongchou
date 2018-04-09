@@ -1,0 +1,12 @@
+<!--pages/superNavTemp/superNavTemp.wxml-->
+<template name="superNavTemp">
+  <view class="nav4-item flex" wx:for="{{dataList}}" wx:for-item='dataListItem'>
+    <view class='left-nav' style='background-color:{{dataListItem.navColor}};border-radius:{{dataListItem.hasRadius ? "8rpx 0 0 0 " : "0"}}'>
+      <view class='left-nav-name'>{{dataListItem.navName}}</view>
+      <image class='left-img' src='{{dataListItem.navImg}}'></image>
+    </view>
+    <view class='right-nav-contain flex flex-all'>
+      <view class='right-item flex-center' wx:for="{{dataListItem.navInnerList}}" bindtap="clickNav" data-item="{{item}}" style='background-color:{{dataListItem.innerNavColor}};border-radius:{{item.hasRadius ? "0 8rpx 0 0 " : "0"}}'>{{item.name}}</view>
+    </view>
+  </view>
+</template>

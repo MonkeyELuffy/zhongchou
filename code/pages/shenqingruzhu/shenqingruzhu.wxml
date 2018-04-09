@@ -1,9 +1,9 @@
 <!--pages/shenqingruzhu/shenqingruzhu.wxml-->
-<view class='contain'>
+<view class='contain' hidden="{{!hiddenSuccess}}">
   <view class='name'>店铺名称</view>
-  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder'></input>
+  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder' bindinput='shopName'></input>
   <view class='name'>行业类别</view>
-  <view class='choose flex-between'>
+  <view class='choose flex-between' bindtap='chooseType'>
     <view class='choose-text'>行业选择</view>
     <view class='hangye-type'>{{nowType}}</view>
     <image class='more' src='{{more}}'></image>
@@ -11,11 +11,11 @@
   <view class='name'>实名认证</view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon1}}'></image>
-    <input class='admin-input' placeholder='请输入管理员姓名'></input>
+    <input class='admin-input' placeholder='请输入管理员姓名' bindinput='adminName'></input>
   </view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon2}}'></image>
-    <input class='admin-input' placeholder='请输入管理员身份证'></input>
+    <input class='admin-input' placeholder='请输入管理员身份证' bindinput='adminCard'></input>
   </view>
   <image class='up-img' src='{{img1}}' bindtap='chooseImg1'></image>
   <view class='name'>执照认证</view>
@@ -23,6 +23,12 @@
   <view class='name'>地理定位</view>
    <map></map> 
   <view class='addr-value'>地址：{{nowAddr}}</view>
-
 </view>
-<view class="button" >下一步</view>
+<view class="button" wx-if="{{hiddenSuccess}}" bindtap='submit'>提交</view>
+
+<!--提交成功之后的页面  -->
+<view class='success-contain' hidden="{{hiddenSuccess}}">
+  <image src='{{icon3}}' class='wait'></image>
+  <view class='msg'>您已提交审核，请耐心等待</view>
+  <view class='title'>如有问题，请联系我们：{{telNum}}</view>
+</view>

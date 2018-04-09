@@ -1,0 +1,10 @@
+<!--pages/zhifu/zhifu.wxml-->
+<view class='title flex-center'>
+  <image src='{{icon}}'></image>
+  <view>{{shopName}}</view>
+</view>
+
+<input type='number' placeholder='输入支付金额' placeholder-style='color:#d4d4d4;' bindinput='input' value='{{amount}}'></input>
+
+<view class='youhui'>优惠金额：{{youhuiNum}}元</view>
+<view class='youhui'>实际支付金额：{{finalNum}}元</view>

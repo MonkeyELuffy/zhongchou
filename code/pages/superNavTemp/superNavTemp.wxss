@@ -1,0 +1,27 @@
+/* pages/superNavTemp/superNavTemp.wxss */
+.nav4-item{
+  color: #fff;
+  margin: 0 20rpx 10rpx 20rpx;
+}
+.left-nav{
+  font-size: 32rpx;
+  padding: 30rpx;
+  margin-right: 4rpx;
+  border: 2rpx solid #fff;
+  box-sizing: border-box;
+}
+.left-img{
+  width: 90rpx;
+  height: 80rpx;
+  margin: 20rpx 20rpx 0 50rpx ;
+}
+.right-nav-contain{
+  font-size: 30rpx;
+  flex-wrap: wrap;
+}
+.right-item{
+  width: 50%;
+  text-align: center;
+  border: 2rpx solid #fff;
+  box-sizing: border-box;
+}

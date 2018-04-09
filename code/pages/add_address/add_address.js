@@ -68,16 +68,16 @@ Page({
     var go = function(e) {
       var areaInfo = that.data.areaInfo
       var new_address = that.data.new_address
-      var user_name = new_address.name;
+      var shr_name = new_address.name;
       var address = new_address.add
-      var mobile = parseInt(new_address.tel)
+      var phone = new_address.tel
       var reg = /^1[3|5|7|8]\d{9}$/;
-      if (!user_name || user_name === '') {
+      if (!shr_name || shr_name === '') {
         wx.showToast({
           title: '请输入用户姓名',
           content: '600',
         })
-      } else if (!mobile || !reg.test(mobile)) {
+      } else if (!phone || !reg.test(phone)) {
         wx.showToast({
           title: '请输入正确的手机号',
           content: '600',
@@ -99,9 +99,9 @@ Page({
         var zoneArr = that.data.areaInfo.split(',')
         var params = {
           member_id: app.globalData.member_id,
-          shr_name: user_name,
+          shr_name: shr_name,
           address: address,
-          phone: mobile,
+          phone: phone,
           shr_province: zoneArr[0],
           shr_city: zoneArr[1],
           shr_area: zoneArr[2],

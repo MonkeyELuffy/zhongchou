@@ -1,5 +1,6 @@
 @import "../paixuTemplate/paixuTemplate.wxss";
 @import "../navTemp/navTemp.wxss";
+@import "../superNavTemp/superNavTemp.wxss";
 @import "../dataItemTemp/dataItemTemp.wxss";
 @import "../imageSwiper/imageSwiper.wxss";
 

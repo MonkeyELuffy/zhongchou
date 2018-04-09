@@ -1,0 +1,23 @@
+/* pages/zhifu/zhifu.wxss */
+image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+.title{
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 100rpx;
+}
+input{
+  font-size: 28rpx;
+  margin: 40rpx 50rpx;
+  border: 2rpx solid rgb(20, 200, 220);
+  padding: 30rpx 40rpx;
+}
+.youhui{
+  padding: 20rpx 0;
+  margin-left: 50rpx;
+  font-size: 28rpx;
+  color: #333;
+}

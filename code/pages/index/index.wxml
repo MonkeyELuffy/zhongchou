@@ -1,6 +1,7 @@
 <import src="../imageSwiper/imageSwiper.wxml"/>
 <import src="../paixuTemplate/paixuTemplate.wxml"/>
 <import src="../navTemp/navTemp.wxml"/>
+<import src="../superNavTemp/superNavTemp.wxml"/>
 <import src="../dataItemTemp/dataItemTemp.wxml"/>
 <import src="../noMoreData/noMoreData.wxml"/>
 
@@ -26,6 +27,9 @@
     
     <!--轮播图组件  --> 
     <template is="imageSwiper" data="{{slider: slider1}}" ></template>
+
+    <!--特色菜单  -->
+    <template is="superNavTemp"  data="{{dataList: nav_4List}}"></template>
 
     <!--菜单组件  -->
     <template is="navTemp"  data="{{nav_3List}}"></template>

@@ -1,12 +1,14 @@
 //index.js
 //获取应用实例
 var util = require('../../utils/util.js');
+var basic = require('../../utils/basic.js');
 var app = getApp()
 Page({
   data: {
     scrollHeight: app.globalData.scrollHeight,
     imgHttp: app.globalImageUrl,
     carIcon: '../../img/car.png',
+    renzheng: '../../img/renzheng.png',
     addImg: '../../img/add.png',
     subImg: '../../img/sub.png',
     closeImg: '../../img/close.png',
@@ -83,16 +85,8 @@ Page({
   processInfoData: function (res) {
     if (res.suc == 'y') {
       console.log('商家数据成功', res.data);
-      var shop={
-        img: res.data.store_img_src,
-        name: res.data.seller_name,
-        type: res.data.trade_name,
-        boss: res.data.phone,
-        phone: res.data.phone,
-        addr: res.data.address,
-      }
       this.setData({
-        shop: shop
+        shop: res.data
       })
 
     } else {
@@ -636,6 +630,10 @@ Page({
       'allData.nowPaiXu': nowPaiXu,
     })
     console.log(nowPaiXu)
+  },
+  youhuimaidan(e){
+    var that = this;
+    basic.goPage('address',that,e)
   },
   /*==========
   防止快速点击

@@ -72,3 +72,6 @@
   font-size: 28rpx;
   color: #999;
 }
+.zizhi-img{
+  height: 300rpx;
+}

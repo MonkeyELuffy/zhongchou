@@ -1,0 +1,11 @@
+<!--pages/login/login.wxml-->
+<import src="../imageSwiper/imageSwiper.wxml"/>
+
+<!--轮播图组件  --> 
+<template is="imageSwiper" data="{{slider}}" ></template>
+
+<text class='interview'>邀请人：{{interviewName}}</text>
+<view class='sign-contain'>
+  
+</view>
+

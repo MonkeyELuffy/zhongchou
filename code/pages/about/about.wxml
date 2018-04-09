@@ -5,7 +5,6 @@
     <view class='appName'>{{appName}}</view>
     <view class='version'>{{version}}</view>
   </view>
-
   <view class="userInfo" wx:for="{{Info1}}">
     <view class= "key">{{item.key}}</view>
     <view class="value">{{item.value}}</view>
@@ -14,4 +13,6 @@
     <view class="company">{{item.key}}</view>
     <view class="company-detail">{{item.value}}</view>
   </view>
+  <view class='company'>资质证明</view>
+  <image class='zizhi-img' src='{{zizhiImg}}'></image>
 </view>

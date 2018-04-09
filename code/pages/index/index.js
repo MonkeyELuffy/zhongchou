@@ -22,51 +22,151 @@ Page({
     nav_3List: [
       {
         id: 0,
-        img: '../../img/jiudian.png',
-        text: '酒店',
-        page: 'jiudian'
+        img: '../../img/zhongchou/shenqingruzhu.png',
+        text: '申请入驻',
+        page: ''
       },
       {
         id: 1,
-        img: '../../img/canying.png',
-        text: '餐饮',
-        page:'canyin'
+        img: '../../img/zhongchou/youhuiquan.png',
+        text: '优惠券',
+        page:'youhuiquan'
       },
       {
         id: 2,
-        img: '../../img/techan.png',
-        text: '特产',
+        img: '../../img/zhongchou/yaoqing.png',
+        text: '邀请好友',
         page: ''
       },
       {
         id: 3,
-        img: '../../img/jingdian.png',
-        text: '景点',
-        page: ''
+        img: '../../img/zhongchou/huodong.png',
+        text: '活动',
+        page: 'huodong'
       },
       {
         id: 4,
-        img: '../../img/jifen.png',
-        text: '积分',
-        page: 'wodejifen'
+        img: '../../img/zhongchou/shenqingruzhu.png',
+        text: '行业1',
+        page: ''
       },
       {
         id: 5,
-        img: '../../img/youhuiquan.png',
-        text: '优惠券',
-        page: 'youhuiquan'
+        img: '../../img/zhongchou/youhuiquan.png',
+        text: '行业1',
+        page: ''
       },
       {
         id: 6,
-        img: '../../img/huodong.png',
-        text: '活动',
-        page: 'huodong'
+        img: '../../img/zhongchou/yaoqing.png',
+        text: '行业1',
+        page: ''
       },
       {
         id: 7,
-        img: '../../img/huodong1.png',
-        text: '活动',
-        page: 'huodong'
+        img: '../../img/zhongchou/huodong.png',
+        text: '行业1',
+        page: ''
+      },
+    ],
+    nav_4List: [
+      {
+        navName: '酒店',
+        navImg: '../../img/zhongchou/jiudian.png',
+        navColor:'#00bcd5',
+        innerNavColor:'#5cdff2',
+        hasRadius:true,
+        navInnerList: [
+          {
+            name: '酒店-分类',
+            id: 0
+          },
+          {
+            name: '酒店-分类',
+            id: 0,
+            hasRadius: true,
+          },
+          {
+            name: '酒店-分类',
+            id: 0
+          },
+          {
+            name: '酒店-分类',
+            id: 0
+          },
+        ]
+      },
+      {
+        navName: '旅游',
+        navImg: '../../img/zhongchou/lvyou.png',
+        navColor: '#7ce261',
+        innerNavColor: '#a2ea8e',
+        navInnerList: [
+          {
+            name: '旅游-分类',
+            id: 0
+          },
+          {
+            name: '旅游-分类',
+            id: 0
+          },
+          {
+            name: '旅游-分类',
+            id: 0
+          },
+          {
+            name: '旅游-分类',
+            id: 0
+          },
+        ]
+      },
+      {
+        navName: '餐饮',
+        navImg: '../../img/zhongchou/canyin.png',
+        navColor: '#f8c751',
+        innerNavColor: '#fdda7b',
+        navInnerList: [
+          {
+            name: '餐饮-分类',
+            id: 0
+          },
+          {
+            name: '餐饮-分类',
+            id: 0
+          },
+          {
+            name: '餐饮-分类',
+            id: 0
+          },
+          {
+            name: '餐饮-分类',
+            id: 0
+          },
+        ]
+      },
+      {
+        navName: '服饰',
+        navImg: '../../img/zhongchou/fushi.png',
+        navColor:'#fc928c',
+        innerNavColor:'#fdb2af',
+        navInnerList: [
+          {
+            name: '服饰-分类',
+            id: 0
+          },
+          {
+            name: '服饰-分类',
+            id: 0
+          },
+          {
+            name: '服饰-分类',
+            id: 0
+          },
+          {
+            name: '服饰-分类',
+            id: 0
+          },
+        ]
       },
     ],
     // 排序组件所需data

@@ -7,7 +7,8 @@ Page({
   data: {
     appName:'APP名称',
     version:'版本号1.0',
-    logo:'../../img/test.png',
+    logo: '../../img/test.png', 
+    zizhiImg: '../../img/banner.png', 
     Info1: [{
       key: '公司名称',
       value: 'XXXX有限公司',
