@@ -61,10 +61,15 @@ Page({
     bg: '../../img/user_bg.png',
   },
   onShow: function () {
-    console.log('app.globalData.userInfo',app.globalData.userInfo)
-    this.setData({
-      userInfo: app.globalData.userInfo
-    })
+    util.httpPost(app.globalUrl + app.GetUserInfoByMemberId, { member_id: app.globalData.member_id }, this.processUserlData);
+  },
+  processUserlData: function (res) {
+    if (res.suc == 'y') {
+      console.log('个人信息数据', res.data); 
+      this.setData({
+        userInfo: res.data
+      })
+    }
   },
   saoyisao: function () {
     wx.scanCode({
@@ -108,27 +113,4 @@ Page({
       lastTime: curTime
     })
   }
-  // postMessage: function() {
-  //   var that = this
-  //       let extData = wx.getExtConfigSync();
-    // let appid = extData.authorizer_appid;
-    //   wx.request({
-    //      header: {
-    //         'data': appid
-    //     },
-  //     url: 'http://zhlp.test.gobrand.top.jikeyun.net/index.php/interfaces/home/test', 
-  //     method: 'POST',
-  //     data: {
-  //       name:'lin',
-  //       sex:'male'
-  //     },
-  //     success: function (res) {
-  //       console.log(res.data)
-  //       var newName = res.data.message
-  //     },
-  //     fail: function() {
-  //       console.log('fail')
-  //     }
-  //   })
-  // }
 })

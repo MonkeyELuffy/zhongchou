@@ -2,8 +2,8 @@
 App({
   // 地图接口，根据经纬度获取用户地址信息
   MAP:'https://apis.map.qq.com/ws/geocoder/v1',
-  globalUrl: 'https://qdh.youmi158.com/index.php/City/',
-  globalImageUrl:'https://qdh.youmi158.com',
+  globalUrl: 'https://zc.youmi158.com/index.php/City/',
+  globalImageUrl:'https://zc.youmi158.com',
   BANNER: 'Index/banner_list',
   // 店铺列表
   STORELIST: 'Index/home_store',
@@ -68,7 +68,19 @@ App({
   // 充值
   Charge:'Payment/applyCharge',
   // 单独获取用户信息
-  GetUserInfoByMemberId:'Member/get_list',
+  GetUserInfoByMemberId: 'Member/get_list',
+  // 众筹列表
+  FundList: 'Fund/index',
+  // 众筹详情
+  FundDetail: 'Fund/detail',
+  // 我要众筹
+  FundAttend: 'Fund/get_attend',
+  // 参与列表
+  FundAttendList: 'Fund/attend_list',
+  // 我要留言
+  FundMessage: 'Fund/message',
+  // 留言列表
+  FundMessageList: 'Fund/message_list',
 
   onLaunch: function () {
     //获取屏幕高度

@@ -13,12 +13,12 @@ Page({
       {
         name: '酒店订单',
         order: 'jiudian',
-        checked: true
+        checked: false
       },
       {
         name: '餐饮订单',
         order: 'canyin',
-        checked: false
+        checked: true
       }
     ],
     //当前订单类型
@@ -38,13 +38,15 @@ Page({
         name: '待付款',
         type: 1,
         checked: true
-      },
-      {
+      }, {
+        name: '待收货',
+        type: 2,
+        checked: false
+      }, {
         name: '待评价',
         type: 3,
         checked: false
-      },
-      {
+      }, {
         name: '已完成',
         type: 4,
         checked: false
@@ -52,9 +54,8 @@ Page({
     ]
   },
   onLoad(){
-    var percent = this.data.scrollHeight / 555
     this.setData({
-      scrollHeight: this.data.scrollHeight - 72 * percent
+      scrollHeight: this.data.scrollHeight - 80 * app.globalData.mult
     })
   },
   onShow() {

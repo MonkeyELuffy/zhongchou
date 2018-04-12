@@ -7,9 +7,17 @@
   </view>
   <view class='rang-number' style='padding-left:{{data.paddingLeft}};'>{{data.value}}%</view>
   <view class='detail'>
-    <view class='detail-item' wx:for='{{data.detail}}'>
-      <view class='detail-value'>{{item.value}}</view>
-      <view class='detail-name'>{{item.name}}</view>
+    <view class='detail-item'>
+      <view class='detail-value'>{{item.amount}}</view>
+      <view class='detail-name'>众筹金额</view>
+    </view>
+    <view class='detail-item'>
+      <view class='detail-value'>{{item.number}}</view>
+      <view class='detail-name'>参与人数</view>
+    </view>
+    <view class='detail-item'>
+      <view class='detail-value'>{{item.etime_str}}</view>
+      <view class='detail-name'>结束时间</view>
     </view>
   </view>
 </template>

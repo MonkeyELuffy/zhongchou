@@ -1,10 +1,10 @@
 <!--pages/zhongchouItem/zhongchouItem.wxml-->
 <template name='zhongchouItem'>
   <view class='item' wx:for='{{dataList}}' bindtap="clickItem"  data-item="{{item}}">
-    <image class='item-image' src='{{item.img}}'>
+    <image class='item-image' src='{{item.logo_url}}'>
       <view class='image-inner'>
-        <view class='status'>{{item.status}}</view>
-        <view class='company'>{{item.company}}</view>
+        <view class='status'>{{item.status_info}}</view>
+        <view class='company'>{{item.seller_name}}</view>
       </view>
     </image>
     <view class='rang'>
@@ -14,9 +14,17 @@
     </view>
     <view class='rang-number' style='padding-left:{{item.paddingLeft}};'>{{item.value}}%</view>
     <view class='detail'>
-      <view class='detail-item' wx:for='{{item.detail}}'>
-        <view class='detail-value'>{{item.value}}</view>
-        <view class='detail-name'>{{item.name}}</view>
+      <view class='detail-item'>
+        <view class='detail-value'>{{item.amount}}</view>
+        <view class='detail-name'>众筹金额</view>
+      </view>
+      <view class='detail-item'>
+        <view class='detail-value'>{{item.number}}</view>
+        <view class='detail-name'>参与人数</view>
+      </view>
+      <view class='detail-item'>
+        <view class='detail-value'>{{item.etime_str}}</view>
+        <view class='detail-name'>结束时间</view>
       </view>
     </view>
   </view>

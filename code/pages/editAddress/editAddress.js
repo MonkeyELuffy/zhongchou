@@ -132,8 +132,7 @@ Page({
     var lastTime = this.data.lastTime
     var curTime = data.e.timeStamp
     if (lastTime > 0) {
-      // 此页面设置为100000，实现“点击之后就不能再点击的效果”
-      if (curTime - lastTime < 100000) {
+      if (curTime - lastTime < 1000) {
         console.log('点击太快了')
         return
       } else {

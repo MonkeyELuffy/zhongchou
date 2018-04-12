@@ -7,6 +7,8 @@ var loadListData = require('../../utils/loadListData.js');
 Date.prototype.format = function () {
   var s = '';
   var mouth = (this.getMonth() + 1) >= 10 ? (this.getMonth() + 1) : ('0' + (this.getMonth() + 1));
+  // 字符串扩展，可直接补全头部的0
+  // var mouth = (this.getMonth() + 1).toString().padStart(2,0);
   var day = this.getDate() >= 10 ? this.getDate() : ('0' + this.getDate());
   s += this.getFullYear() + '-'; // 获取年份。
   s += mouth + "-"; // 获取月份。
@@ -149,6 +151,8 @@ Page({
       }
       //获取数据之后需要改变page_no和total_page数值，保障上拉加载下一页数据的page_no值，其余没有需要修改的数据
       dataList = dataList.concat(res.data.list)
+      // rest写法
+      // dataList = [...dataList,...res.data.list]
       this.setData({
         page_no: this.data.page_no + 1,
         total_page: res.data.total_page,

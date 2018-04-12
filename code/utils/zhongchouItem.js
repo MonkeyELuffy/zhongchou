@@ -22,7 +22,7 @@ function clickTooFast(data, that) {
 function clickItem(e, that, item) {
   console.log(item)
   // var page = '../zhongchoudetail/zhongchoudetail?seller_id=' + item.seller_id
-  var page = '../zhongchoudetail/zhongchoudetail'
+  var page = '../zhongchoudetail/zhongchoudetail?id=' + item.id
   var go = function (e) {
     wx.navigateTo({
       url: page

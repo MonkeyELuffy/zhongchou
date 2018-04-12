@@ -1,0 +1,41 @@
+众筹列表
+
+地址: City/Fund/index
+参数:page_size,page_no
+数据列表:seller_name 商户名称，logo_url众筹logo,etime_str结束时间，status_info状态,name众筹标题,amount众筹金额，number参与人数,实际参与金额actual_amount,百分比自己计算
+
+
+
+众筹详情
+
+地址: City/Fund/detail
+参数:众筹id fund_id
+数据列表:desc详情，其他同上
+
+
+我要众筹
+
+地址: City/Fund/get_attend
+参数: fund_id,众筹id,member_id会员id,amount 参与金额
+列表
+
+
+
+参与列表
+地址: City/Fund/attend_list
+参数:member_id会员id,fund_id 众筹id
+列表: nickname会员昵称，img_url会员图像，amount金额
+
+
+
+我要留言
+地址: City/Fund/message
+参数: fund_id,众筹id,member_id会员id,desc留言内容
+列表
+
+留言列表
+地址:City/Fund/message_list
+参数:member_id会员id,fund_id 众筹id
+列表: nickname会员昵称，img_url会员图像，desc留言内容
+
+

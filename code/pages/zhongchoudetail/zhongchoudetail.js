@@ -72,15 +72,41 @@ Page({
       
   },
   onLoad(options){
-    var that = this
-    wx.getSystemInfo({
-      success: function (res) {
-        console.info(res.windowHeight);
-        that.setData({
-          scrollHeight: res.windowHeight - 96 * res.screenWidth / 750
-        })
-      }
-    });
+    var fund_id = options.id
+    console.log(fund_id)
+    this.setData({
+      scrollHeight: app.globalData.scrollHeight - 100 * app.globalData.mult
+    })
+    // 众筹详情
+    util.httpPost(app.globalUrl + app.FundDetail, { fund_id: fund_id }, this.processDetailData);
+    // 参与列表
+    util.httpPost(app.globalUrl + app.FundAttendList, { member_id: app.globalData.member_id, fund_id: fund_id }, this.processAttendListData);
+    // 留言列表
+    util.httpPost(app.globalUrl + app.FundMessageList, { member_id: app.globalData.member_id, fund_id: fund_id }, this.processMessageListData);
+  },
+  processDetailData: function (res) {
+    if (res.suc == 'y') {
+      console.log('获取众筹详情成功', res.data);
+    } else {
+      console.log('获取众筹详情错误', res);
+    }
+  },
+  processAttendListData: function (res) {
+    if (res.suc == 'y') {
+      console.log('获取参与列表成功', res.data);
+    } else {
+      console.log('获取参与列表错误', res);
+    }
+  },
+  processMessageListData: function (res) {
+    if (res.suc == 'y') {
+      console.log('获取留言列表成功', res.data);
+    } else {
+      console.log('获取留言列表错误', res);
+    }
+  },
+  canyuzhongchou(e){
+
   },
   /* ===选择顶部菜单 */
   checked: function (e) {

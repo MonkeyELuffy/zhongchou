@@ -1,8 +1,9 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/order/order",
     "pages/shenqingruzhu/shenqingruzhu",
     "pages/zhifu/zhifu",
-    "pages/index/index",
     "pages/about/about",
     "pages/wodezhongchou/wodezhongchou",
     "pages/superNavTemp/superNavTemp",
@@ -25,7 +26,6 @@
     "pages/tijiaodingdan/tijiaodingdan",
     "pages/tijiaojiudiandingdan/tijiaojiudiandingdan",
     "pages/productDetail/productDetail",
-    "pages/order/order",
     "pages/pingjia/pingjia",
     "pages/canyin/canyin",
     "pages/pay/pay",

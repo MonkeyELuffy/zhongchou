@@ -50,7 +50,7 @@
         </view>
         <view class='ing flex-all'>进行中</view>
       </view>
-      <view class="woyaozhongchou" >我要众筹</view>
+      <view class="woyaozhongchou" bindtap='canyuzhongchou'>我要众筹</view>
     </view>
   </view>
 </scroll-view>

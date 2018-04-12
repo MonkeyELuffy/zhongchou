@@ -14,6 +14,7 @@
  
 */
 
+
 // 页面跳转
 // page: 目标页面字段;
 // that: 调用页面对象;
@@ -93,7 +94,7 @@ function search(e) {
   }
 }
 // 手机号验证
-function checkedPhone(phone){
+function checkedPhone(phone) {
   var reg = /^1[3|5|7|8]\d{9}$/;
   if (!phone || !reg.test(phone)) {
     return false
@@ -101,8 +102,8 @@ function checkedPhone(phone){
   return true;
 }
 // 非空验证
-function checkNull(str){
-  if (str.replace(/(^\s*)|(\s*$)/g, "").length == 0){
+function checkNull(str) {
+  if (str.replace(/(^\s*)|(\s*$)/g, "").length == 0) {
     return false
   }
   return true;

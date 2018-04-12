@@ -16,7 +16,7 @@ Page({
     icon1: '../../img/xingming.png',
     icon2: '../../img/yanzheng.png', 
     icon3: '../../img/dengdai.png', 
-    hiddenSuccess:false,
+    hiddenSuccess:true,
     shopName: '',
     adminName: '',
     adminCard:'',
@@ -73,6 +73,7 @@ Page({
         setTimeout(function(){
           wx.hideLoading()
           // 页面设置为不可滚动
+          
           that.setData({
             hiddenSuccess: false
           })
