@@ -1,9 +1,8 @@
 // pages/canyuzhongchou/canyuzhongchou.js
+var util = require('../../utils/util.js');
+var basic = require('../../utils/basic.js');
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     zhongchouInfo: {
       img: ['../../img/banner.png', '../../img/banner.png', '../../img/banner.png'],
@@ -29,60 +28,53 @@ Page({
       ]
     },
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    var zhongchouInfo = JSON.parse(options.params).zhongchouInfo;
+    console.log(zhongchouInfo);
+    this.setData({
+      zhongchouInfo: zhongchouInfo
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  input(e){
+    var amount = e.detail.value;
+    this.setData({
+      amount: amount
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  sure(e){
+    if (this.data.amount>0){
+      var params = {
+        member_id: app.globalData.member_id,
+        fund_id: this.data.zhongchouInfo.id,
+        amount: this.data.amount,
+      }
+      util.httpPost(app.globalUrl + app.FundAttend, params, this.processAttendData);
+    }else{
+      wx.showToast({
+        title: '请输入众筹金额',
+        duration: 600
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  processAttendData(res) {
+    var zhongchouInfo = this.data.zhongchouInfo;
+    if (res.suc == 'y') {
+      console.log('参与众筹成功', res.data);
+      wx.hideLoading()
+      wx.showToast({
+        title: res.msg,
+        duration: 600
+      })
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '../zhongchoupinglun/zhongchoupinglun?params=' + JSON.stringify(zhongchouInfo)
+        })
+      }, 1000)
+    } else {
+      console.log('参与众筹错误', res);
+      wx.showToast({
+        title: res.msg,
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

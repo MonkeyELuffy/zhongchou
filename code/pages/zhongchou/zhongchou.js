@@ -153,7 +153,7 @@ Page({
       wx.hideLoading()
       for (var i in res.data.list) {
         res.data.list[i].logo_url = app.globalImageUrl + res.data.list[i].logo_url;
-        res.data.list[i].value = parseInt(res.data.list[i].number) / parseInt(res.data.list[i].amount);
+        res.data.list[i].value = parseInt(res.data.list[i].actual_amount || 0) / parseInt(res.data.list[i].amount) * 100;
         res.data.list[i].paddingLeft = (res.data.list[i].value*0.8-2)+'%'
       }
       //获取数据之后需要改变page_no和total_page数值，保障上拉加载下一页数据的page_no值，其余没有需要修改的数据

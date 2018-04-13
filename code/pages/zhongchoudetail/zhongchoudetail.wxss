@@ -6,6 +6,10 @@
 .contain{
   background-color: #fff;
 }
+.item-image{
+  position: relative;
+  height: 320rpx;
+}
 /*众筹说明  */
 .name{
   font-size: 28rpx;

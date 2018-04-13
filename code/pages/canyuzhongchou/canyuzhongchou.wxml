@@ -4,13 +4,13 @@
 <view class='contain'>
   <!--基本信息  -->
   <view class='info-contain'>
-    <view class='name'>{{zhongchouInfo.name}}</view>
-    <view class='state'>{{zhongchouInfo.state}}</view>
+    <view class='name'>{{zhongchouInfo.seller_name}}</view>
+    <view class='state'>{{zhongchouInfo.status_info}}</view>
     <view class='desc'>{{zhongchouInfo.desc}}</view>
   </view>
   <!--众筹进度组件  -->
   <template is="zhongchoujinduItem" data="{{data:zhongchouInfo}}"></template>
-  <input placeholder='输入众筹金额' placeholder-class='input-placeholder'></input>
+  <input placeholder='输入众筹金额' placeholder-class='input-placeholder' bindinput='input' type='number'></input>
   <view class="button" bindtap="sure">确定</view>
   <view class='des'>《确定后会签订协议》</view>
 </view>

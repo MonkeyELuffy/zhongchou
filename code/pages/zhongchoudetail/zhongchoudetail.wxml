@@ -3,14 +3,15 @@
 <import src="../zhongchoujinduItem/zhongchoujinduItem.wxml"/>
 <import src="../pingjiaItem/pingjiaItem.wxml"/>
 
-<scroll-view style="max-height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+<scroll-view style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
   <view class='contain'>
     <!--轮播图组件  --> 
-    <template is="imageSwiper" data="{{slider}}" ></template>
+    <!-- <template is="imageSwiper" data="{{slider}}" ></template> -->
+    <image class='item-image' src='{{zhongchouInfo.logo_url}}'></image>
     <!--基本信息  -->
     <view class='info-contain'>
-      <view class='name'>{{zhongchouInfo.name}}</view>
-      <view class='state'>{{zhongchouInfo.state}}</view>
+      <view class='name'>{{zhongchouInfo.seller_name}}</view>
+      <view class='state'>{{zhongchouInfo.status_info}}</view>
       <view class='desc'>{{zhongchouInfo.desc}}</view>
     </view>
     <!--众筹进度组件  -->
@@ -31,7 +32,7 @@
       <image class='user-img' src='{{item.img_url}}'></image>
       <view class='jinzhan flex-all flex-between'>
         <view class='jinzhan-name'>{{item.nickname}}</view>
-        <view class='jinzhan-num'>{{item.num}}</view>
+        <view class='jinzhan-num'>{{item.amount}}</view>
       </view>
     </view>
 
@@ -44,13 +45,13 @@
     <!--按钮  -->
     <view class="bottom-btn">
       <view class='left flex flex-all'>
-        <view class='icon-contain'>
+        <view class='icon-contain' bindtap='kefu'>
           <image class='image' src="{{carIcon}}"></image>
           <view class='kefu'>客服</view>
         </view>
         <view class='ing flex-all'>进行中</view>
       </view>
-      <view class="woyaozhongchou" bindtap='canyuzhongchou'>我要众筹</view>
+      <view class="woyaozhongchou" bindtap='clickBtn'>{{zhongchouInfo.btn}}</view>
     </view>
   </view>
 </scroll-view>
