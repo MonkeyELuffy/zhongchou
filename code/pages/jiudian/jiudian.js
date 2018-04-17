@@ -32,35 +32,11 @@ Page({
     allData: app.globalData.allPaiXuData,
     default_image: '../../img/default-image.png',
     search_icon: '../../img/search.png', 
-    nav_3List: [
-      {
-        img: '../../img/xingjijiudian.png',
-        text: '星级酒店',
-        page: 'jiudianList',
-        trade_id: 59
-      },
-      {
-        img: '../../img/gongyu.png',
-        text: '度假公寓',
-        page: 'jiudianList',
-        trade_id: 61
-      },
-      {
-        img: '../../img/bieshu.png',
-        text: '排屋别墅',
-        page: 'jiudianList',
-        trade_id: 62
-      },
-      {
-        img: '../../img/kezhan.png',
-        text: '民宿客栈',
-        page: 'jiudianList',
-        trade_id: 146
-      }
-    ],
+    navItems:[],
     dataList: [],
     page_no: 1,
-    total_page:1
+    total_page:1,
+    showNomore:false
   },
   onShow: function () {
     //数据初始化
@@ -68,62 +44,79 @@ Page({
       bindDownLoad: true,
       page_no: 1,
       total_page: 1,
-      dataList: []
+      dataList: [],
+      showNomore: false
     })
-    // 设置日期默认值
-    this.setDefineDate()
-    //请求banner数据
-    this.loadBannerData();
-    // 请求酒店类别的商铺，关键词type: 2
-    var params = {
-      page_no: 1,
-      page_size: 15,
-      type: '2',
-      cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
-    }
-    this.loadListData(params);
+    // 请求顶部菜单
+    this.loadTopNav();
   },
-  setDefineDate() {
-    //当前日期
-    var nowDate = app.getEnterAndLeaveDate(0)
-    //第二天日期
-    var nextDate = app.getEnterAndLeaveDate(1)
-    //组装显示日期文字
-    var nowDateArr = nowDate.split('-')
-    var nextDateArr = nextDate.split('-')
-    this.setData({
-      nowTime: nowDate,
-      ruzhuTime: nowDate,
-      lidianTime: nextDate,
-      ruzhuTimeText: nowDateArr[1] + '月' + nowDateArr[2] + '日',
-      lidianTimeText: nextDateArr[1] + '月' + nextDateArr[2] + '日',
-    })
+  loadTopNav(){
+    util.httpPost(app.globalUrl + app.TopNav, {}, this.processTopNavData);
   },
-  // 顶部banner
-  loadBannerData() {
-    var params1 = {
-      region_id: 3144,  //地区ID搜索
-      loca_id: 3
-    }
-    util.httpPost(app.globalUrl + app.BANNER, params1, this.processBannerData);
-  },
-  processBannerData: function (res) {
+  processTopNavData(res){
     if (res.suc == 'y') {
-      console.log('顶部banner数据', res.data);
+      console.log('顶部菜单数据', res.data);
       for (var i in res.data) {
-        res.data[i].img_src = app.globalImageUrl + res.data[i].img_src
+        res.data[i].checked = false;
       }
+      res.data[0].checked = true;      
       this.setData({
-        slider: res.data
+        navItems: res.data,
+        trade_id: res.data[0].trade_id
       })
+      var params = {
+        page_no: 1,
+        page_size: 15,
+        trade_id: this.data.trade_id,
+        cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
+      }
+      this.loadListData(params);
     }
+  },
+  /* ===选择顶部菜单 */
+  checked: function (e) {
+    var trade_id = e.target.dataset.item.trade_id;
+    //点击已选中的菜单时，直接返回
+    if (trade_id === this.data.trade_id) {
+      return
+    } else {
+      this.setData({
+        bindDownLoad: true,
+        page_no: 1,
+        total_page: 1,
+        dataList: [],
+        showNomore: false,
+        trade_id: trade_id,
+        allData: app.globalData.allPaiXuData,
+      })
+      var index = e.target.dataset.index;
+      var params = {
+        page_no: 1,
+        page_size: 15,
+        trade_id: this.data.trade_id,
+        cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
+      }
+      this.loadListData(params);
+      this.changeStyle(index)
+    }
+  },
+  //修改顶部菜单样式
+  changeStyle: function (index) {
+    var navItems = this.data.navItems
+    for (var i = 0; i < navItems.length; i++) {
+      navItems[i]['checked'] = false
+    };
+    navItems[index]['checked'] = true
+    this.setData({
+      navItems: navItems
+    })
   },
   // 下拉加载更多购物车数据
   bindDownLoad: function (e) {
     var params = {
       page_no: this.data.page_no,
       page_size: 15,
-      type: '2',
+      trade_id: this.data.trade_id,
       cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
     }
     this.loadListData(params)
@@ -143,7 +136,7 @@ Page({
   processStoreData(res) {
     if (res.suc == 'y') {
       var dataList = this.data.dataList
-      console.log('获取酒店list成功', res.data);
+      console.log('获取商家list成功', res.data);
       wx.hideLoading()
       for (var i in res.data.list) {
         res.data.list[i].store_img_src = app.globalImageUrl + res.data.list[i].store_img_src

@@ -13,7 +13,8 @@ function loadListData(allParams) {
   console.log('??', that.data.page_no, that.data.total_page)
   if (that.data.bindDownLoad && parseInt(that.data.page_no) <= parseInt(that.data.total_page)) {
     that.setData({
-      bindDownLoad: false
+      bindDownLoad: false,
+      showNomore: false
     })
     //加载数据
     wx.showLoading({

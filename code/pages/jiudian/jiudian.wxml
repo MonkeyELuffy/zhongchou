@@ -1,5 +1,11 @@
 <import src="../paixuTemplate/paixuTemplate.wxml"/>
 <import src="../noMoreData/noMoreData.wxml"/>
+
+<!--顶部分类菜单  -->
+<scroll-view class="nav-title" scroll-x style="width: 100%">
+  <view class="nav-item {{item.checked ? 'checked' : '' }}" wx:for="{{navItems}}" style="background-color:{{item.checked ? 'linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250))' : '#999'}}" bindtap="checked" wx:for-index="index" data-index="{{index}}" data-item="{{item}}">{{item.trade_name}}</view>
+</scroll-view>
+
 <scroll-view class="fenlei-ul flex-center fenlei-contianer" style="max-height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
   <view class='top-contain'>
     <!--排序组件  -->
@@ -23,12 +29,12 @@
         <!-- <view class='haoping'>好评{{item.haoping}}%</view> -->
       </view>
       <view class="fenlei-price-total flex-between flex-all">
-        <view class="fenlei-price">{{item.store_star}}星级</view>
+        <view class="fenlei-price" hidden='{{!item.store_star}}'>{{item.store_star}}星级</view>
         <view class='juli'>{{item.cur_space}}</view>
       </view>
     </view>
   </view>
   <!--nomoreData  -->
-  <template is="noMoreData"></template>
+  <template is="noMoreData" data="{{showNomore}}"></template>
   <view style="width:100%;height:40rpx;"></view>
 </scroll-view>

@@ -9,9 +9,9 @@ page{
 .nav-title {
   z-index: 100;
   width: 100%;
-  background-color: #ddd;
-  color: #666;
   font-size: 28rpx;
+  background-color: #eee;
+  color: #fff;
   white-space: nowrap; 
   box-shadow: 0rpx 0rpx 2rpx #ddd ;
 }
@@ -22,9 +22,10 @@ page{
   text-align: center;
   line-height: 60rpx;
   margin: 20rpx;
-  color: #fff;
   border-radius: 10rpx;
-  
+}
+.checked{
+  background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
 }
 /*菜单定位*/
 .nav-title-clear {

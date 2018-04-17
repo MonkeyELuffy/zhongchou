@@ -42,6 +42,10 @@
       <template is="pingjiaItem" data="{{item}}" ></template>  
     </view>
 
+  </view>
+</scroll-view>
+
+
     <!--按钮  -->
     <view class="bottom-btn">
       <view class='left flex flex-all'>
@@ -53,5 +57,3 @@
       </view>
       <view class="woyaozhongchou" bindtap='clickBtn'>{{zhongchouInfo.btn}}</view>
     </view>
-  </view>
-</scroll-view>

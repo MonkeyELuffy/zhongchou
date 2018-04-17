@@ -45,7 +45,7 @@
     <template is="dataItemTemp" data="{{dataList}}" ></template>
 
     <!--nomoreData  -->
-    <template is="noMoreData"></template>
+    <template is="noMoreData" data="{{showNomore}}"></template>
 
     <view style="width:100%;height:40rpx;"></view>
 

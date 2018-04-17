@@ -55,9 +55,7 @@
     </view>
     <view style="width:100%;height:80rpx;"></view>
     <!--nomoreData  -->
-    <template is="noMoreData"></template>
-      <!-- <view class="no-more">没有更多的数据了</view>  -->
+    <template is="noMoreData" data="{{showNomore}}"></template>
   </scroll-view>
-  
 </view>
 

@@ -81,6 +81,8 @@ App({
   FundMessage: 'Fund/message',
   // 留言列表
   FundMessageList: 'Fund/message_list',
+  // 商家顶部菜单
+  TopNav:'Base/get_list',
 
   onLaunch: function () {
     //获取屏幕高度

@@ -64,7 +64,7 @@
 .bottom-btn{
   box-sizing: border-box;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   bottom: 0rpx;
   left: 0rpx;
   width: 100%;

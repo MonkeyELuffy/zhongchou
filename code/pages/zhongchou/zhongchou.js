@@ -16,77 +16,8 @@ Page({
     fenhongpaixu:'../../img/paixu0.png',
     nowPaiXu:4,
     //众筹列表
-    dataList: [
-      {
-        img: '../../img/banner.png',
-        id: 0,
-        status: '进行中',
-        company: '广西壮族自治区三九胃泰有限公司',
-        value: 80,
-        //百分百位置
-        paddingLeft: '61%',
-        detail: [
-          {
-            name: '众筹金额',
-            value: '20w'
-          },
-          {
-            name: '参与人数',
-            value: '290'
-          },
-          {
-            name: '结束时间',
-            value: '2018-03-03'
-          },
-        ]
-      },
-      {
-        img: '../../img/banner.png',
-        id: 0,
-        status: '进行中',
-        company: '广西壮族自治区三九胃泰有限公司',
-        value: 80,
-        //百分百位置
-        paddingLeft: '61%',
-        detail: [
-          {
-            name: '众筹金额',
-            value: '20w'
-          },
-          {
-            name: '参与人数',
-            value: '290'
-          },
-          {
-            name: '结束时间',
-            value: '2018-03-03'
-          },
-        ]
-      },
-      {
-        img: '../../img/banner.png',
-        id: 0,
-        status: '进行中',
-        company: '广西壮族自治区三九胃泰有限公司',
-        value: 80,
-        //百分百位置
-        paddingLeft: '61%',
-        detail: [
-          {
-            name: '众筹金额',
-            value: '20w'
-          },
-          {
-            name: '参与人数',
-            value: '290'
-          },
-          {
-            name: '结束时间',
-            value: '2018-03-03'
-          },
-        ]
-      }
-      ]
+    dataList: [],
+    showNomore: false
   },
   onLoad: function (options) {
     var that = this;
@@ -97,7 +28,8 @@ Page({
       bindDownLoad: true,
       page_no: 1,
       total_page: 1,
-      dataList: []
+      dataList: [],
+      showNomore: false
     })
     //请求banner数据
     this.loadBannerData();

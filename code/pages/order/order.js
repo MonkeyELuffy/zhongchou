@@ -51,7 +51,8 @@ Page({
         type: 4,
         checked: false
       }
-    ]
+    ],
+    showNomore: false
   },
   onLoad(){
     this.setData({
@@ -80,7 +81,8 @@ Page({
       page_no: 1,
       total_page: 1,
       btns: btns,
-      orders:[]
+      orders: [],
+      showNomore: false
     })
     var differ = this.data.orderTypeList[1].checked ? 1 : 2
     var params = {

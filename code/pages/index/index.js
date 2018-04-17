@@ -174,7 +174,8 @@ Page({
     // 底部数据列表
     dataList: [],
     page_no: 1,
-    total_page:1,
+    total_page: 1,
+    showNomore: false
   },
   onShow() {
     // 数据初始化
@@ -193,7 +194,8 @@ Page({
       bindDownLoad: true,
       page_no: 1,
       dataList: [],
-      total_page: 1
+      total_page: 1,
+      showNomore: false
     })
   },
   loadStorDataAndCityName(res){
