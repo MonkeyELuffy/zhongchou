@@ -99,13 +99,12 @@ function UpLoadImg(data) {
 }
 //多张图片上传
 function UpLoadImgs(data){
-  // var uploadImgList = []
-  // for(var i in data){
-  //   uploadImgList.push(UpLoadImg(data[i]))
-  // }
-  // console.log('uploadImgList', uploadImgList)
+  var uploadImgList = []
+  for(var i in data){
+    uploadImgList.push(UpLoadImg(data[i]))
+  }
   return new Promise((resolve, reject) => {
-    Promise.all([UpLoadImg(data[0]), UpLoadImg(data[1]), UpLoadImg(data[2])])
+    Promise.all(uploadImgList)
       .then(function (res) {
         resolve(res);
       })

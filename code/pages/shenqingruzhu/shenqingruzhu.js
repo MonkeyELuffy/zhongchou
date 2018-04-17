@@ -3,15 +3,7 @@ var util = require('../../utils/util.js');
 var basic = require('../../utils/basic.js');
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    longitude: app.globalData.firstLongitude,
-    latitude: app.globalData.firstLatitude ,
-    address:'',
-    store_fixed:'',
     nowType: { trade_id: null},
     ident_img: '../../img/banner.png',
     license_img: '../../img/banner.png',
@@ -28,6 +20,7 @@ Page({
     telNum:'027-32442522',
   },
   onLoad() {
+    // 地址数据可以提前获取
     this.setData({
       longitude: app.globalData.firstLongitude,
       latitude: app.globalData.firstLatitude,
@@ -37,6 +30,7 @@ Page({
   },
   onShow() {
     var that = this
+    // onShow的时候获取nowType,销毁页面之后清除nowType
     var nowType = wx.getStorage({
       key: 'nowType',
       success: function(res) {
@@ -47,30 +41,36 @@ Page({
       },
     })
   },
-  // 店铺名称
-  seller_name: function (e) {
-    this.setData({
-      seller_name: e.detail.value
-    })
+  input: function (e) {
+    var val = e.detail.value
+    switch (e.currentTarget.dataset.inputname) {
+      // 店铺名称
+      case 'seller_name':
+        this.setData({
+          seller_name: val
+        });
+        break;
+      // 管理员姓名
+      case 'linkman':
+        this.setData({
+          linkman: val
+        });
+        break;
+      // 手机号
+      case 'mobile':
+        this.setData({
+          mobile: val
+        });
+        break;
+      // 管理员身份证
+      case 'ident_card':
+        this.setData({
+          ident_card: val
+        });
+        break;
+    }
   },
-  // 管理员姓名
-  linkman(e){
-    this.setData({
-      linkman: e.detail.value
-    })
-  },
-  // 手机号
-  mobile(e) {
-    this.setData({
-      mobile: e.detail.value
-    })
-  },
-  // 管理员身份证
-  ident_card(e) {
-    this.setData({
-      ident_card: e.detail.value
-    })
-  },
+  // 选择行业
   chooseType(e){
     var that = this
     basic.goPage('chooseType',that,e)
@@ -92,7 +92,7 @@ Page({
       member_id: app.globalData.member_id
     }
     console.log('params',params)
-    var go = function (e) {
+    var go = function (e) { 
       if (!basic.checkNull(params.seller_name)) {
         wx.showToast({
           title: '请输入店铺名称',
@@ -118,7 +118,7 @@ Page({
           title: '请输入正确的身份证号',
           content: '600',
         })
-      } else if (!params.ident_img || !params.license_img || !params.store_img) {
+      } else if (!params.ident_img.includes('http') || !params.license_img.includes('http') || !params.store_img.includes('http')) {
         wx.showToast({
           title: '请选择图片',
           content: '600',
@@ -137,7 +137,7 @@ Page({
       title: '正在提交',
       mask: true
     })
-    // 上传图片
+    // 需要上传的图片数据
     var imgData = [
       {
         url: app.globalUrl + app.UploadImg,
@@ -153,14 +153,18 @@ Page({
       }
     ]
     util.UpLoadImgs(imgData)
-    .then(function (res) {
-      console.log('图片全都上传完了', res)
-      var imgIdList = res
-      params.ident_img = JSON.parse(imgIdList[0]).data.file.image_id
-      params.license_img = JSON.parse(imgIdList[1]).data.file.image_id
-      params.store_img = JSON.parse(imgIdList[2]).data.file.image_id
-      util.httpPost(app.globalUrl + app.Apply, params, that.processData);
-    })
+      .then(function (res) {
+        console.log('图片全都上传完了', res)
+        that.submitAfterUploadImg(res, params)
+      })
+  },
+  // 图片上传之后再提交表单
+  submitAfterUploadImg(res, params){
+    // 重组三个需要上传的图片数据
+    params.ident_img = JSON.parse(res[0]).data.file.image_id
+    params.license_img = JSON.parse(res[1]).data.file.image_id
+    params.store_img = JSON.parse(res[2]).data.file.image_id
+    util.httpPost(app.globalUrl + app.Apply, params, this.processData);
   },
   processData(res) {
     if (res.suc == 'y') {
@@ -174,13 +178,14 @@ Page({
       })
     }
   },
+  // 返回上一页
   onUnload(){
     // 清除缓存的nowType数据
     wx.removeStorage({
       key: 'nowType',
     })
   },
-  //身份证图片
+  // 选择图片
   chooseImg(e) {
     //这里是选取图片的方法
     var that = this;

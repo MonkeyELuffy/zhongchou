@@ -1,7 +1,7 @@
 <!--pages/shenqingruzhu/shenqingruzhu.wxml-->
 <view class='contain' hidden="{{!hiddenSuccess}}">
   <view class='name'>店铺名称</view>
-  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder' bindinput='seller_name'></input>
+  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder' bindinput='input' data-inputname='seller_name'></input>
   <view class='name'>行业类别</view>
   <view class='choose flex-between' bindtap='chooseType'>
     <view class='choose-text'>行业选择</view>
@@ -11,15 +11,15 @@
   <view class='name'>实名认证</view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon1}}'></image>
-    <input class='admin-input' placeholder='请输入管理员姓名' bindinput='linkman'></input>
+    <input class='admin-input' placeholder='请输入管理员姓名' bindinput='input' data-inputname='linkman'></input>
   </view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon4}}'></image>
-    <input class='admin-input' type='number' maxlength='11' placeholder='请输入管理员手机号' bindinput='mobile'></input>
+    <input class='admin-input' type='number' maxlength='11' placeholder='请输入管理员手机号' bindinput='input' data-inputname='mobile'></input>
   </view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon2}}'></image>
-    <input class='admin-input' type='number' maxlength='18' placeholder='请输入管理员身份证' bindinput='ident_card'></input>
+    <input class='admin-input' type='number' maxlength='18' placeholder='请输入管理员身份证' bindinput='input' data-inputname='ident_card'></input>
   </view>
   <view class='name'>身份认证</view>
   <image class='up-img' src='{{ident_img}}' bindtap='chooseImg' data-imgname='ident_img'></image>
