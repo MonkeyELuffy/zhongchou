@@ -38,4 +38,18 @@
 参数:member_id会员id,fund_id 众筹id
 列表: nickname会员昵称，img_url会员图像，desc留言内容
 
+申请入驻
+Apply/apply
+'seller_name'     => '商家名称',
+'trade_id'        =>'行业不能为空',
+'linkman'         => '负责人',
+'ident_card'      =>'身份证号',
+'ident_img'       => '证件照',
+'license_img'     => '营业执照',
+'store_img'       => '店铺照',
+'mobile'          => '手机号',
+'address'         => '详细地址',
+'store_fixed'     => '店铺定位(经纬度)',
 
+图片上传
+Base/upload
