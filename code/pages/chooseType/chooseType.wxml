@@ -1,11 +1,12 @@
 <!--pages/chooseType/chooseType.wxml-->
-<view class='title'>最多选择三个行业（商家会在该三个分类内展现）</view>
+<!-- <view class='title'>最多选择三个行业（商家会在该三个分类内展现）</view> -->
+<view class='title'>最多选择一个行业（商家会在该分类内展现）</view>
 
 <view class='item-contain'>
   <view class='item flex-between' wx:for='{{typeList}}' bindtap='chooseType' data-item='{{item}}' data-index='{{index}}' wx:key='index'>
-    <view class='type-name'>{{item.name}}</view>
+    <view class='type-name'>{{item.trade_name}}</view>
     <image class='check-img' src='{{item.checked ? checked : unchecked}}'></image>
   </view>
 </view>
 
-<view class="button" >确定</view>
+<view class="button" bindtap='sure'>确定</view>

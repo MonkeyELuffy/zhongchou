@@ -1,28 +1,35 @@
 <!--pages/shenqingruzhu/shenqingruzhu.wxml-->
 <view class='contain' hidden="{{!hiddenSuccess}}">
   <view class='name'>店铺名称</view>
-  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder' bindinput='shopName'></input>
+  <input class='name-input' placeholder='输入店铺名称' placeholder-class='input-placeholder' bindinput='seller_name'></input>
   <view class='name'>行业类别</view>
   <view class='choose flex-between' bindtap='chooseType'>
     <view class='choose-text'>行业选择</view>
-    <view class='hangye-type'>{{nowType}}</view>
+    <view class='hangye-type'>{{nowType.trade_name}}</view>
     <image class='more' src='{{more}}'></image>
   </view>
   <view class='name'>实名认证</view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon1}}'></image>
-    <input class='admin-input' placeholder='请输入管理员姓名' bindinput='adminName'></input>
+    <input class='admin-input' placeholder='请输入管理员姓名' bindinput='linkman'></input>
+  </view>
+  <view class='input-contain flex'>
+    <image class='input-icon' src='{{icon4}}'></image>
+    <input class='admin-input' type='number' maxlength='11' placeholder='请输入管理员手机号' bindinput='mobile'></input>
   </view>
   <view class='input-contain flex'>
     <image class='input-icon' src='{{icon2}}'></image>
-    <input class='admin-input' placeholder='请输入管理员身份证' bindinput='adminCard'></input>
+    <input class='admin-input' type='number' maxlength='18' placeholder='请输入管理员身份证' bindinput='ident_card'></input>
   </view>
-  <image class='up-img' src='{{img1}}' bindtap='chooseImg1'></image>
+  <view class='name'>身份认证</view>
+  <image class='up-img' src='{{ident_img}}' bindtap='chooseImg' data-imgname='ident_img'></image>
   <view class='name'>执照认证</view>
-  <image class='up-img' src='{{img2}}' bindtap='chooseImg2'></image>
+  <image class='up-img' src='{{license_img}}' bindtap='chooseImg' data-imgname='license_img'></image>
+  <view class='name'>商铺认证</view>
+  <image class='up-img' src='{{store_img}}' bindtap='chooseImg' data-imgname='store_img'></image>
   <view class='name'>地理定位</view>
-   <map></map> 
-  <view class='addr-value'>地址：{{nowAddr}}</view>
+   <map bindtap='chooseAddress' longitude='{{longitude}}' latitude='{{latitude}}' show-location></map> 
+  <view class='addr-value'>地址：{{address}}</view>
 </view>
 <view class="button" wx-if="{{hiddenSuccess}}" bindtap='submit'>提交</view>
 

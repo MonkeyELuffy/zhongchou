@@ -2,6 +2,9 @@
 page {
   background-color: #eee;
 }
+.item-contain{
+  padding-bottom: 100rpx;
+}
 .title{
   color: #737373;
   font-size: 26rpx;

@@ -24,7 +24,7 @@ Page({
         id: 0,
         img: '../../img/zhongchou/shenqingruzhu.png',
         text: '申请入驻',
-        page: ''
+        page: 'shenqingruzhu'
       },
       {
         id: 1,
@@ -211,6 +211,7 @@ Page({
   },
   processLocation(res){
     console.log('请求当前位置返回数据', res)
+    app.globalData.firstAddress = res.result.address
     this.setData({
       //此时应该显示的城市名称
       positionValue: res.result.ad_info.district

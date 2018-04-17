@@ -93,3 +93,6 @@ input{
   box-sizing: border-box;
   position: relative;
 }
+map{
+  width: 100%;
+}

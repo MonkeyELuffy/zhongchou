@@ -76,6 +76,41 @@ function httpPost2(url, data) {
     })
   })
 }
+// 上传单张图片
+function UpLoadImg(data) {
+  var that = this
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: data.url,
+      filePath: data.path,
+      name: 'file',
+      success: function (res) {
+        if (res.statusCode == 200) {
+          console.log('上传图片成功', res)
+          resolve(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log('上传失败', res)
+        reject(res)
+      },
+    })
+  })
+}
+//多张图片上传
+function UpLoadImgs(data){
+  // var uploadImgList = []
+  // for(var i in data){
+  //   uploadImgList.push(UpLoadImg(data[i]))
+  // }
+  // console.log('uploadImgList', uploadImgList)
+  return new Promise((resolve, reject) => {
+    Promise.all([UpLoadImg(data[0]), UpLoadImg(data[1]), UpLoadImg(data[2])])
+      .then(function (res) {
+        resolve(res);
+      })
+  })
+}
 
 module.exports = {
   formatTime: formatTime,
@@ -84,6 +119,8 @@ module.exports = {
   httpGet: httpGet,
   formatNumber: formatNumber,
   loadingshow: loadingshow,
+  UpLoadImg: UpLoadImg,
+  UpLoadImgs: UpLoadImgs,
   showTip: showTip
 }
 

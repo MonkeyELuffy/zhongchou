@@ -81,8 +81,12 @@ App({
   FundMessage: 'Fund/message',
   // 留言列表
   FundMessageList: 'Fund/message_list',
-  // 商家顶部菜单
-  TopNav:'Base/get_list',
+  // 商家顶部分类菜单
+  TopNav: 'Base/get_list',
+  // 申请入驻
+  Apply: 'Apply/apply',
+  // 图片上传地址
+  UploadImg:'Base/upload_img',
 
   onLaunch: function () {
     //获取屏幕高度
@@ -145,10 +149,13 @@ App({
       method: 'POST',
       success: function (res) {
         if (res.data.suc == 'y') {
+          console.log('openid', res.data.data.openid)
           var userInfo = that.globalData.userInfo;
           userInfo.openid = res.data.data.openid;
           that.globalData.openid = res.data.data.openid;
           that.userLogin(userInfo);
+        }else{
+          console.log('openid失败', res.data)
         }
       },
       fail: function (err) {
@@ -210,6 +217,8 @@ App({
       nowPaiXu: 1,
     },
     scrollHeight:0,
+    firstLongitude:0,
+    firstLatitude:0
   },
   showSearchToast: function (e) {
     wx.showLoading({
@@ -235,7 +244,6 @@ App({
       wx.getLocation({
         type: 'wgs84',
         success: function (res) {
-          console.log('在index页面获取用户的经纬度数据', res)
           that.globalData.firstLongitude = res.longitude
           that.globalData.firstLatitude = res.latitude
           resolve(res);
