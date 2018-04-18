@@ -20,39 +20,48 @@ Page({
       name: '红包',
       page: 'hongbao'
       }],
-    orderNav: [{
-      img: '../../img/center/wode_dizhi.png',
-      name: '收货地址',
-      page:'address'
-    }, {
+    orderNav: [
+      {
+        img: '../../img/center/wode_dizhi.png',
+        name: '收货地址',
+        page: 'address'
+      },
+      {
         img: '../../img/center/wode_youhui.png',
         name: '优惠券',
         page: 'youhuiquanlingqu'
-      }, {
+      },
+      {
         img: '../../img/center/wode_kefu.png',
         name: '客户服务',
         page: 'kehufuwu'
-    }, {
+      },
+      {
         img: '../../img/center/wode_xiaoxi.png',
         name: '消息中心',
         page: 'msgCenter'
-      }, {
-        img: '../../img/center/wode_liulan.png',
-        name: '浏览记录',
-        page: 'liulanjilu'
-    }, {
-        img: '../../img/center/wode_jilu.png',
-      name: '关注记录',
-      page: 'wodeguanzhu'
-      }, {
+      },
+      // {
+      //   img: '../../img/center/wode_liulan.png',
+      //   name: '浏览记录',
+      //   page: 'liulanjilu'
+      // },
+      // {
+      //   img: '../../img/center/wode_jilu.png',
+      //   name: '关注记录',
+      //   page: 'wodeguanzhu'
+      // },
+      {
         img: '../../img/center/wode_guanyu.png',
         name: '关于我们',
         page: 'about'
-    }, {
+      },
+      {
         img: '../../img/center/wode_yijian.png',
-      name: '意见反馈',
-      page: 'kehufuwu'
-    }],
+        name: '意见反馈',
+        page: 'kehufuwu'
+      }
+    ],
     user_name:'请登录',
     avatar:'../../img/user_img.png',
     level: '会员级别',

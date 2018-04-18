@@ -20,30 +20,16 @@ function clickTooFast(data, that) {
   })
 }
 
-function clickNav(e, that, item) {
+function clickSuperNav(e, that, item) {
   console.log(item)
   var go = function (e) {
     var page = item.page
-    //酒店和餐饮是回到tab页面
-    if (page == 'jiudian' || page == 'canyin') {
-      page = '../' + page + '/' + page
-      wx.switchTab({
-        url: page
-      })
-    } else if (page == "jiudianList" || page == 'canyinList') {
-      // 点击nav去到酒店列表或者餐饮列表，需要trade_id
-      var params = { trade_id: item.trade_id }
-      page = '../' + page + '/' + page + '?params=' + JSON.stringify(params)
-      wx.navigateTo({
-        url: page
-      })
-    } else {
-      // 无参数跳转页面
-      page = '../' + page + '/' + page
-      wx.navigateTo({
-        url: page
-      })
-    }
+    // 点击nav去到商家列表，需要trade_id
+    var params = { trade_id: item.trade_id }
+    page = '../' + page + '/' + page + '?params=' + JSON.stringify(params)
+    wx.navigateTo({
+      url: page
+    })
   }
   var data = { go, e }
   clickTooFast(data, that)
@@ -51,5 +37,5 @@ function clickNav(e, that, item) {
 
 
 module.exports = {
-  clickNav: clickNav,
+  clickSuperNav: clickSuperNav,
 }

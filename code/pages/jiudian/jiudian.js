@@ -137,6 +137,11 @@ Page({
     if (res.suc == 'y') {
       var dataList = this.data.dataList
       console.log('获取商家list成功', res.data);
+      if ((res.data.list instanceof Array && res.data.list.length < 15) || (res.data.list == '')) {
+        this.setData({
+          showNomore: true
+        })
+      }
       wx.hideLoading()
       for (var i in res.data.list) {
         res.data.list[i].store_img_src = app.globalImageUrl + res.data.list[i].store_img_src
@@ -155,12 +160,12 @@ Page({
       console.log('获取酒店list错误', res);
     }
   },
-  // 进入酒店详情
+  // 进入商家详情
   goDetailPage: function (e) {
     var go = function (e) {
       var seller_id = e.currentTarget.dataset.seller_id
       wx.navigateTo({
-        url: '../jiudianDetail/jiudianDetail?seller_id=' + seller_id,
+        url: '../shangjiadianpu/shangjiadianpu?seller_id=' + seller_id,
       })
     }
     var data = { go, e }

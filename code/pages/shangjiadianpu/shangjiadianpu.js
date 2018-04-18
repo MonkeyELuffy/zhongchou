@@ -65,8 +65,6 @@ Page({
     allGoodsData:{}
   },
   onLoad: function (options) {
-    var that = this
-    console.log('options', options)
     console.log('商家seller_id', options.seller_id);
     this.setData({
       seller_id: options.seller_id
@@ -633,7 +631,7 @@ Page({
   },
   youhuimaidan(e){
     var that = this;
-    basic.goPage('address',that,e)
+    // basic.goPage('address',that,e)
   },
   /*==========
   防止快速点击

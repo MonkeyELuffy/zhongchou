@@ -1,6 +1,7 @@
 // pages/dingdanxiangqing/dingdanxiangqing.js
 //导入js
 var network = require("../../utils/network.js")
+var basic = require("../../utils/basic.js")
 var util = require('../../utils/util.js');
 const app = getApp()
 Page({
@@ -26,7 +27,7 @@ Page({
     //因为在当前页面可以进入选择地址和选择优惠券页面，在对应页面修改地址和优惠券的之后需要刷新数据，但是又不能用wx.navigateTo()这个API回来
     //所在商家店铺、选地址、选优惠券这三个地方请求了最新的orderData数据，都放在全局，然后在此处获取
     var orderData = app.globalData.orderData
-    if (orderData){
+    if (orderData) {
       var typeList = this.data.typeList
       typeList[0].checked = (orderData.address.ship_type == 2)
       typeList[1].checked = (orderData.address.ship_type == 1)
@@ -35,8 +36,6 @@ Page({
         orderData: orderData,
         typeList: typeList,
         ship_type: orderData.address.ship_type,
-        ship_name: orderData.address.ship_name,
-        ship_phone: orderData.address.ship_phone,
       })
     }
   },
@@ -47,6 +46,7 @@ Page({
       typeList[i].checked = false
     }
     typeList[index].checked = true
+    app.globalData.orderData.address.ship_type = typeList[0].checked ? 2 : 1
     this.setData({
       typeList: typeList
     })
@@ -68,12 +68,6 @@ Page({
     var go = function (e) {
       // 0选中代表是快递配送，否则是到店自提
       if (that.data.typeList[0].checked) {
-        // enterAddressFromOrder字段用地址页面判断是否是从订单页面跳转过去的
-        // 不用页面传参是因为地址页面只有onShow没有onLoad，不可以接收参数
-        // buy_key同理
-        app.globalData.enterAddressFromOrder = true;
-        // 后台传过来的buy_key后面多了一个@from_cart，需要去除掉
-        app.globalData.buy_key = that.data.orderData.buy_key.replace("@from_cart", "");
         wx.navigateTo({
           url: "../address/address"
         });
@@ -95,7 +89,7 @@ Page({
       }
       var orderData = that.data.orderData
       //到店自提时必须填写取货人姓名电话
-      if (ship_type == 1 && (that.data.ship_phone == '' || that.data.ship_name == '')){
+      if (ship_type == 1 && (!basic.checkedPhone(that.data.ship_phone) || !basic.checkNull(that.data.ship_name))){
         console.log('到店自提时必须填写取货人姓名电话')
         wx.showModal({
           title: '提醒',
@@ -109,7 +103,7 @@ Page({
         ship_name: that.data.ship_name,
         ship_phone: that.data.ship_phone,
         address_id: orderData.address.address_id,
-        cpns_id: that.data.cpns_id,
+        cpns_id: orderData.cpns_info.cpns_id,
         differ: 1,
         order_from: 'h5',
         remark: that.data.remark,

@@ -83,7 +83,7 @@ Page({
       }
     });
     // 众筹详情
-    util.httpPost(app.globalUrl + app.FundDetail, { fund_id: fund_id }, this.processDetailData);
+    util.httpPost(app.globalUrl + app.FundDetail, { member_id: app.globalData.member_id, fund_id: fund_id }, this.processDetailData);
     // 参与列表
     util.httpPost(app.globalUrl + app.FundAttendList, { fund_id: fund_id }, this.processAttendListData);
     // 留言列表
@@ -95,7 +95,6 @@ Page({
       res.data.logo_url = app.globalImageUrl + res.data.logo_url;
       res.data.value = parseInt(res.data.actual_amount || 0) / parseInt(res.data.amount) * 100;
       res.data.paddingLeft = (res.data.value * 0.8 - 2) + '%';
-      res.data.flag = 1
       res.data.btn = res.data.flag == 1 ? '我要众筹' : (res.data.flag == 2 ? '我要留言' : '已完成')
       this.setData({
         zhongchouInfo: res.data,

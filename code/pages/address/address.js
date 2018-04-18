@@ -36,18 +36,18 @@ Page({
   // 选择地址之后调用接口，重新获取订单数据，然后返回
   choose: function (e) {
     var that = this
+    var pages = getCurrentPages()
+    var prevPage = pages[pages.length - 2]
     var go = function (e) {
-      if (app.globalData.enterAddressFromOrder){
+      // 如果不是从提交订单页面进来的,则点击地址没有任何效果
+      if (prevPage.route == 'pages/tijiaodingdan/tijiaodingdan'){
         //地址id
-        var id = e.currentTarget.dataset.id;
-        // 返回之前修改app.globalData.enterAddressFromOrder
-        app.globalData.enterAddressFromOrder = false;
         var params = {
-          address_id: id,
-          // 此时需要修改ship_type，告诉后台当前的ship_type值为快递配送，而不是到店自提；
-          ship_type: 2,
+          address_id: e.currentTarget.dataset.address_id,
           token: app.globalData.userInfo.token,
-          buy_key: app.globalData.buy_key
+          buy_key: app.globalData.orderData.buy_key,
+          cpns_id: app.globalData.orderData.cpns_info.cpns_id,
+          ship_type: app.globalData.orderData.ship_type,
         }
         util.httpPost(app.globalUrl + app.CONFIRMINFO, params, that.processSubmitData);
       }
@@ -69,7 +69,6 @@ Page({
   },
   //返回结算页面
   goPayPage: function (orderData) {
-    var that = this
     app.globalData.orderData = orderData
     wx.navigateBack()
   },

@@ -14,10 +14,9 @@ Page({
     total_page: 1
   },
   onLoad: function (options) {
-    var that = this
     var search_key = JSON.parse(options.search_key)
     //数据初始化
-    that.setData({
+    this.setData({
       bindDownLoad: true,
       search_key: search_key,
       dataList: [],
@@ -26,9 +25,9 @@ Page({
       page_no: 1,
       page_size: 15,
       cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude,
-      seller_name: that.data.search_key
+      seller_name: search_key
     }
-    that.loadData(params);
+    this.loadData(params);
   },
   // 下拉加载更多购物车数据
   bindDownLoad: function (e) {
@@ -74,6 +73,11 @@ Page({
     if (res.suc == 'y') {
       var dataList = this.data.dataList
       console.log('获取商铺list成功', res.data);
+      if ((res.data.list instanceof Array && res.data.list.length < 15) || (res.data.list == '')) {
+        this.setData({
+          showNomore: true
+        })
+      }
       wx.hideLoading()
       for (var i in res.data.list) {
         res.data.list[i].store_img_src = app.globalImageUrl + res.data.list[i].store_img_src

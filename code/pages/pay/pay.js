@@ -9,7 +9,7 @@ Page({
     money:0,
     payStyle:[
       {
-        img:'../../img/weixin.png',
+        img:'../../imgpay/weixin.png',
         name:'微信支付',
         paytype:'1'
       }, {
@@ -157,22 +157,35 @@ Page({
     })
   },
   //如果直接返回上一页面，需要提醒用户是否放弃本次交易，然后跳过提交订单页面，返回至商家页面
-  // onUnload: function () {
-  //   // 页面关闭
-  //   wx.showModal({
-  //     title: '提醒',
-  //     content: '是否放弃此次交易？',
-  //     success: function (res) {
-  //       if (res.confirm) {
-  //         var pages = getCurrentPages()
-  //         var prevPage = pages[pages.length - 1]
-  //         var prevPrevPage = pages[pages.length - 2]
-  //         prevPage.onUnload()
-  //         prevPrevPage.onLoad({ seller_id:7})
-  //       } else if (res.cancel) {
-  //         console.log('用户点击取消')
-  //       }
-  //     }
-  //   })
-  // }
+  onUnload: function () {
+    // 成功支付之后的页面销毁，不调用后续操作
+    if (!this.data.showSuccess){
+      // 页面关闭
+      wx.showModal({
+        title: '提醒',
+        content: '是否放弃此次交易？在可订单中查询到本次交易。',
+        success: function (res) {
+          var pages = getCurrentPages()
+          var prevPage = pages[pages.length - 1]
+          var prevPrevPage = pages[pages.length - 2]
+          var prevPrevPrevPage = pages[pages.length - 3]
+          console.log('prevPage', prevPage)
+          console.log('prevPrevPage', prevPrevPage)
+          console.log('prevPrevPrevPage', prevPrevPrevPage)
+          // 如果上上一页是商品详情，则需要返回上上上一页
+          if (prevPrevPage.route == "pages/productDetail/productDetail") {
+            wx.navigateBack({
+              delta: 2
+            })
+            prevPrevPrevPage.onLoad({ seller_id: prevPage.data.orderData.goods_item[0].seller_id })
+          } else {
+            wx.navigateBack({
+              delta: 1
+            })
+            prevPrevPage.onLoad({ seller_id: prevPage.data.orderData.goods_item[0].seller_id })
+          }
+        }
+      })
+    }
+  }
 })

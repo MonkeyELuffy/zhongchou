@@ -232,6 +232,11 @@ Page({
       var orders = this.data.orders
       // datalist为空字符串时表示没有此类订单数据
       console.log('获取订单list成功', res.data);
+      if ((res.data.datalist instanceof Array && res.data.datalist.length < 15) || (res.data.datalist == '')){
+        this.setData({
+          showNomore: true
+        })
+      }
       wx.hideLoading()
       //获取数据之后需要改变page和total_page数值，保障上拉加载下一页数据的page值，其余没有需要修改的数据
       if (res.data.datalist == ''){

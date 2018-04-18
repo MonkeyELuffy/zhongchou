@@ -3,7 +3,8 @@ const util = require('../../utils/util.js');
 const config = require('../../utils/config.js');
 const paixuTemp = require('../../utils/paixuTemp.js');
 const bannerTemp = require('../../utils/bannerTemp.js');
-const navTemp = require('../../utils/navTemp.js');
+const navTemp = require('../../utils/navTemp.js'); 
+const superNavTemp = require('../../utils/superNavTemp.js'); 
 const dataItemTemp = require('../../utils/dataItemTemp.js');
 const loadListData = require('../../utils/loadListData.js'); 
 const basic = require('../../utils/basic.js'); 
@@ -78,21 +79,25 @@ Page({
         hasRadius:true,
         navInnerList: [
           {
-            name: '酒店-分类',
-            id: 0
+            name: '酒店-名宿客栈',
+            trade_id: 2,
+            page: 'jiudianList'
           },
           {
-            name: '酒店-分类',
-            id: 0,
+            name: '酒店-排屋别墅',
+            trade_id: 3,
             hasRadius: true,
+            page: 'jiudianList'
           },
           {
-            name: '酒店-分类',
-            id: 0
+            name: '酒店-度假公寓',
+            trade_id: 4,
+            page: 'jiudianList'
           },
           {
-            name: '酒店-分类',
-            id: 0
+            name: '酒店-星级酒店',
+            trade_id: 5,
+            page: 'jiudianList'
           },
         ]
       },
@@ -103,20 +108,24 @@ Page({
         innerNavColor: '#a2ea8e',
         navInnerList: [
           {
-            name: '旅游-分类',
-            id: 0
+            name: '旅游-国内游',
+            trade_id: 7,
+            page: 'jiudianList'
           },
           {
-            name: '旅游-分类',
-            id: 0
+            name: '旅游-景点门票',
+            trade_id: 8,
+            page: 'jiudianList'
           },
           {
-            name: '旅游-分类',
-            id: 0
+            name: '旅游-境外游',
+            trade_id: 9,
+            page: 'jiudianList'
           },
           {
-            name: '旅游-分类',
-            id: 0
+            name: '旅游-跟团游',
+            trade_id: 10,
+            page: 'jiudianList'
           },
         ]
       },
@@ -127,20 +136,24 @@ Page({
         innerNavColor: '#fdda7b',
         navInnerList: [
           {
-            name: '餐饮-分类',
-            id: 0
+            name: '餐饮-农家味道',
+            trade_id:12,
+            page: 'jiudianList'
           },
           {
-            name: '餐饮-分类',
-            id: 0
+            name: '餐饮-西式餐厅',
+            trade_id: 13,
+            page: 'jiudianList'
           },
           {
-            name: '餐饮-分类',
-            id: 0
+            name: '餐饮-地方早点',
+            trade_id: 14,
+            page: 'jiudianList'
           },
           {
-            name: '餐饮-分类',
-            id: 0
+            name: '餐饮-咖啡茶座',
+            trade_id: 15,
+            page: 'jiudianList'
           },
         ]
       },
@@ -151,20 +164,24 @@ Page({
         innerNavColor:'#fdb2af',
         navInnerList: [
           {
-            name: '服饰-分类',
-            id: 0
+            name: '服饰-珠宝首饰',
+            trade_id: 17,
+            page: 'jiudianList'
           },
           {
-            name: '服饰-分类',
-            id: 0
+            name: '服饰-潮流饰品',
+            trade_id: 18,
+            page: 'jiudianList'
           },
           {
-            name: '服饰-分类',
-            id: 0
+            name: '服饰-品质手表',
+            trade_id: 19,
+            page: 'jiudianList'
           },
           {
-            name: '服饰-分类',
-            id: 0
+            name: '服饰-绅士配件',
+            trade_id: 20,
+            page: 'jiudianList'
           },
         ]
       },
@@ -338,6 +355,11 @@ Page({
     if (res.suc == 'y') {
       var dataList = this.data.dataList
       console.log('获取商铺list成功', res.data);
+      if ((res.data.list instanceof Array && res.data.list.length < 15) || (res.data.list == '')) {
+        this.setData({
+          showNomore: true
+        })
+      }
       // if (app.globalData.hasLogin){
         wx.hideLoading()
       // }
@@ -386,6 +408,12 @@ Page({
   clickBanner: function (e) {
     var that = this
     bannerTemp.clickBanner(e, that)
+  },
+  // 点击顶部大分类菜单
+  clickSuperNav(e){
+    var that = this
+    var item = e.currentTarget.dataset.item
+    superNavTemp.clickSuperNav(e, that, item)
   },
   // 点击子菜单
   clickNav: function (e) {

@@ -436,7 +436,7 @@ Page({
       buy_key = buy_key.join('|')
       var data = {
         buy_key: buy_key,
-        member_id: app.globalData.member_id
+        token: app.globalData.userInfo.token
       }
       util.httpPost(app.globalUrl + app.CARTSUBMIT, data, that.processSubmitData);
     }
@@ -491,10 +491,6 @@ Page({
     // 返回上一页的时候，刷新上一页数据
     var pages = getCurrentPages()
     var prevPage = pages[pages.length - 2]
-    console.log(prevPage.route)
-    var options = {
-      seller_id: this.data.seller_id
-    }
-    prevPage.onLoad(options)
+    prevPage.onLoad({seller_id: this.data.seller_id})
   }
 })  

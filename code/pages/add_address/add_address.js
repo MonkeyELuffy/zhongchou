@@ -1,5 +1,6 @@
 // pages/add_address/add_address.js
 var util = require('../../utils/util.js');
+var basic = require('../../utils/basic.js');
 var address = require('../../utils/cityList.js');
 var app = getApp();
 Page({
@@ -72,7 +73,8 @@ Page({
       var address = new_address.add
       var phone = new_address.tel
       var reg = /^1[3|5|7|8]\d{9}$/;
-      if (!shr_name || shr_name === '') {
+      
+      if (!shr_name || !basic.checkNull(shr_name)) {
         wx.showToast({
           title: '请输入用户姓名',
           content: '600',
@@ -82,12 +84,12 @@ Page({
           title: '请输入正确的手机号',
           content: '600',
         })
-      } else if (!areaInfo || areaInfo === '') {
+      } else if (!areaInfo || !basic.checkNull(address)) {
         wx.showToast({
           title: '请选择所在地区',
           content: '600',
         })
-      } else if (!address || address === '') {
+      } else if (!address || !basic.checkNull(address)) {
         wx.showToast({
           title: '请输入地址',
           content: '600',

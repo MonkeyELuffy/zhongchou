@@ -53,4 +53,11 @@ Page({
       })
     }
   },
+  //如果直接返回上一页面，刷新上一页数据
+  onUnload: function () {
+    var pages = getCurrentPages()
+    var prevPage = pages[pages.length - 2]
+    var params = { id: this.data.zhongchouInfo.id }
+    prevPage.onLoad(params)
+  }
 })

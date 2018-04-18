@@ -86,7 +86,11 @@ App({
   // 申请入驻
   Apply: 'Apply/apply',
   // 图片上传地址
-  UploadImg:'Base/upload_img',
+  UploadImg: 'Base/upload_img',
+  // 优惠券
+  CouponList: 'Coupon/index', 
+  // 领取优惠券
+  GetCoupon: 'Coupon/draw', 
 
   onLaunch: function () {
     //获取屏幕高度

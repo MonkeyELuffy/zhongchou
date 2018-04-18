@@ -2,7 +2,7 @@
 
 
 <view class="address" wx:for="{{address}}" >
-  <view class="address-message"  bindtap="choose"  wx:for-index="index" data-index="{{index}}" data-id="{{item.id}}">
+  <view class="address-message"  bindtap="choose"  wx:for-index="index" data-index="{{index}}" data-address_id="{{item.id}}">
     <view class="address-name-tel">{{item.shr_name}} {{item.phone}}  </view>
     <view class="now-address">{{item.shr_province}} {{item.shr_city}} {{item.shr_area}} {{item.address}}</view>
   </view>
