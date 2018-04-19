@@ -67,14 +67,11 @@ Page({
     //获取屏幕高度
     wx.getSystemInfo({
       success: function (res) {
-        console.info(res.windowHeight);
         that.setData({
-          scrollHeight: res.windowHeight
+          scrollHeight: res.windowHeight - 70 * res.screenWidth / 750
         });
       }
     });
-    //加载文章列表数据
-    // that.loadData()
   },
   // 管理
   guanli:function(e){

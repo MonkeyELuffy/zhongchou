@@ -4,7 +4,7 @@
   <view class='total-text'>总资产</view>
 </view>
 
-<view class="center-nav" bindtap="{{goPage}}" data-page="b">
+<view class="center-nav" bindtap="goPage" data-page="zhangdanmingxi">
   <view class="item">账单明细</view>
   <image src="{{more}}" class="more"></image>        
 </view>

@@ -41,11 +41,11 @@ Page({
         name: '消息中心',
         page: 'msgCenter'
       },
-      // {
-      //   img: '../../img/center/wode_liulan.png',
-      //   name: '浏览记录',
-      //   page: 'liulanjilu'
-      // },
+      {
+        img: '../../img/center/wode_liulan.png',
+        name: '浏览记录',
+        page: 'liulanjilu'
+      },
       // {
       //   img: '../../img/center/wode_jilu.png',
       //   name: '关注记录',

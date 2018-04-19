@@ -90,7 +90,17 @@ App({
   // 优惠券
   CouponList: 'Coupon/index', 
   // 领取优惠券
-  GetCoupon: 'Coupon/draw', 
+  GetCoupon: 'Coupon/draw',
+  // 获取浏览记录
+  GlanceList: 'Other/glance',
+  // 删除浏览记录
+  DelGlance: 'Other/delete',
+  // 账单明细
+  MoneyDetail: 'Money/money_detail',
+  // 红包获取记录
+  MoneyGetPack: 'Money/getPack',
+  // 消息列表
+  NewsList: 'other/news_list',
 
   onLaunch: function () {
     //获取屏幕高度

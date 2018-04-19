@@ -1,6 +1,8 @@
 
 <template name="dataItemTemp">
-  <view class='item  flex-none' wx:for='{{dataList}}' bindtap="clickItem" data-seller_id="{{item.seller_id}}" data-item="{{item}}">
+  <view class='item  flex-none' wx:for='{{dataList}}' bindtap="clickItem" data-seller_id="{{item.seller_id}}" data-item="{{item}}"  for:index='index' data-index='{{index}}'>
+    <!--编辑的时候显示  -->
+    <image wx:if='{{item.showDel}}' class='choose-img' src="{{item.checked ? item.checkedImg : item.unCheckedImg}}"></image>
     <view class='img-contain'>
       <image class='item-image' src='{{item.store_img_src}}'></image>
     </view>
@@ -18,7 +20,7 @@
       <!--销量和距离  -->
       <view class='sale-and-juli flex-between'>
         <view class='sale'>销量({{item.inventory || 0}})</view>
-        <view class='juli'>距离：{{item.cur_space}}</view>
+        <view class='juli' hidden='{{!item.cur_space}}'>距离：{{item.cur_space}}</view>
       </view>
     </view>
   </view>

@@ -35,7 +35,7 @@ Page({
     }
     this.loadData(params);
   },
-  // 下拉加载更多购物车数据
+  // 下拉加载
   bindDownLoad: function (e) {
     var params = {
       page_no: this.data.page_no,
