@@ -4,6 +4,7 @@
   box-sizing: border-box;
   height: 100vh;
   background-color: #fff;
+  padding-top: 30rpx;
 }
 .button {
   width: 500rpx;
@@ -24,12 +25,13 @@
   color: #999;
 }
 textarea{
-  margin: 30rpx 40rpx;
+  margin: 0 auto;
   border-radius: 20rpx;
   border: 2rpx solid rgb(19, 191, 222);
   font-size: 28rpx;
   color: #666;
   padding: 30rpx 40rpx;
+  box-sizing: border-box;
 }
 .textarea-placeholder{
   color: #999;

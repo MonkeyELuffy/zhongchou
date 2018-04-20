@@ -37,7 +37,7 @@ Page({
       {
         name: '待付款',
         type: 1,
-        checked: true
+        checked: false
       }, {
         name: '待收货',
         type: 2,
@@ -60,7 +60,7 @@ Page({
     })
   },
   onShow() {
-    var nowType = parseInt(this.data.nowType)
+    var nowType = wx.getStorageSync('nowOrderType') || 1
     var btns;
     switch (nowType) {
       case 1:
@@ -76,11 +76,17 @@ Page({
         btns = [];
         break;
     }
+    var navItems = this.data.navItems
+    for (var i in navItems){
+      navItems[i].checked = false
+    }
+    navItems[nowType-1].checked = true
     this.setData({
       bindDownLoad: true,
       page_no: 1,
       total_page: 1,
       btns: btns,
+      navItems: navItems,
       orders: [],
       showNomore: false
     })
@@ -90,7 +96,7 @@ Page({
       type: nowType,
       differ: differ,
       page_no: 1,
-      pagenum: 15,
+      page_size: 15,
     }
     this.loadListData(params)
   },
@@ -149,7 +155,7 @@ Page({
         type: 1,
         differ: 2,
         page_no: 1,
-        pagenum: 15,
+        page_size: 15,
       }
       this.loadListData(params)
     }
@@ -188,7 +194,7 @@ Page({
         type: 1,
         differ: 1,
         page_no: 1,
-        pagenum: 15,
+        page_size: 15,
       }
       this.loadListData(params)
     }
@@ -208,7 +214,7 @@ Page({
   //     type: index,
   //     differ: differ,
   //     page_no: 1,
-  //     pagenum: 15,
+  //     page_size: 15,
   //   }
   //   this.loadListData(params)
   // },
@@ -223,7 +229,7 @@ Page({
       type: nowType,
       differ: differ,
       page_no: this.data.page_no,
-      pagenum: 15,
+      page_size: 15,
     }
     this.loadListData(params)
   },
@@ -319,32 +325,33 @@ Page({
       navItems[index]['checked'] = true
       //按钮组需要根据订单类型转换
       var btns = [];
-          switch (item.type) {
-            case 1:
-              btns = ['付款'];
-              break;
-            case 2:
-              btns = ['联系商家', '确认收货'];
-              break;
-            case 3:
-              btns = ['评价'];
-              break;
-            case 4:
-              btns = [];
-              break;
-            case 5:
-              btns = [];
-              break;
-          }
+        switch (item.type) {
+          case 1:
+            btns = ['付款'];
+            break;
+          case 2:
+            btns = ['联系商家', '确认收货'];
+            break;
+          case 3:
+            btns = ['评价'];
+            break;
+          case 4:
+            btns = [];
+            break;
+          case 5:
+            btns = [];
+            break;
+      }
       that.setData({
         orders: [],
         page_no: 1,
         bindDownLoad: true,
-        index: index, 
+        index: index,
         nowType: item.type,
         navItems: navItems,
         btns: btns
       })
+      wx.setStorageSync('nowOrderType', item.type)
       //切换顶部菜单时，初始化数据
       var differ = that.data.orderTypeList[1].checked ? 1 : 2
       var params = {
@@ -352,7 +359,7 @@ Page({
         type: item.type,
         differ: differ,
         page_no: 1,
-        pagenum: 15,
+        page_size: 15,
       }
       that.loadListData(params);
     }
@@ -433,7 +440,7 @@ Page({
         type: nowType ,
         differ: differ,
         page_no: 1,
-        pagenum: 15,
+        page_size: 15,
       }
       that.loadListData(params);
     } else {

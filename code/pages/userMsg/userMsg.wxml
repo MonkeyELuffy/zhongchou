@@ -2,7 +2,7 @@
 <view class="contain">
   <view class="userInfo" wx:for="{{userInfo}}">
    <view class= "key">{{item.key}}</view>
-   <input type="{{item.key==='手机号码' ? 'number' : 'text'}}" class="value" disabled="{{item.can_change}}" value="{{item.value}}" bindinput="changeNameAndMobil" wx:for-index="index" data-index="{{index}}"/>
+   <input type="{{item.key==='绑定手机号' ? 'number' : 'text'}}" class="value" disabled="{{item.can_change}}" value="{{item.value}}" maxlength="{{item.key==='绑定手机号' ? 11 : 20}}" bindinput="changeNameAndMobil" bindtap="{{item.key==='绑定手机号' ? 'bangdingshoujihao' : ''}}" wx:for-index="index" data-index="{{index}}"/>
    <image style="display: {{item.image ? 'block' : 'none'}}" src="{{item.image}}" bindtap='changeImg'></image>
   </view>
 

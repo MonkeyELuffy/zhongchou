@@ -1,1 +1,24 @@
 /* pages/shangjiarukou/shangjiarukou.wxss */
+.msg-contain{
+  padding: 300rpx 0 360rpx 0;
+  margin: 0 auto;
+  font-size: 32rpx;
+  color: #999;
+  width: 40%;
+}
+.text{
+  display: inline-block;
+  text-align: left;
+  line-height: 200%;
+}
+image{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 40rpx;
+}
+.item{
+  font-size: 26rpx;
+  color: #999;
+  align-items: center;
+  padding-bottom: 40rpx;
+}

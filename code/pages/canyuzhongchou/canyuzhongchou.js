@@ -48,7 +48,7 @@ Page({
         fund_id: this.data.zhongchouInfo.id,
         amount: this.data.amount,
       }
-      util.httpPost(app.globalUrl + app.FundAttend, params, this.processAttendData);
+      util.httpPost(app.globalUrl + app.FundCharge, params, this.processAttendData);
     }else{
       wx.showToast({
         title: '请输入众筹金额',
@@ -56,31 +56,58 @@ Page({
       })
     }
   },
-  processAttendData(res) {
-    var zhongchouInfo = this.data.zhongchouInfo;
+  processAttendData: function (res) {
     if (res.suc == 'y') {
-      console.log('参与众筹成功', res.data);
-      wx.hideLoading()
-      wx.showToast({
-        title: res.msg,
-        duration: 600
-      })
-      setTimeout(function () {
-        wx.redirectTo({
-          url: '../zhongchoupinglun/zhongchoupinglun?params=' + JSON.stringify(zhongchouInfo)
-        })
-      }, 1000)
+      // 微信支付
+      this.wxPay(res)
     } else {
-      console.log('参与众筹错误', res);
+      wx.hideLoading();
       wx.showToast({
         title: res.msg,
       })
     }
   },
+  // 调用微信支付
+  wxPay(res) {
+    var that = this
+    var zhongchouInfo = this.data.zhongchouInfo;
+    wx.requestPayment({
+      timeStamp: res.data.timeStamp.toString(),
+      nonceStr: res.data.nonceStr,
+      package: res.data.package,
+      signType: res.data.signType,
+      paySign: res.data.paySign,
+      success: function (msg) {
+        if (msg.errMsg == 'requestPayment:ok') {
+          wx.hideLoading();
+          wx.showToast({
+            title: res.msg,
+            duration: 600
+          })
+          setTimeout(function () {
+            var params = {
+              zhongchouInfo: zhongchouInfo
+            }
+            wx.redirectTo({
+              url: '../zhongchoupinglun/zhongchoupinglun?params=' + JSON.stringify(params)
+            })
+          }, 1000)
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading();
+        console.log('参与众筹错误', res);
+        wx.showToast({
+          title: res.msg,
+        })
+      }
+    });
+  },
   //如果直接返回上一页面，刷新上一页数据
   onUnload: function () {
     var pages = getCurrentPages()
     var prevPage = pages[pages.length - 2]
-    prevPage.onLoad({ fund_id: this.data.zhongchouInfo.id })
+    var params = { id: this.data.zhongchouInfo.id }
+    prevPage.onLoad(params)
   }
 })

@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    msg1: '商家是什么？',
+    msg2: '能给你带来什么？',
+    icon: '../../img/icon_shangjia_u.png',
+    http1: 'www.baidu.com',
+    http2: 'www.baidu.com'
   },
 
   /**

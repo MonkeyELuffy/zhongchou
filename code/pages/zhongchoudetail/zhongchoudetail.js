@@ -127,7 +127,6 @@ Page({
       // that.loadData(index)
       that.changeStyle(index)
     }
-
   },
   //修改顶部菜单样式
   changeStyle: function (index) {

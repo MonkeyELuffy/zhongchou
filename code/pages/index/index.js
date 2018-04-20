@@ -37,7 +37,7 @@ Page({
         id: 2,
         img: '../../img/zhongchou/yaoqing.png',
         text: '邀请好友',
-        page: ''
+        page: 'yaoqinghaoyou'
       },
       {
         id: 3,

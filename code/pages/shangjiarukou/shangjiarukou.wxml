@@ -1,2 +1,16 @@
 <!--pages/shangjiarukou/shangjiarukou.wxml-->
-<text>pages/shangjiarukou/shangjiarukou.wxml</text>
+<view class='msg-contain'>
+  <view class='text'>{{msg1}}</view>
+  <view class='text'>{{msg2}}</view>
+</view>
+
+<view class='bottom-contain'>
+  <view class='item flex'>
+    <image src='{{icon}}'></image>
+    <view class='http'>商户申请链接{{http1}}</view>
+  </view>
+  <view class='item flex'>
+    <image src='{{icon}}'></image>
+    <view class='http'>商户管理链接{{http2}}</view>
+  </view>
+</view>

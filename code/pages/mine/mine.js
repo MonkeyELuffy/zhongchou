@@ -1,35 +1,68 @@
-// pages/equipmentShare/equipmentShare.js
 var app = getApp()
 var util = require('../../utils/util.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    topNav:[{
-        img:'../../img/center/saoyisao.png',
-      name:'扫一扫'
-    }],
-    walletDetail: [{
-      value: 123.34,
-      name: '账户余额',
-      page: 'wodezhanghu'
-    }, {
-      value: 44.43,
-      name: '红包',
-      page: 'hongbao'
-      }],
+    more: '../../img/more.png',
+    topNav: [
+      {
+        value: '0',
+        name: '浏览',
+        page: 'liulanjilu'
+      },
+      // {
+      //   value: '0',
+      //   name: '关注',
+      //   page: 'wodeguanzhu'
+      // },
+      {
+        img: '../../img/center/xiaoxi.png',
+        name: '消息',
+        page: 'msgCenter'
+      },
+      {
+        img: '../../img/center/saoyisao.png',
+        name: '扫一扫'
+      },
+    ],
     orderNav: [
+      {
+        name: '待付款',
+        type: 1,
+        img: '../../img/center/daifahuo.png',
+      }, {
+        name: '待收货',
+        type: 2,
+        img: '../../img/center/daishouhuo.png',
+      }, {
+        name: '待评价',
+        type: 3,
+        img: '../../img/center/daifukuan.png',
+      }, {
+        name: '已完成',
+        type: 4,
+        img: '../../img/center/daipingjia.png',
+      }
+    ],
+    mineNav: [
+      {
+        img: '../../img/center/zhongcou.png',
+        name: '我的众筹',
+        page: 'wodezhongchou'
+      },
+      {
+        img: '../../img/center/wode_xiaoxi.png',
+        name: '我的推广',
+        page: 'yaoqinghaoyou'
+      },
+      {
+        img: '../../img/center/jifen.png',
+        name: '我的积分',
+        page: 'wodejifen'
+      },
       {
         img: '../../img/center/wode_dizhi.png',
         name: '收货地址',
         page: 'address'
-      },
-      {
-        img: '../../img/center/wode_youhui.png',
-        name: '优惠券',
-        page: 'youhuiquanlingqu'
       },
       {
         img: '../../img/center/wode_kefu.png',
@@ -37,37 +70,18 @@ Page({
         page: 'kehufuwu'
       },
       {
-        img: '../../img/center/wode_xiaoxi.png',
-        name: '消息中心',
-        page: 'msgCenter'
-      },
-      {
-        img: '../../img/center/wode_liulan.png',
-        name: '浏览记录',
-        page: 'liulanjilu'
-      },
-      // {
-      //   img: '../../img/center/wode_jilu.png',
-      //   name: '关注记录',
-      //   page: 'wodeguanzhu'
-      // },
-      {
         img: '../../img/center/wode_guanyu.png',
         name: '关于我们',
         page: 'about'
       },
       {
-        img: '../../img/center/wode_yijian.png',
-        name: '意见反馈',
-        page: 'kehufuwu'
+        img: '../../img/center/wode_liulan.png',
+        name: '商家入口',
+        page: 'shangjiarukou'
       }
     ],
     user_name:'请登录',
     avatar:'../../img/user_img.png',
-    level: '会员级别',
-    // 用户等级icon
-    level_icon: '../../img/center/huangguan.png',
-    bg: '../../img/user_bg.png',
   },
   onShow: function () {
     util.httpPost(app.globalUrl + app.GetUserInfoByMemberId, { member_id: app.globalData.member_id }, this.processUserlData);
@@ -93,10 +107,31 @@ Page({
     var that = this
     var go = function(e){
       var url = e.currentTarget.dataset.page
-      url = '../' + url + '/' + url
-      console.log(url)
-      wx.navigateTo({
-        url: url
+      if (url == 'saoyisao'){
+        that.saoyisao()
+      } else if (url == 'userMsg'){
+        url = '../' + url + '/' + url
+        wx.navigateTo({
+          url: url + '?params=' + JSON.stringify(that.data.userInfo)
+        })
+      } else {
+        url = '../' + url + '/' + url
+        wx.navigateTo({
+          url: url
+        })
+      }
+    }
+    var data = { go, e }
+    this.clickTooFast(data)
+  },
+  // 点击订单管理
+  goOrder(e){
+    var that = this
+    var go = function (e) {
+      var item = e.currentTarget.dataset.item
+      wx.setStorageSync('nowOrderType', item.type)
+      wx.switchTab({
+        url: '../order/order'
       })
     }
     var data = { go, e }

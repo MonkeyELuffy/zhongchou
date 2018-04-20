@@ -35,7 +35,6 @@ Page({
     }
   },
   processMessageData(res) {
-    var zhongchouInfo = this.data.zhongchouInfo;
     if (res.suc == 'y') {
       console.log('评价成功', res.data);
       wx.hideLoading()

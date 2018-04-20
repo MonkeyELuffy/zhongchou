@@ -1,2 +1,35 @@
 <!--pages/yaoqinghaoyou/yaoqinghaoyou.wxml-->
-<text>pages/yaoqinghaoyou/yaoqinghaoyou.wxml</text>
+<import src="../imageSwiper/imageSwiper.wxml"/>
+<import src="../noMoreData/noMoreData.wxml"/>
+
+<scroll-view class="fenlei-ul" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+  <!--轮播图组件  --> 
+  <template is="imageSwiper" data="{{slider}}" ></template>
+
+  <view class='interview flex'>
+    <view class='sn'>我的邀请码：{{InviteInfo.sn}}</view>
+    <view class='btn'>复制</view>
+    <view class='btn'>去邀请</view>
+  </view>
+  <view class='sign-contain'>
+    <view class="nav-title flex-center" style="width: 100%">
+      <view class="nav-item flex-all"  wx:for="{{InviteType}}" style="color: {{item.checked ? 'rgb(120, 233, 250)' : '#999' }};" bindtap="checked" wx:for-index="index"  data-index="{{index}}">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <!--子数据组件  -->
+  <view class='item' wx:for='{{showList}}' bindtap="clickItem" data-item="{{item}}"  for:index='index' data-index='{{index}}'>
+    <view class='img-contain flex'>
+      <image class='item-image' src='{{item.img_url || sellerImg}}'></image>
+      <view class='item-name'>{{item.nickname || item.seller_name}}</view>
+    </view>
+    <view class='detail'>
+      <view>邀请时间：{{item.ctime_str || item.create_time}}</view>
+      <view>手机号码：{{item.mobile || phone || '无'}}</view>
+    </view>
+  </view>
+  <!--nomoreData  -->
+  <template is="noMoreData" data="{{showNomore}}"></template>
+</scroll-view>

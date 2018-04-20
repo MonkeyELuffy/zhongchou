@@ -75,7 +75,9 @@ App({
   FundDetail: 'Fund/detail',
   // 我要众筹
   FundAttend: 'Fund/get_attend',
-  // 参与列表
+  // 众筹支付
+  FundCharge: 'Payment/FundCharge',
+  // 参与列表、我的众筹
   FundAttendList: 'Fund/attend_list',
   // 我要留言
   FundMessage: 'Fund/message',
@@ -101,6 +103,10 @@ App({
   MoneyGetPack: 'Money/getPack',
   // 消息列表
   NewsList: 'other/news_list',
+  // 邀请会员界面数据接口
+  Invite: 'Invite/index',
+  // 邀请会员或者店铺的列表
+  InviteList: 'Invite/get_list',
 
   onLaunch: function () {
     //获取屏幕高度

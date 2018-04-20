@@ -24,7 +24,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var globalDatauserInfo = app.globalData.userInfo
+    var globalDatauserInfo = JSON.parse(options.params)
     var userInfo = this.data.userInfo
     userInfo[0]["image"] = globalDatauserInfo.img_url
     userInfo[1]["value"] = globalDatauserInfo.rel_name
@@ -61,13 +61,13 @@ Page({
           rel_name: rel_name,
         }
         //请求用户地址
-        util.httpPost(app.globalUrl + app.Memberid, data, this.processData);
+        util.httpPost(app.globalUrl + app.Memberid, data, that.processData);
       }
     }
     var data = { go, e }
     this.clickTooFast(data)
   },
-  processrData: function (res) {
+  processData: function (res) {
     if (res.suc == 'y') {
       console.log(res.data)
       app.globalData.userInfo = res.data
@@ -83,41 +83,27 @@ Page({
     }
   },
   //修改头像
-  changeImg: function () {
-    var that = this;
-    wx.chooseImage({
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths
-        that.setData({
-          'userInfo[0].image': tempFilePaths
-        })
-        // wx.uploadFile({
-        //   url: app.globalData.rootUrl + '/info/update_name',
-        //   filePath: tempFilePaths[0],
-        //   name: 'file',
-        //   formData: {
-        //     'user': 'test'
-        //   },
-        //   success: function (res) {
-        //     var data = res.data
-        //     console.log('修改头像之后的res：', tempFilePaths[0])
-        //     that.setData({
-        //       'userInfo[0].image': tempFilePaths[0]
-        //     })
-
-        //     var userInfo = wx.getStorageSync("userInfo")
-        //     userInfo.avatar = tempFilePaths[0]
-        //     wx.setStorage({
-        //       key: "userInfo",
-        //       data: userInfo
-        //     })
-        //     //do something
-        //   }
-        // })
-      }
-    })
+  // changeImg: function () {
+  //   var that = this;
+  //   wx.chooseImage({
+  //     success: function (res) {
+  //       var tempFilePaths = res.tempFilePaths
+  //       that.setData({
+  //         'userInfo[0].image': tempFilePaths
+  //       })
+  //     }
+  //   })
+  // },
+  bangdingshoujihao(){
+    var that = this
+    var go = function (e) {
+      wx.navigateTo({
+        url: '../bangdingshoujihao/bangdingshoujihao'
+      })
+    }
+    var data = { go, e }
+    this.clickTooFast(data)
   },
-
   /*==========
   防止快速点击
   ===========*/

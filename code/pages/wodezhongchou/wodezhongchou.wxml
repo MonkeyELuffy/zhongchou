@@ -1,4 +1,5 @@
 <!--pages/wodezhongchou/wodezhongchou.wxml-->
+<import src="../noMoreData/noMoreData.wxml"/>
 <view class="fenlei-contianer">
   <scroll-view class="fenlei-ul" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
     <!--子数据  -->
@@ -12,7 +13,7 @@
         <view class='time flex-end'>众筹时间：{{item.time}}</view>
       </view>
     </view>
-    <!-- <view class="no-more">没有更多的数据了</view>  -->
-    <view style="width:100%;height:100rpx;"></view>
+    <!--nomoreData  -->
+    <template is="noMoreData" data="{{showNomore}}"></template>
   </scroll-view>
 </view> 
