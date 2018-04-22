@@ -1,14 +1,17 @@
-page {
-  background-color: #ddd;
-}
+@import "../navTemp/navTemp.wxss";
+@import "../paixuTemplate/paixuTemplate.wxss";
+@import "../imageSwiper/imageSwiper.wxss";
 
+page{
+  background-color: #fff;
+}
 /*横向排列的菜单*/
 .nav-title {
   z-index: 100;
   width: 100%;
-  background-color: #ddd;
-  color: #666;
   font-size: 28rpx;
+  background-color: #eee;
+  color: #fff;
   white-space: nowrap; 
   box-shadow: 0rpx 0rpx 2rpx #ddd ;
 }
@@ -19,9 +22,10 @@ page {
   text-align: center;
   line-height: 60rpx;
   margin: 20rpx;
-  color: #fff;
   border-radius: 10rpx;
-  
+}
+.checked{
+  background: linear-gradient(to right,rgb(19, 191, 222), rgb(120, 233, 250));
 }
 /*菜单定位*/
 .nav-title-clear {
@@ -96,7 +100,6 @@ page {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 0rpx 0rpx 20rpx 0rpx;
   box-sizing: border-box;
 }
 .fenlei-contianer .fenlei-title {
@@ -127,24 +130,25 @@ page {
 .fenlei-contianer .fenlei-list:nth-child(2n+1){
   margin-right: 2%;
 }
-.fenlei-contianer .fenlei-list image {
-  width: 100%;
-  height: 210rpx;
-}
 .fenlei-contianer .fenlei-list .fenlei-text {
   font-size: 24rpx;
-  padding: 10rpx;
+  padding: 10rpx 20rpx;
   flex: 1 1;
 }
 .fenlei-contianer .fenlei-list .fenlei-text .text {
   font-size: 28rpx;
+  color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 40rpx;
 }
 .fenlei-contianer .fenlei-list .fenlei-price-total {
   margin-top: 20rpx;
 }
 .fenlei-contianer .fenlei-list .fenlei-price-total .fenlei-price {
   color: #f83030;
-  font-size: 26rpx;
+  font-size: 24rpx;
   padding: 0 10rpx;
 }
 .fenlei-contianer .fenlei-list .fenlei-price-total .fenlei-total {
@@ -163,18 +167,19 @@ page {
   font-size: 22rpx;
 }
 .label-item{
-  width: 76rpx;
-  height: 30rpx;
-  line-height: 30rpx;
-  text-align: center;
+  padding: 6rpx;
+  border-radius: 4rpx;
   border: 1rpx solid #f68076;
   margin-right: 8rpx;
+  text-align: center;
+  background-color: #f68076;
+  color: #fff;
+  line-height: 18rpx;
 }
 .haoping{
   font-size: 24rpx;
   color: #666;
 }
-
 
 .no-more{
   width: 100%;
@@ -185,73 +190,71 @@ page {
   text-align: center;
 }
 
-/*排序  */
-.tab{
-  top: 88rpx;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-bottom: 10rpx solid #ddd;
-  width: 100%;
-  color: #333;
-}
-.tab-item{
-  width: 33%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28rpx;
-  padding: 30rpx 0;
-}
-.tab-up-down{
-  width: 22rpx;
-  height: 38rpx;
-  margin-left: 20rpx;
-}
-
-.top-contain{
-  width: 100%;
-  z-index: 100;
-  background-color: #ddd;
-}
-
 .juli{
   font-size: 20rpx;
   color: #999;
 }
-
-.nav3-list {
-  background-color: #fff;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 40rpx;
-  box-sizing: border-box;
-  box-shadow: 0 8rpx 10rpx #ccc;
-  justify-content: space-between;
+/*日期筛选  */
+.choose-data-contain{
+  width: 80%;
+  margin: 30rpx auto;
 }
-.nav3-list-image {
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav3-list .nav3-item {
-  width: 24%;
-  display: flex;
-  padding-bottom: 54rpx;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.nav3-list .nav3-item image {
- width: 100rpx;
- height: 100rpx; 
-}
-.nav3-list .nav3-item .nav3-name {
+.time-contain{
+  border-radius: 10rpx;
+  background-color: rgb(214, 247, 255);
+  padding: 4rpx 0;
   font-size: 24rpx;
-  padding-top: 6rpx;
-  color: #666;
+  min-height: 90rpx;
+  margin-bottom: 10rpx;
+}
+.time-title{
+  text-align: center;
+  color: #999;
+  padding-bottom:4rpx;
+}
+.title{
+  width: 50%;
+  text-align: center;
+  color: #999;
+}
+.ruzhu-time{
+  width: 50%;
+  text-align: center;
+}
+.picker{
+  height: 42rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.choose-item{
+  width: 100%;
+}
+.picker-contain{
+  width: 50%;
+  text-align: center;
+}
+.button {
+  height: 100rpx;
+  background: linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
+  border-radius: 40rpx;
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  margin: 20rpx auto;
+  text-align: center;
+}
+
+.img-contain{
+  width: 100%;
+  height: 210rpx;
+  overflow: hidden;
+}
+.img-contain image{
+  width: 100%;
+  max-height: 100%;
+  border-width:medium;
+border:1px solid #999;
+padding:6rpx;
+box-sizing:border-box;
+
 }

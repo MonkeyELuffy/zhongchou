@@ -3,14 +3,14 @@
 <view class="fenlei-contianer">
   <scroll-view class="fenlei-ul" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
     <!--子数据  -->
-    <view class='item' wx:for='{{dataList}}' bindtap="goDetail" data-id="{{item.id}}" for:index='index' data-index='{{index}}'>
-      <view class='name'><span style='color:#737373;font-size: 28rpx;'>众筹方：</span>{{item.name}}</view>
+    <view class='item' wx:for='{{dataList}}' bindtap="clickItem" data-item="{{item}}" for:index='index' data-index='{{index}}'>
+      <view class='name'><span style='color:#737373;font-size: 28rpx;'>众筹方：</span>{{item.seller_name}}</view>
       <view class='detail flex-all'>
         <view class='detail-name flex-between'>
-          <view class='value'><span style='color:#737373;font-size: 30rpx;'>众筹金额：</span>￥{{item.value}}</view>
+          <view class='value'><span style='color:#737373;font-size: 30rpx;'>众筹金额：</span>￥{{item.amount}}</view>
           <view class='bili'>所占比例：{{item.bili}}%</view>
         </view>
-        <view class='time flex-end'>众筹时间：{{item.time}}</view>
+        <view class='time flex-end'>众筹时间：{{item.ctime_str}}</view>
       </view>
     </view>
     <!--nomoreData  -->

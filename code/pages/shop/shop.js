@@ -1,182 +1,107 @@
 //index.js
+var util = require('../../utils/util.js');
+var paixuTemp = require('../../utils/paixuTemp.js');
+var bannerTemp = require('../../utils/bannerTemp.js');
+var navTemp = require('../../utils/navTemp.js'); 
+var loadListData = require('../../utils/loadListData.js'); 
+Date.prototype.format = function () {
+  var s = '';
+  var mouth = (this.getMonth() + 1) >= 10 ? (this.getMonth() + 1) : ('0' + (this.getMonth() + 1));
+  // 字符串扩展，可直接补全头部的0
+  // var mouth = (this.getMonth() + 1).toString().padStart(2,0);
+  var day = this.getDate() >= 10 ? this.getDate() : ('0' + this.getDate());
+  s += this.getFullYear() + '-'; // 获取年份。
+  s += mouth + "-"; // 获取月份。
+  s += day; // 获取日。
+  return (s); // 返回日期。
+}; 
 //获取应用实例
 var app = getApp()
 Page({
   data: {
-    slider: [{
-      img: '../../img/banner.png',
-      id: 0
-    }, {
-      img: '../../img/banner1.png',
-      id: 1
-    }],
-    // 排序背景图
-    hangyepaixu: '../../img/paixu0.png',
-    xiaoliangpaixu: '../../img/paixu0.png',
-    julipaixu: '../../img/paixu0.png',
-    paixuList: ['../../img/paixu0.png', '../../img/paixu1.png', '../../img/paixu2.png'],
-    search_key:'',
+    scrollHeight: app.globalData.scrollHeight,
+    //入住条件
+    fanwei: ['我的附近', '5km以内', '10km以内', '不限'],
+    jibie: ['5星级', '4星级', '3星级', '2星级', '1星级'],
+    fanweiindex: 0,
+    jibieindex:0,
+    ruzhuTime: '', 
+    lidianTime: '', 
+    slider: [],
+    // 排序组件所需data
+    allData: app.globalData.allPaiXuData,
     default_image: '../../img/default-image.png',
-    page: 0,
-    cate_id: 0,
-    search_icon: '../../img/search.png', nav_3List: [
-      {
-        id: 0,
-        img: '../../img/nav3-0.png',
-        text: '申请入驻',
-      },
-      {
-        id: 1,
-        img: '../../img/nav3-1.png',
-        text: '优惠券',
-      },
-      {
-        id: 2,
-        img: '../../img/nav3-2.png',
-        text: '邀请好友',
-      },
-      {
-        id: 3,
-        img: '../../img/nav3-3.png',
-        text: '活动',
-      }
-    ],
-    fenlei_list: [
-      {
-        img: '../../img/banner.png',
-        id: 0,
-        name: '万达公馆5星酒店',
-        labels: [{ name: '满减', bgColor: '#f68076' }],
-        haoping: 98,
-        price: 498.00,
-        dic: 1.3
-      },
-      {
-        img: '../../img/banner.png',
-        id: 1,
-        name: '万达公馆5星酒店',
-        labels: [{ name: '满减', bgColor: '#f68076' }],
-        haoping: 98,
-        price: 498.00,
-        dic: 1.3
-      },
-      {
-        img: '../../img/banner.png',
-        id: 2,
-        name: '万达公馆5星酒店',
-        labels: [{ name: '满减', bgColor: '#f68076' }],
-        haoping: 98,
-        price: 498.00,
-        dic: 1.3
-      },
-      {
-        img: '../../img/banner.png',
-        id: 3,
-        name: '万达公馆5星酒店',
-        labels: [{ name: '满减', bgColor: '#f68076' }],
-        haoping: 98,
-        price: 498.00,
-        dic: 1.3
-      }
-    ],
-    // 纵向商品列表 
-    product_list: [],
-    //返回分页数据的总页数
-    total_page:1
+    search_icon: '../../img/search.png', 
+    navItems:[],
+    dataList: [],
+    page_no: 1,
+    total_page:1,
+    showNomore:false
   },
-  onLoad: function () {
-    var that = this;
+  onShow: function () {
     //数据初始化
-    that.setData({
-      bindDownLoad: true,
-      page: 0,
-      // fenlei_list: []
-    })
-    //获取屏幕高度
-    wx.getSystemInfo({
-      success: function (res) {
-        console.info(res.windowHeight);
-        that.setData({
-          scrollHeight: res.windowHeight
-        });
-      }
-    });
-    // 加载分类列表
-    // that.loadNavData()
-
-  },
-  onShow:function(e) {
-
-    wx.setStorageSync('search_key', '')
     this.setData({
-      search_key: ''
+      bindDownLoad: true,
+      page_no: 1,
+      total_page: 1,
+      dataList: [],
+      showNomore: false
     })
+    // 请求顶部菜单
+    this.loadTopNav();
   },
-  //加载分类列表
-  loadNavData: function (e) {
-    var that = this
-    let extData = wx.getExtConfigSync();
-    let appid = extData.authorizer_appid;
-    wx.request({
-      header: {
-        'data': appid
-      },
-      url: app.globalData.rootUrl + '/goods/cate',
-      success: function (res) {
-        console.log("分类列表的返回", res.data)
-        var navItems = []
-        for (var i in res.data.data) {
-          var item = { name: '', checked: false, id: 1 }
-          navItems.push(item)
-          navItems[i].name = res.data.data[i].name
-          navItems[i].id = res.data.data[i].id
-          navItems[i].checked = false
-        }
-        navItems[0].checked = true
-        that.setData({
-          navItems: navItems,
-          cate_id:navItems[0].id
-        })
-
-        //加载分类商品数据
-        that.loadData()
+  loadTopNav(){
+    util.httpPost(app.globalUrl + app.TopNav, {}, this.processTopNavData);
+  },
+  processTopNavData(res){
+    if (res.suc == 'y') {
+      console.log('顶部菜单数据', res.data);
+      for (var i in res.data) {
+        res.data[i].checked = false;
       }
-    })
-  },
-  //进入商品详情
-  goDetailPage: function (e) {
-    var go = function (e) {
-      app.goDetailPage(e)
+      res.data[0].checked = true;      
+      this.setData({
+        navItems: res.data,
+        trade_id: res.data[0].trade_id
+      })
+      var params = {
+        page_no: 1,
+        page_size: 15,
+        trade_id: this.data.trade_id,
+        cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
+      }
+      this.loadListData(params);
     }
-    var data = { go, e }
-    this.clickTooFast(data)
   },
   /* ===选择顶部菜单 */
   checked: function (e) {
-    var that = this
-    var cate_id = e.target.dataset.id;
+    var trade_id = e.target.dataset.item.trade_id;
     //点击已选中的菜单时，直接返回
-    if (cate_id === that.data.cate_id) {
+    if (trade_id === this.data.trade_id) {
       return
-    }else{
-      that.setData({
-        cate_id: cate_id,
-        page: 0,
-        fenlei_list: [],
+    } else {
+      this.setData({
         bindDownLoad: true,
-        total_page:1
+        page_no: 1,
+        total_page: 1,
+        dataList: [],
+        showNomore: false,
+        trade_id: trade_id,
+        allData: app.globalData.allPaiXuData,
       })
-      console.log('=====', that.data.bindDownLoad)
-      that.loadData()
       var index = e.target.dataset.index;
-      that.changeStyle(index)
+      var params = {
+        page_no: 1,
+        page_size: 15,
+        trade_id: this.data.trade_id,
+        cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
+      }
+      this.loadListData(params);
+      this.changeStyle(index)
     }
-
   },
   //修改顶部菜单样式
   changeStyle: function (index) {
-    
-    console.log('index===============', parseInt(-1/10))
     var navItems = this.data.navItems
     for (var i = 0; i < navItems.length; i++) {
       navItems[i]['checked'] = false
@@ -186,127 +111,166 @@ Page({
       navItems: navItems
     })
   },
-  // 输入搜索文字
-  input: function (e) {
-    var search_key = e.detail.value
-    wx.setStorageSync("search_key", search_key)
-    console.log(search_key)
+  // 下拉加载更多购物车数据
+  bindDownLoad: function (e) {
+    var params = {
+      page_no: this.data.page_no,
+      page_size: 15,
+      trade_id: this.data.trade_id,
+      cur_fixed: app.globalData.firstLongitude + ',' + app.globalData.firstLatitude
+    }
+    this.loadListData(params)
+  },
+  // 加载数据
+  loadListData: function (params) {
+    var that = this
+    var allParams = {
+      that: that,
+      params: params,
+      app: app,
+      processData: that.processStoreData,
+      API: app.STORELIST
+    }
+    loadListData.loadListData(allParams)
+  },
+  processStoreData(res) {
+    if (res.suc == 'y') {
+      var dataList = this.data.dataList
+      console.log('获取商家list成功', res.data);
+      if ((res.data.list instanceof Array && res.data.list.length < 15) || (res.data.list == '')) {
+        this.setData({
+          showNomore: true
+        })
+      }
+      wx.hideLoading()
+      for (var i in res.data.list) {
+        res.data.list[i].store_img_src = app.globalImageUrl + res.data.list[i].store_img_src
+        res.data.list[i].special = res.data.list[i].special.split(",");
+      }
+      //获取数据之后需要改变page_no和total_page数值，保障上拉加载下一页数据的page_no值，其余没有需要修改的数据
+      dataList = dataList.concat(res.data.list)
+      // rest写法
+      // dataList = [...dataList,...res.data.list]
+      this.setData({
+        page_no: this.data.page_no + 1,
+        total_page: res.data.total_page,
+        dataList: dataList,
+      })
+    } else {
+      console.log('获取酒店list错误', res);
+    }
+  },
+  // 进入商家详情
+  goDetailPage: function (e) {
+    var go = function (e) {
+      var seller_id = e.currentTarget.dataset.seller_id
+      wx.navigateTo({
+        url: '../shangjiadianpu/shangjiadianpu?seller_id=' + seller_id,
+      })
+    }
+    var data = { go, e }
+    this.clickTooFast(data)
   },
   // 确认搜索
   search: function (e) {
     var that = this
-    var search_key = wx.getStorageSync('search_key')
-    if (search_key.replace(/(^\s*)|(\s*$)/g, "").length == 0) {
-      wx.showToast({
-        title: '请输入您要搜索的商品',
-        duration: 1000
-      })
-    } else {
-      var go = function (e) {
+    var go = function (e) {
+      var ruzhuTime = that.data.ruzhuTime
+      var lidianTime = that.data.lidianTime
+      var fanweiindex = that.data.fanweiindex
+      var distance;
+      switch (fanweiindex) {
+        case 0:
+          distance = 0;
+          break;
+        case 1:
+          distance = 5;
+          break;
+        case 2:
+          distance = 10;
+          break;
+        case 3:
+          distance = null;
+          break;
+      }
+      if (ruzhuTime > lidianTime){
+        wx.showToast({
+          title: '入住时间不可晚于离店时间',
+        })
+        return
+      }else{
+        // 目前只传酒店级别，之后需要加上范围值
+        var params = {
+          store_str: 5 - parseInt(that.data.jibieindex),
+          distance: distance,
+        }
         wx.navigateTo({
-          url: '../search2/search2'
+          url: '../jiudianList/jiudianList?params=' + JSON.stringify(params),
         })
       }
-      var data = { go, e }
-      that.clickTooFast(data)
     }
+    var data = { go, e }
+    this.clickTooFast(data)
   },
-  // 下拉加载更多购物车数据
-  bindDownLoad: function (e) {
-    this.loadData()
+  fanwei: function (e) {
+    this.setData({
+      fanweiindex: e.detail.value
+    })
   },
-
-  /*===========
-  加载数据
-  ===========*/
-  loadData: function (e) {
-    var that = this
-    console.log('parseInt(that.data.page) , parseInt(that.data.total_page)', parseInt(that.data.page), parseInt(that.data.total_page))
-    if (that.data.bindDownLoad && parseInt(that.data.page) < parseInt(that.data.total_page)) {
-      that.setData({
-        bindDownLoad: false
-      })
-      //加载数据
-      wx.showLoading({
-        title: '加载中',
-      })
-      setTimeout(function () {
-        wx.hideLoading()
-      }, 600)
-
-      let extData = wx.getExtConfigSync();
-      let appid = extData.authorizer_appid;
-      wx.request({
-        header: {
-          'data': appid
-        },
-        url: app.globalData.rootUrl + '/goods/cate_goods',
-        data: {
-          cate_id: that.data.cate_id,
-          page: parseInt(that.data.page) + 1
-        },
-        success: function (res) {
-          console.log("分类产品列表的返回", res.data)
-          //返回的数据总数
-          var total_goodsList = res.data.total
-          //防止整除的时候最后一页一直请求，所以减1
-          var total_page = parseInt((total_goodsList - 1) / res.data.per_page) + 1
-
-          var fenlei_list = that.data.fenlei_list || []
-          for (var i in res.data.data) {
-            var item = {
-              id: 0,
-              text: '',
-              subtitle: '',
-              price: '',
-              total: 0,
-              img: '',
-              biaozhi: '',
-              color: "red",
-              goods_id: 0
-            }
-            fenlei_list.push(item)
-            if (res.data.data[i].image) {
-              fenlei_list[fenlei_list.length - 1].img = app.globalData.imgUrl + '/' + res.data.data[i].image
-            } else {
-              fenlei_list[fenlei_list.length - 1].img = that.data.default_image
-            }
-
-            fenlei_list[fenlei_list.length - 1].text = res.data.data[i].name
-            fenlei_list[fenlei_list.length - 1].price = res.data.data[i].goods_price
-            fenlei_list[fenlei_list.length - 1].total = res.data.data[i].sales
-            fenlei_list[fenlei_list.length - 1].subtitle = res.data.data[i].subtitle
-            fenlei_list[fenlei_list.length - 1].id = res.data.data[i].id
-            fenlei_list[fenlei_list.length - 1].goods_id = res.data.data[i].goods_id
-            fenlei_list[fenlei_list.length - 1].biaozhi = res.data.data[i].labels
-          }
-          that.setData({
-            fenlei_list: fenlei_list,
-            page: res.data.current_page,
-            total_page: total_page
-          })
-          if (fenlei_list.length > 0) {
-            that.setData({
-              iscart: true
-            })
-          } else {
-            that.setData({
-              iscart: false,
-            });
-          }
-        }
-      })
+  jibie: function (e) {
+    this.setData({
+      jibieindex: e.detail.value
+    })
+  },
+  ruzhu: function (e) {
+    var ruzhuTime = e.detail.value
+    var ruzhuTimeArr = ruzhuTime.split("-");
+    // 如果月份或者天数小于10，则取单数
+    if (ruzhuTimeArr[1][0] == '0'){
+      ruzhuTimeArr[1] = ruzhuTimeArr[1][1]
     }
-    //2000ms之后才可以继续加载，防止加载请求过多
-    setTimeout(function () {
-      that.setData({
-        bindDownLoad: true
-      })
-    }, 1000)
+    if (ruzhuTimeArr[2][0] == '0') {
+      ruzhuTimeArr[2] = ruzhuTimeArr[2][1]
+    }
+    // 重新组装ruzhuTime
+    ruzhuTime = ruzhuTimeArr.join('-')
+    var lidianStarTime = this.getAll(ruzhuTime,'2020-12-12')
+    this.setData({
+      ruzhuTimeText: ruzhuTimeArr[1] + '月' + ruzhuTimeArr[2] + '日',
+      ruzhuTime: ruzhuTime,
+      lidianStarTime: lidianStarTime,
+    })
   },
-
-  clickSwiper: function (e) {
-    console.log(e.target.dataset.id)
+  lidian: function (e) {
+    var lidianTime = e.detail.value
+    var lidianTimeArr = lidianTime.split("-");
+    // 如果月份或者天数小于10，则取单数
+    if (lidianTimeArr[1][0] == '0') {
+      lidianTimeArr[1] = lidianTimeArr[1][1]
+    }
+    if (lidianTimeArr[2][0] == '0') {
+      lidianTimeArr[2] = lidianTimeArr[2][1]
+    }
+    // 重新组装lidianTime
+    lidianTime = lidianTimeArr.join('-')
+    this.setData({
+      lidianTimeText: lidianTimeArr[1] + '月' + lidianTimeArr[2] + '日',
+      lidianTime: lidianTime
+    })
+  },
+  //根据入驻时间设置离店时间以入驻时间第二天开始
+  getAll(begin, end) {
+    var ab = begin.split("-");
+    var ae = end.split("-");
+    var db = new Date();
+    db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);
+    var de = new Date();
+    de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);
+    var unixDb = db.getTime();
+    var unixDe = de.getTime();
+    for (var k = unixDb + (1000*60*60*24); k < unixDe;) {
+      return (new Date(parseInt(k))).format()
+    }
   },
   /*==========
   防止快速点击
@@ -327,6 +291,27 @@ Page({
     this.setData({
       lastTime: curTime
     })
-  }
-
+  },
+  //以下全是组件事件
+  clickBanner: function (e) {
+    var that = this
+    bannerTemp.clickBanner(e, that)
+  },
+  clickNav: function (e) {
+    var that = this
+    var item = e.currentTarget.dataset.item
+    navTemp.clickNav(e, that, item)
+  },
+  hangyepaixu: function (e) {
+    var that = this
+    paixuTemp.hangyepaixu(e, that)
+  },
+  xiaoliangpaixu: function (e) {
+    var that = this
+    paixuTemp.xiaoliangpaixu(e, that)
+  },
+  julipaixu: function (e) {
+    var that = this
+    paixuTemp.julipaixu(e, that)
+  },
 })

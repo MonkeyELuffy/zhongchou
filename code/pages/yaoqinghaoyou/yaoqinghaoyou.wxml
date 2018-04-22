@@ -8,8 +8,8 @@
 
   <view class='interview flex'>
     <view class='sn'>我的邀请码：{{InviteInfo.sn}}</view>
-    <view class='btn'>复制</view>
-    <view class='btn'>去邀请</view>
+    <!-- <view class='btn'>复制</view> -->
+    <button  class='btn' open-type="share">去邀请</button>
   </view>
   <view class='sign-contain'>
     <view class="nav-title flex-center" style="width: 100%">

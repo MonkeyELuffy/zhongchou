@@ -127,6 +127,13 @@ Page({
       })
     } else {
       console.log('返回购物车错误', res);
+      wx.showModal({
+        title: '提醒',
+        content: res.msg,
+        complete(res){
+          app.getUserInfo();
+        }
+      })
     }
   },
   call:function(){

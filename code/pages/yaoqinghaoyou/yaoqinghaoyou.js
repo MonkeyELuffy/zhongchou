@@ -133,4 +133,24 @@ Page({
       this.loadListData(params)
     }
   },
+  //转发邀请好友
+  inviteFriend(){
+    this.onShareAppMessage()
+  },
+  onShareAppMessage: function (res) {
+    var that = this
+    return {
+      title: that.data.InviteInfo.desc,
+      path: '/pages/index/index?salesman_id=' + app.globalData.member_id,
+      imageUrl: app.globalImageUrl + that.data.InviteInfo.img_url,
+      success: function (res) {
+        // 转发成功
+        console.log('转发成功')
+      },
+      fail: function (res) {
+        console.log('转发失败')
+        // 转发失败
+      }
+    }
+  },
 })

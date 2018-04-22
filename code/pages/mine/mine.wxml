@@ -33,7 +33,7 @@
         <view class='top-nav-item-name'>红包</view>
       </view>
       <view class='top-nav-item' bindtap="goPage" data-page="youhuiquanlingqu">
-        <view class='top-nav-item-value'>{{userInfo.Coupon || 0}}</view>
+        <view class='top-nav-item-value'>{{userInfo.coupon_number || 0}}</view>
         <!-- <image hidden='{{!item.img}}' class='top-nav-item-img' src='{{item.img}}'></image> -->
         <view class='top-nav-item-name'>优惠券</view>
       </view>

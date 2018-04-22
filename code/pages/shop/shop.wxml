@@ -1,59 +1,40 @@
-<import src="../imageSwiper/imageSwiper.wxml"/>
-<view class='top-contain'>
- 
-  <!--轮播图组件  --> 
-  <template is="imageSwiper"  data="{{slider}}"></template>
-  
-  <view class="nav3-list">
-    <view class="nav3-item" wx:for="{{nav_3List}}" bindtap="fenlei" data-id="{{item.id}}">
-      <view class="nav3-list-image">
-        <image src="{{item.img}}"></image>
-      </view>
-      <view class="nav3-name">{{item.text}}</view>
-    </view>
-  </view>
-  
-  <!--排序  -->
-  <view class='tab'>
-    <view class='tab-item'>
-      <view class='tab-name'>行业排序</view>
-      <image class='tab-up-down' src='{{hangyepaixu}}' bindtap='hangyepaixu'></image>
-    </view>
-    <view class='tab-item'>
-      <view class='tab-name'>销量排序</view>
-      <image class='tab-up-down' src='{{xiaoliangpaixu}}' bindtap='xiaoliangpaixu'></image>
-    </view>
-    <view class='tab-item'>
-      <view class='tab-name'>距离排序</view>
-      <image class='tab-up-down' src='{{julipaixu}}' bindtap='julipaixu'></image>
-    </view>
-  </view>
-</view>
+<import src="../paixuTemplate/paixuTemplate.wxml"/>
+<import src="../noMoreData/noMoreData.wxml"/>
 
-<!--只保留竖直排列的商品样式  -->
-<view class="fenlei-contianer">
-  <scroll-view class="fenlei-ul flex-center" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
-    <view class="fenlei-list" wx:for="{{fenlei_list}}"  bindtap="goDetailPage" data-page="product_detail" data-id="{{item.id}}">
-      <image src="{{item.img}}"></image>
-      <view class="fenlei-text">
-        <view class="text">
-          {{item.name}}
+<!--顶部分类菜单  -->
+<scroll-view class="nav-title" scroll-x style="width: 100%">
+  <view class="nav-item {{item.checked ? 'checked' : '' }}" wx:for="{{navItems}}" style="background-color:{{item.checked ? 'linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250))' : '#999'}}" bindtap="checked" wx:for-index="index" data-index="{{index}}" data-item="{{item}}">{{item.trade_name}}</view>
+</scroll-view>
+
+<scroll-view class="fenlei-ul flex-center fenlei-contianer" style="max-height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
+  <view class='top-contain'>
+    <!--排序组件  -->
+    <template is="paixuTemplate" data="{{allData}}"></template>
+  </view>
+
+  <view class="fenlei-list" wx:for="{{dataList}}"  bindtap="goDetailPage" data-page="product_detail" data-seller_id="{{item.seller_id}}">
+    <view class='img-contain'>
+      <image src="{{item.store_img_src}}"></image>
+    </view>
+    <view class="fenlei-text">
+      <view class="text">
+        {{item.seller_name}}
+      </view>
+      <view class='label-and-haoping-contain flex-none'>
+        <!--标签  -->
+        <view class='label-contain flex-center'>
+          <view class='label-item' wx:for='{{item.special}}' >{{item == 1 ? '满减' : (item == 2 ? '折扣' : (item == 3 ? '品牌' : '星级'))}}</view>
         </view>
-        <view class='label-and-haoping-contain flex-none'>
-          <!--标签  -->
-          <view class='label-contain flex-center'>
-            <view class='label-item' wx:for='{{item.labels}}' style='color:{{item.bgColor === "#f68076" ? "#fff" : "#f68076"}};background-color:{{item.bgColor}};'>{{item.name}}</view>
-          </view>
-          <!--好评  -->
-          <view class='haoping'>好评{{item.haoping}}%</view>
-        </view>
-        <view class="fenlei-price-total flex-between flex-all">
-          <view class="fenlei-price">￥{{item.price}}</view>
-          <view class='juli'>{{item.dic}}km</view>
-        </view>
+        <!--好评  -->
+        <!-- <view class='haoping'>好评{{item.haoping}}%</view> -->
+      </view>
+      <view class="fenlei-price-total flex-between flex-all">
+        <view class="fenlei-price" hidden='{{!item.store_star}}'>{{item.store_star}}星级</view>
+        <view class='juli'>{{item.cur_space}}</view>
       </view>
     </view>
-    <!-- <view class="no-more">没有更多的数据了</view>  -->
-    <view style="width:100%;height:240rpx;"></view>
-  </scroll-view>
-</view> 
+  </view>
+  <!--nomoreData  -->
+  <template is="noMoreData" data="{{showNomore}}"></template>
+  <view style="width:100%;height:40rpx;"></view>
+</scroll-view>

@@ -50,7 +50,7 @@
     <view class="bottom-btn">
       <view class='left flex flex-all'>
         <view class='icon-contain' bindtap='kefu'>
-          <image class='image' src="{{carIcon}}"></image>
+          <image class='image' src="{{kefuIcon}}"></image>
           <view class='kefu'>客服</view>
         </view>
         <view class='ing flex-all'>进行中</view>

@@ -45,30 +45,30 @@ Page({
         text: '活动',
         page: 'huodong'
       },
-      {
-        id: 4,
-        img: '../../img/zhongchou/shenqingruzhu.png',
-        text: '行业1',
-        page: ''
-      },
-      {
-        id: 5,
-        img: '../../img/zhongchou/youhuiquan.png',
-        text: '行业1',
-        page: ''
-      },
-      {
-        id: 6,
-        img: '../../img/zhongchou/yaoqing.png',
-        text: '行业1',
-        page: ''
-      },
-      {
-        id: 7,
-        img: '../../img/zhongchou/huodong.png',
-        text: '行业1',
-        page: ''
-      },
+      // {
+      //   id: 4,
+      //   img: '../../img/zhongchou/shenqingruzhu.png',
+      //   text: '行业1',
+      //   page: ''
+      // },
+      // {
+      //   id: 5,
+      //   img: '../../img/zhongchou/youhuiquan.png',
+      //   text: '行业1',
+      //   page: ''
+      // },
+      // {
+      //   id: 6,
+      //   img: '../../img/zhongchou/yaoqing.png',
+      //   text: '行业1',
+      //   page: ''
+      // },
+      // {
+      //   id: 7,
+      //   img: '../../img/zhongchou/huodong.png',
+      //   text: '行业1',
+      //   page: ''
+      // },
     ],
     nav_4List: [
       {
@@ -193,6 +193,17 @@ Page({
     page_no: 1,
     total_page: 1,
     showNomore: false
+  },
+  onLoad(options){
+    var salesman_id = options.salesman_id || ''
+    console.log('salesman_id', salesman_id)
+    if (salesman_id && app.globalData.member_id != salesman_id){
+      var params = {
+        salesman_id: salesman_id,
+        member_id: app.globalData.member_id
+      }
+      util.httpPost2(app.globalUrl + app.SendSalesman, params).then(res => {console.log('被邀请用户点击进来了',res)})
+    }
   },
   onShow() {
     // 数据初始化

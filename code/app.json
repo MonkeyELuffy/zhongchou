@@ -82,7 +82,7 @@
         "selectedIconPath": "img/icon_shouye.png"
       },
       {
-        "pagePath": "pages/jiudian/jiudian",
+        "pagePath": "pages/shop/shop",
         "text": "商家",
         "iconPath": "img/icon_jiudian_u.png",
         "selectedIconPath": "img/icon_jiudian.png"

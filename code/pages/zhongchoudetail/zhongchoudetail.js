@@ -13,7 +13,7 @@ Page({
   data: {
     jinzhanList:[],
     pingjiaList: [],
-    carIcon: '../../img/car.png',
+    kefuIcon: '../../img/kefu.png',
     zhongchouInfo:{},
     navItems: [
       {
@@ -55,7 +55,7 @@ Page({
     if (res.suc == 'y') {
       console.log('获取众筹详情成功', res.data);
       res.data.logo_url = app.globalImageUrl + res.data.logo_url;
-      res.data.value = parseInt(res.data.actual_amount || 0) / parseInt(res.data.amount) * 100;
+      res.data.value = (parseInt(res.data.actual_amount || 0) / parseInt(res.data.amount) * 100).toFixed(2);
       res.data.paddingLeft = (res.data.value * 0.8 - 2) + '%';
       res.data.btn = res.data.flag == 1 ? '我要众筹' : (res.data.flag == 2 ? '我要留言' : '已完成')
       this.setData({

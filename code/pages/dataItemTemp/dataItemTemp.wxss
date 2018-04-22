@@ -19,6 +19,9 @@
   border: 2rpx solid #aaa;
   padding: 6rpx;
 }
+.detail{
+  min-height: 184rpx;
+}
 .detail-name{
   font-size: 30rpx;
   color: #333;

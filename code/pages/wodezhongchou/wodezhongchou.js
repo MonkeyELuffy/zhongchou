@@ -1,4 +1,5 @@
 var util = require('../../utils/util.js');
+const zhongchouItem = require('../../utils/zhongchouItem.js');
 var app = getApp()
 Page({
   data: {
@@ -20,6 +21,7 @@ Page({
       page_no: 1,
       total_page: 1,
       bindDownLoad: true,
+      dataList:[]
     })
     var params = {
       page_no: 1,
@@ -75,6 +77,7 @@ Page({
       }
       for (var i in res.data) {
         res.data[i].store_img_src = app.globalImageUrl + res.data[i].store_img_src
+        res.data[i].bili = res.data[i].amount / res.data[i].total_amount *100
       }
       //获取数据之后需要改变page和totalPage数值，保障上拉加载下一页数据的page值，其余没有需要修改的数据
       dataList = dataList.concat(res.data)
@@ -101,6 +104,11 @@ Page({
     var data = { go, e }
     this.clickTooFast(data)
   },
+  clickItem: function (e) {
+    var that = this
+    var item = e.currentTarget.dataset.item
+    zhongchouItem.clickItem(e, that, item)
+  },
   /*==========
   防止快速点击
   ===========*/
@@ -120,23 +128,6 @@ Page({
     this.setData({
       lastTime: curTime
     })
-  },
-  getLocalTime: function (a, fmt) {
-    var nowDate = new Date(a)
-    var o = {
-      "M+": nowDate.getMonth() + 1, //月份
-      "d+": nowDate.getDate(), //日
-      "h+": nowDate.getHours(), //小时
-      "m+": nowDate.getMinutes(), //分
-      "s+": nowDate.getSeconds(), //秒
-      "q+": Math.floor((nowDate.getMonth() + 3) / 3), //季度
-      "S": nowDate.getMilliseconds() //毫秒
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (nowDate.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-      if (new RegExp("(" + k + ")").test(fmt))
-        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
   },
 
 })

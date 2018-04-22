@@ -10,11 +10,12 @@ Page({
     // 排序组件所需data
     allData: app.globalData.allPaiXuData,
     scrollHeight: app.globalData.scrollHeight,
-    slider:[],
+    slider: [],
+    paixuList: ['../../img/paixu0.png', '../../img/paixu1.png', '../../img/paixu2.png'],
     // 排序背景图
-    zhongchoupaixu: '../../img/paixu0.png',
+    zhongchoupaixu: '../../img/paixu2.png',
     fenhongpaixu:'../../img/paixu0.png',
-    nowPaiXu:4,
+    nowPaiXu:1,
     //众筹列表
     dataList: [],
     showNomore: false
@@ -36,6 +37,7 @@ Page({
     var params = {
       page_no: 1,
       page_size: 15,
+      order_by: this.data.nowPaiXu,
     }
     this.loadListData(params);
   },
@@ -63,6 +65,7 @@ Page({
     var params = {
       page_no: this.data.page_no,
       page_size: 15,
+      order_by: this.data.nowPaiXu,
     }
     this.loadListData(params)
   },
@@ -85,7 +88,7 @@ Page({
       wx.hideLoading()
       for (var i in res.data.list) {
         res.data.list[i].logo_url = app.globalImageUrl + res.data.list[i].logo_url;
-        res.data.list[i].value = parseInt(res.data.list[i].actual_amount || 0) / parseInt(res.data.list[i].amount) * 100;
+        res.data.list[i].value = (parseInt(res.data.list[i].actual_amount || 0) / parseInt(res.data.list[i].amount) * 100).toFixed(2);
         res.data.list[i].paddingLeft = (res.data.list[i].value*0.8-2)+'%'
       }
       //获取数据之后需要改变page_no和total_page数值，保障上拉加载下一页数据的page_no值，其余没有需要修改的数据
@@ -100,24 +103,90 @@ Page({
     }
   },
   // 众筹排序
-  zhongchoupaixu: function () {
+  zhongchoupaixu: function (e) {
     console.log('切换众筹金额排序')
     var nowPaiXu = this.data.nowPaiXu;
-    nowPaiXu = nowPaiXu == 0 ? 1 : 0;
-    console.log(nowPaiXu);
+    var paixuList = this.data.paixuList;
+    var zhongchoupaixu = this.data.zhongchoupaixu;
+    var fenhongpaixu = this.data.fenhongpaixu;
+    nowPaiXu = nowPaiXu == 1 ? 2 : 1;
+    zhongchoupaixu = nowPaiXu == 1 ? paixuList[2] : paixuList[1]
+    fenhongpaixu = paixuList[0]
     this.setData({
-      nowPaiXu: nowPaiXu
+      nowPaiXu: nowPaiXu,
+      zhongchoupaixu: zhongchoupaixu,
+      fenhongpaixu: fenhongpaixu,
     });
+    this.loadStorDataByOrder(nowPaiXu)
   },
   // 众筹排序
-  fenhongpaixu: function () {
+  fenhongpaixu: function (e) {
     console.log('切换分红比例排序')
     var nowPaiXu = this.data.nowPaiXu;
-    nowPaiXu = nowPaiXu == 2 ? 3 : 2;
-    console.log(nowPaiXu);
+    var paixuList = this.data.paixuList;
+    var fenhongpaixu = this.data.fenhongpaixu;
+    var zhongchoupaixu = this.data.zhongchoupaixu;
+    nowPaiXu = nowPaiXu == 3 ? 4 : 3;
+    fenhongpaixu = nowPaiXu == 3 ? paixuList[2] : paixuList[1]
+    zhongchoupaixu = paixuList[0]
     this.setData({
-      nowPaiXu: nowPaiXu
+      nowPaiXu: nowPaiXu,
+      zhongchoupaixu: zhongchoupaixu,
+      fenhongpaixu: fenhongpaixu,
     });
+    this.loadStorDataByOrder(nowPaiXu)
+  }, 
+  loadStorDataByOrder(nowPaiXu) {
+    this.setData({
+      bindDownLoad: true,
+      page_no: 1,
+      total_page: 1
+    })
+    var params = {
+      order_by: this.data.nowPaiXu,
+      page_no: 1,
+      page_size: 15,
+    }
+    this.loadListDataByOrder(params);
+  },
+  loadListDataByOrder(params) {
+    this.setData({
+      bindDownLoad: true,
+      page_no: 1,
+      total_page: 1
+    })
+    var that = this
+    var allParams = {
+      that: that,
+      params: params,
+      app: app,
+      processData: that.processStoreByOrderData,
+      API: app.FundList
+    }
+    loadListData.loadListData(allParams)
+  },
+  processStoreByOrderData(res) {
+    if (res.suc == 'y') {
+      var dataList = []
+      console.log('获取众筹list成功', res.data);
+      if (app.globalData.hasLogin) {
+        wx.hideLoading()
+      }
+      for (var i in res.data.list) {
+        res.data.list[i].logo_url = app.globalImageUrl + res.data.list[i].logo_url;
+        res.data.list[i].value = (parseInt(res.data.list[i].actual_amount || 0) / parseInt(res.data.list[i].amount) * 100).toFixed(2);
+        res.data.list[i].paddingLeft = (res.data.list[i].value * 0.8 - 2) + '%'
+      }
+      //获取数据之后需要改变page和totalPage数值，保障上拉加载下一页数据的page值，其余没有需要修改的数据
+      dataList = dataList.concat(res.data.list)
+      this.setData({
+        page_no: this.data.page_no + 1,
+        total_page: res.data.total_page,
+        dataList: dataList,
+      })
+    } else {
+      console.log('获取众筹list错误', res);
+    }
   },
   // 点击众筹子数据
   clickItem: function (e) {

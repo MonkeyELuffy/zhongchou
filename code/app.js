@@ -107,6 +107,10 @@ App({
   Invite: 'Invite/index',
   // 邀请会员或者店铺的列表
   InviteList: 'Invite/get_list',
+  // 活动列表
+  ActiveList: 'Coupon/active',
+  // 被邀请用户传递上级用户id接口
+  SendSalesman: 'Invite/salesman',
 
   onLaunch: function () {
     //获取屏幕高度
@@ -229,7 +233,7 @@ App({
     member_id: null,
     //排序组件
     allPaiXuData: {
-      hangyepaixu: '../../img/paixu1.png',
+      hangyepaixu: '../../img/paixu2.png',
       xiaoliangpaixu: '../../img/paixu0.png',
       julipaixu: '../../img/paixu0.png',
       paixuList: ['../../img/paixu0.png', '../../img/paixu1.png', '../../img/paixu2.png'],

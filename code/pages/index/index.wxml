@@ -10,9 +10,9 @@
     <!--扫描、搜索、定位  -->
     <view class='top-nav'>
       <!--扫描  -->
-      <view class='saomiao-contain flex-center'>
+      <!-- <view class='saomiao-contain flex-center'>
         <image class='saomiao' src='{{saomiao}}' bindtap='saoyisao'></image>
-      </view>
+      </view> -->
       <!--搜索框-->
       <view class="search flex-center" >
         <image src="{{search_icon}}" class="icon" confirm-type="search"></image>

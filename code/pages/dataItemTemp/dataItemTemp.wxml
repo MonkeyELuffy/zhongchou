@@ -16,7 +16,7 @@
         <!--好评  -->
         <view class='haoping' hidden='{{!item.rate}}'>好评{{item.rate}}</view>
       </view>
-      <view class='des' hidden='{{!item.desc}}'>{{item.desc}}</view>
+      <view class='des'>{{item.desc || ' '}}</view>
       <!--销量和距离  -->
       <view class='sale-and-juli flex-between'>
         <view class='sale'>销量({{item.inventory || 0}})</view>

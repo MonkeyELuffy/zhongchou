@@ -113,7 +113,7 @@ image {
 }
 .order-contain .top-nav-item-img{
   width: 52rpx;
-  height: 56rpx;
+  height: 46rpx;
 }
 
 .chongzhi{

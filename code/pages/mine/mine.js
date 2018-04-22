@@ -19,10 +19,10 @@ Page({
         name: '消息',
         page: 'msgCenter'
       },
-      {
-        img: '../../img/center/saoyisao.png',
-        name: '扫一扫'
-      },
+      // {
+      //   img: '../../img/center/saoyisao.png',
+      //   name: '扫一扫'
+      // },
     ],
     orderNav: [
       {
@@ -54,11 +54,11 @@ Page({
         name: '我的推广',
         page: 'yaoqinghaoyou'
       },
-      {
-        img: '../../img/center/jifen.png',
-        name: '我的积分',
-        page: 'wodejifen'
-      },
+      // {
+      //   img: '../../img/center/jifen.png',
+      //   name: '我的积分',
+      //   page: 'wodejifen'
+      // },
       {
         img: '../../img/center/wode_dizhi.png',
         name: '收货地址',
@@ -89,8 +89,11 @@ Page({
   processUserlData: function (res) {
     if (res.suc == 'y') {
       console.log('个人信息数据', res.data); 
+      var topNav = this.data.topNav
+      topNav[0].value = res.data.glance_number
       this.setData({
-        userInfo: res.data
+        userInfo: res.data,
+        topNav: topNav
       })
     }
   },
