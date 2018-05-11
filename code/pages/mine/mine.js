@@ -78,6 +78,11 @@ Page({
         img: '../../img/center/wode_liulan.png',
         name: '商家入口',
         page: 'shangjiarukou'
+      },
+      {
+        img: '../../img/center/wode_liulan.png',
+        name: '设置',
+        page: 'userMsg'
       }
     ],
     user_name:'请登录',

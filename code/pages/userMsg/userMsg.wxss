@@ -38,6 +38,7 @@
   color: #999;
   font-size: 28rpx;
   text-align: right;
+  text-overflow:ellipsis;
 }
 
 .button {

@@ -30,6 +30,7 @@ page{
   padding: 0 20rpx;
   background-color: #eee;
   margin-bottom: 8rpx;
+  border-top: 2rpx solid #ccc;
 }
 .img-contain{
   padding: 20rpx 0;

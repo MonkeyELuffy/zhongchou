@@ -42,7 +42,7 @@
     </view>
 
     <!--订单管理  -->
-    <view class='order'>订单管理</view>
+    <view class='order'  bindtap='goOrder' data-item="{type:1}">订单管理</view>
     <view class='order-contain'>
       <view class='top-nav flex-between flex-all'>
         <view class='top-nav-item' wx:for='{{orderNav}}' bindtap='goOrder' data-item="{{item}}">
