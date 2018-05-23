@@ -2,9 +2,12 @@
 //获取应用实例
 var util = require('../../utils/util.js');
 var basic = require('../../utils/basic.js');
+var loadListData = require('../../utils/loadListData.js'); 
 var app = getApp()
 Page({
   data: {
+    guanzhu_0: '../../img/guanzhu0.png',
+    guanzhu_1: '../../img/guanzhu1.png',
     scrollHeight: app.globalData.scrollHeight,
     imgHttp: app.globalImageUrl,
     carIcon: '../../img/car.png',
@@ -71,7 +74,8 @@ Page({
     })
     var data = {
       seller_id: options.seller_id,
-      token: app.globalData.userInfo.token
+      token: app.globalData.userInfo.token,
+      member_id: app.globalData.member_id
     }
     //请求商家详情
     util.httpPost(app.globalUrl + app.STOREINFO, data, this.processInfoData);
@@ -84,7 +88,8 @@ Page({
     if (res.suc == 'y') {
       console.log('商家数据成功', res.data);
       this.setData({
-        shop: res.data
+        shop: res.data,
+        status: res.data.status
       })
 
     } else {
@@ -575,8 +580,13 @@ Page({
       'allData.xiaoliangpaixu': xiaoliangpaixu,
       'allData.jiagepaixu': jiagepaixu,
       'allData.nowPaiXu': nowPaiXu,
+      // 数据初始化,但暂时不清空dataList
+      bindDownLoad: true,
+      page_no: 1,
+      total_page: 1
     })
     console.log(nowPaiXu)
+    that.loadStorDataByOrder(e)
   },
   xiaoliangpaixu: function (e) {
     var that = this
@@ -604,8 +614,13 @@ Page({
       'allData.xiaoliangpaixu': xiaoliangpaixu,
       'allData.jiagepaixu': jiagepaixu,
       'allData.nowPaiXu': nowPaiXu,
+      // 数据初始化,但暂时不清空dataList
+      bindDownLoad: true,
+      page_no: 1,
+      total_page: 1
     })
     console.log(nowPaiXu)
+    that.loadStorDataByOrder(e)
   },
   jiagepaixu: function (e) {
     var that = this
@@ -633,12 +648,87 @@ Page({
       'allData.xiaoliangpaixu': xiaoliangpaixu,
       'allData.jiagepaixu': jiagepaixu,
       'allData.nowPaiXu': nowPaiXu,
+    // 数据初始化,但暂时不清空dataList
+      bindDownLoad: true,
+      page_no: 1,
+      total_page: 1
     })
     console.log(nowPaiXu)
+    that.loadStorDataByOrder(e)
   },
-  youhuimaidan(e){
-    var that = this;
-    // basic.goPage('address',that,e)
+  // 点击排序重新请求数据，不能先清空dataList，会出现闪动；
+  // 目前先单独处理，之后需要对请求data函数做处理，根据标志位判断当前的请求是加载下一页，还是完全更新数据
+  loadStorDataByOrder(e) {
+    console.log(this.data.dataList)
+    var dataList = this.data.dataList
+    // var params = {
+    //   order_by: this.data.allData.nowPaiXu,
+    //   page_no: 1,
+    //   page_size: 15,
+    // }
+    // this.loadListDataByOrder(params);
+  },
+  loadListDataByOrder(params) {
+    var that = this
+    var allParams = {
+      that: that,
+      params: params,
+      app: app,
+      processData: that.processStoreByOrderData,
+      API: app.STORELIST
+    }
+    loadListData.loadListData(allParams)
+  },
+  processStoreByOrderData(res) {
+    if (res.suc == 'y') {
+      var dataList = []
+      console.log('获取商品list成功', res.data);
+      // if (app.globalData.hasLogin) {
+      //   wx.hideLoading()
+      // }
+      // for (var i in res.data.list) {
+      //   res.data.list[i].store_img_src = app.globalImageUrl + res.data.list[i].store_img_src
+      //   res.data.list[i].special = res.data.list[i].special.split(",");
+      // }
+      // //获取数据之后需要改变page和totalPage数值，保障上拉加载下一页数据的page值，其余没有需要修改的数据
+      // dataList = dataList.concat(res.data.list)
+      // this.setData({
+      //   page_no: this.data.page_no + 1,
+      //   total_page: res.data.total_page,
+      //   dataList: dataList,
+      // })
+    } else {
+      console.log('获取商品list错误', res);
+    }
+  },
+  youhuimaidan(e) {
+    var that = this
+    this.data.shop.hours = '9:00 - 21:00'
+    var params = {
+      img: this.data.imgHttp + this.data.shop.store_img_src,
+      name: this.data.shop.seller_name,
+      list: [
+        {
+          name: '营业时间',
+          value: this.data.shop.hours
+        },
+        {
+          name: '地址',
+          value: this.data.shop.address
+        },
+        {
+          name: '公告',
+          value: this.data.shop.notice
+        },
+      ]
+    }
+    var go = function (e) {
+      wx.navigateTo({
+        url: '/pages/youhuimaidan/youhuimaidan?params=' + JSON.stringify(params),
+      })
+    }
+    var data = { go, e }
+    this.clickTooFast(data)
   },
   /*==========
   防止快速点击
@@ -659,5 +749,46 @@ Page({
     this.setData({
       lastTime: curTime
     })
+  },
+  //关注或者取消关注商品
+  payAttention() {
+    var url = ''
+    if (this.data.status == 1) {
+      //已关注时点击，则取消关注
+      url = 'CancelPayAttention'
+    } else {
+      url = 'PayAttention'
+    }
+    var data = {
+      type: 1, //类型(1商家，2商品)
+      member_id: app.globalData.member_id,
+      seller_id: this.data.seller_id,
+    }
+    util.httpPost(app.globalUrl + app[url], data, this.processPayAttentionData);
+  },
+  processPayAttentionData: function (res) {
+    if (res.suc == 'y') {
+      if (this.data.status == 1) {
+        this.setData({
+          status: 0
+        })
+        wx.showToast({
+          title: '取消关注成功',
+        })
+      } else {
+        this.setData({
+          status: 1
+        })
+        wx.showToast({
+          title: '关注成功',
+        })
+      }
+    } else {
+      // console.log('关注错误', res);
+      wx.showModal({
+        title: '提醒',
+        content: res.msg,
+      })
+    }
   },
 })

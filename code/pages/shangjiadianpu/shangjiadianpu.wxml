@@ -4,6 +4,7 @@
   <view class="shop-contain">
     <image src="{{imgHttp + shop.store_img_src}}" class="shop-img"></image>
     <view class="shop-info">
+      <image class='star' bindtap='payAttention' src="{{status == 1 ? guanzhu_1 : guanzhu_0 }}" style='width:50rpx;height:50rpx;'></image>
       <view class="shop-name">{{shop.seller_name}}</view>
       <view class="shop-title flex-none">
         <view class='shop-type' wx-if='{{shop.trade_name}}'>{{shop.trade_name}}</view>

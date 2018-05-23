@@ -1,0 +1,53 @@
+/* pages/youhuimaidan/youhuimaidan.wxss */
+.contain{
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20rpx;
+  background-color: #eee;
+  position: relative;
+  font-size: 30rpx;
+}
+.logo-contain{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10rpx 10rpx 0 0;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+  padding-bottom: 100rpx;
+}
+image{
+  width: 200rpx;
+  height: 200rpx;
+  margin: 100rpx 0 20rpx 0;
+  border-radius: 10rpx;
+}
+.content{
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 100rpx;
+}
+.content-item{
+  border-bottom: 2rpx solid #eee;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.span-name{
+  color: #333;
+}
+.span-value{
+  color: #999;
+}
+.button {
+  width: 50%;
+  left: 25%;
+  height: 100rpx;
+  border-radius: 30rpx;
+  background: linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+}

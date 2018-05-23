@@ -1,0 +1,13 @@
+<!--pages/youhuimaidan/youhuimaidan.wxml-->
+<view class='contain'>
+  <view class='logo-contain'>
+    <image src="{{info.img}}"></image>
+    <view class='name'>{{info.name}}</view>
+  </view>
+  <view class='content'>
+    <view class='content-item' wx:for="{{info.list}}">
+      <span class="span-name">{{item.name}}: </span><span class="span-value"> {{item.value}}</span>  
+    </view>
+  </view>
+  <view class='button' bindtap='pay'>优惠买单</view>
+</view>

@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/youhuimaidan/youhuimaidan",
     "pages/login/login",
     "pages/zhongchoupinglun/zhongchoupinglun",
     "pages/order/order",

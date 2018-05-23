@@ -8,6 +8,7 @@
  <view class="contain">
    <!--商品信息  -->
   <view class="detail-contain">
+    <image class='star' bindtap='payAttention' src="{{status == 1 ? guanzhu_1 : guanzhu_0 }}" style='width:50rpx;height:50rpx;'></image>
     <view class="name">{{productDetail.goods_name}}</view>
     <view class="sale">售出：{{productDetail.inventory || 0}}</view>
     <view class="price-contain">

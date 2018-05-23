@@ -40,6 +40,11 @@
   margin-right: 30rpx;
   border-radius: 6rpx;
 }
+.star{
+  float: right;
+  width: 50rpx;
+  height: 50rpx;
+}
 .shop-name{
   color: #333;
   font-size: 30rpx;

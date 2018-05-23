@@ -111,6 +111,14 @@ App({
   ActiveList: 'Coupon/active',
   // 被邀请用户传递上级用户id接口
   SendSalesman: 'Invite/salesman',
+  // 获取记录列表
+  PointList: 'Other/point',
+  // 获取关注记录
+  PayAttentionList: 'Other/through',
+  // 关注店铺或商品
+  PayAttention: 'Other/attention',
+  // 取消关注店铺或商品
+  CancelPayAttention: 'Other/delete_through',
 
   onLaunch: function () {
     //获取屏幕高度
