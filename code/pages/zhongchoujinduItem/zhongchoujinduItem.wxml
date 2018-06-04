@@ -9,7 +9,7 @@
   <view class='detail'>
     <view class='detail-item'>
       <view class='detail-value'>{{data.amount}}</view>
-      <view class='detail-name'>众筹金额</view>
+      <view class='detail-name'>U份金额</view>
     </view>
     <view class='detail-item'>
       <view class='detail-value'>{{data.number}}</view>

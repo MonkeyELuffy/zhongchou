@@ -1,25 +1,11 @@
-// pages/about/about.js
+// pages/loginTemp/loginTemp.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    appName:'优份',
-    version:'版本号1.0',
-    logo: '../../img/test.png', 
-    zizhiImg: '../../img/banner.png', 
-    Info1: [{
-      key: '公司名称',
-      value: '广西优份电子商务有限公司',
-    }, {
-      key: '客服热线',
-      value: '0771-3807503',
-      }],
-    Info2: [{
-      key: '公司介绍',
-      value: '公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍',
-    }],
+      
   },
 
   /**
@@ -42,7 +28,6 @@ Page({
   onShow: function () {
   
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

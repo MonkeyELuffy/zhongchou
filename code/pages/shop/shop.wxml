@@ -26,10 +26,10 @@
           <view class='label-item' wx:for='{{item.special}}' >{{item == 1 ? '满减' : (item == 2 ? '折扣' : (item == 3 ? '品牌' : '星级'))}}</view>
         </view>
         <!--好评  -->
-        <!-- <view class='haoping'>好评{{item.haoping}}%</view> -->
+         <view class='haoping'>{{item.number}}次浏览</view>
       </view>
       <view class="fenlei-price-total flex-between flex-all">
-        <view class="fenlei-price" hidden='{{!item.store_star}}'>{{item.store_star}}星级</view>
+        <view class="fenlei-price">￥{{item.price}}</view>
         <view class='juli'>{{item.cur_space}}</view>
       </view>
     </view>

@@ -13,7 +13,10 @@
       <!--编辑的时候显示  -->
       <image wx:if='{{showDel}}' class='choose-img' src="{{item.checked ? checkedImg : unCheckedImg}}"></image>
 
+    <view class='img-contain'>
       <image class='item-image' src='{{item.logo_url}}'></image>
+    </view>
+
       <view class='detail flex-all'>
         <view class='detail-name'>{{item.goods_name || item.seller_name}}</view>
         <view class='label-and-haoping-contain flex-none'>
@@ -21,9 +24,7 @@
           <view class='label-contain flex-center'>
             <view class='label-item' wx:for='{{item.labels}}' style='color:{{item.bgColor === "#f68076" ? "#fff" : "#f68076"}};background-color:{{item.bgColor}};'>{{item.name}}</view>
           </view>
-          <!--好评  -->
-          <view class='haoping'>好评{{item.rate || 0}}%</view>
-          <!-- <view class='label-item' wx:for='{{item.special}}' >{{item == 1 ? '满减' : (item == 2 ? '折扣' : (item == 3 ? '品牌' : '星级'))}}</view> -->
+        
         </view>
         <!--销量和距离  -->
         <view class='sale-and-juli flex-between'>

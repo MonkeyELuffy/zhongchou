@@ -3,7 +3,7 @@
 <view class="fenlei-contianer">
   <scroll-view class="fenlei-ul" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltoupper="refresh" bindscrolltolower="bindDownLoad">
     <!--子数据  -->
-    <view class='item' wx:for='{{dataList}}' bindtap="clickItem" data-item="{{item}}" for:index='index' data-index='{{index}}'>
+    <view class='item' wx:for='{{dataList}}' bindtap="goDetail" data-item="{{item}}" for:index='index' data-index='{{index}}'>
       <view class='name'><span style='color:#737373;font-size: 28rpx;'>众筹方：</span>{{item.seller_name}}</view>
       <view class='detail flex-all'>
         <view class='detail-name flex-between'>

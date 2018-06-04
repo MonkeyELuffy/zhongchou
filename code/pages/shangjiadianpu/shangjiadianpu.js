@@ -707,6 +707,7 @@ Page({
     var params = {
       img: this.data.imgHttp + this.data.shop.store_img_src,
       name: this.data.shop.seller_name,
+      seller_id:this.data.shop.seller_id,
       list: [
         {
           name: '营业时间',

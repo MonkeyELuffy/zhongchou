@@ -108,6 +108,6 @@
 }
 
 .pingjia-item{
-  padding: 20rpx 30rpx 0 30rpx;
+  padding: 20rpx 30rpx 20rpx 30rpx;
   background-color: #fff;
 }

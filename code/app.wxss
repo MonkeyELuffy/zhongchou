@@ -71,5 +71,5 @@ image{
   text-align: center;
   font-size: 28rpx;
   color: #999;
-  padding: 40rpx 0;
+  padding: 10rpx 0;
 }

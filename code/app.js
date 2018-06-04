@@ -119,14 +119,32 @@ App({
   PayAttention: 'Other/attention',
   // 取消关注店铺或商品
   CancelPayAttention: 'Other/delete_through',
+  //立即买单
+  
 
   onLaunch: function () {
+    // 查看是否授权
+    var that = this
+    　　wx.getSetting({
+      　　　　success: function (res) {
+        　　　　　　console.log(res.authSetting['scope.userInfo'])
+        　　　　　　if (res.authSetting['scope.userInfo']) {
+          　　　　　　// 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                   getApp().getUserInfo();
+        　　　　}else{
+                 //未授权
+                that.globalData.showShouquan = true;//弹出框子
+        }
+              
+      　　}
+    　　})
     //获取屏幕高度
     this.getSystemInfo();
     //获取用户当前所在位置
     // this.getFirstLocation();
     // 用户登录系统
     if (!this.globalData.hasLogin){
+      that.globalData.showShouquan = true;//弹出框子
       this.getUserInfo();
     }
   },
@@ -250,7 +268,8 @@ App({
     },
     scrollHeight:0,
     firstLongitude:0,
-    firstLatitude:0
+    firstLatitude:0,
+    showShouquan:false
   },
   showSearchToast: function (e) {
     wx.showLoading({

@@ -13,7 +13,7 @@
   <!--排序  -->
    <view class='tab'>
     <view class='tab-item' bindtap='zhongchoupaixu'>
-      <view class='tab-name'>众筹金额</view>
+      <view class='tab-name'>U份金额</view>
       <image class='tab-up-down' src='{{zhongchoupaixu}}'></image>
     </view>
     <view class='tab-item' bindtap='fenhongpaixu'>

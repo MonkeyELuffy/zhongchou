@@ -149,7 +149,7 @@ page{
 .fenlei-contianer .fenlei-list .fenlei-price-total .fenlei-price {
   color: #f83030;
   font-size: 24rpx;
-  padding: 0 10rpx;
+
 }
 .fenlei-contianer .fenlei-list .fenlei-price-total .fenlei-total {
   color: #aaa;
@@ -253,8 +253,8 @@ page{
   width: 100%;
   max-height: 100%;
   border-width:medium;
-border:1px solid #999;
-padding:6rpx;
+  border:2rpx;
+  padding:6rpx;
 box-sizing:border-box;
 
 }

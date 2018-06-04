@@ -21,8 +21,10 @@ function clickTooFast(data, that) {
 
 function clickItem(e, that, item) {
   console.log(item)
+  var fund_id =item.id;
   // var page = '../zhongchoudetail/zhongchoudetail?seller_id=' + item.seller_id
-  var page = '../zhongchoudetail/zhongchoudetail?id=' + item.id
+  if(!item.id) fund_id=item.fund_id;
+  var page = '../zhongchoudetail/zhongchoudetail?id=' + fund_id
   var go = function (e) {
     wx.navigateTo({
       url: page

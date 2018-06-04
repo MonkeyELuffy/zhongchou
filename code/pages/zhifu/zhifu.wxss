@@ -21,3 +21,15 @@ input{
   font-size: 28rpx;
   color: #333;
 }
+.button {
+  width: 50%;
+  left: 25%;
+  height: 100rpx;
+  border-radius: 30rpx;
+  background: linear-gradient(to left,rgb(19, 191, 222), rgb(120, 233, 250));
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+}

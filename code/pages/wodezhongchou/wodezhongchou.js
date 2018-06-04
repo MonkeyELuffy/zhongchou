@@ -77,7 +77,7 @@ Page({
       }
       for (var i in res.data) {
         res.data[i].store_img_src = app.globalImageUrl + res.data[i].store_img_src
-        res.data[i].bili = res.data[i].amount / res.data[i].total_amount *100
+        res.data[i].bili = (parseInt(res.data[i].amount || 0) / parseInt(res.data[i].total_amount) * 100).toFixed(2)
       }
       //获取数据之后需要改变page和totalPage数值，保障上拉加载下一页数据的page值，其余没有需要修改的数据
       dataList = dataList.concat(res.data)
@@ -93,13 +93,13 @@ Page({
   //进入详情
   goDetail: function (e) {
     var go = function (e) {
-      var id = e.currentTarget.dataset.id
-      console.log(id)
-      // var params = { title: title, id: id, time: time, author: author }
-      // params = JSON.stringify(params)
-      // wx.navigateTo({
-      //   url: '/pages/articleDetail/articleDetail?params=' + params,
-      // })
+      var item = e.currentTarget.dataset.item
+      var page = '../zhongchoudetail/zhongchoudetail?id=' + item.fund_id
+      var go = function (e) {
+        wx.navigateTo({
+          url: page
+        })
+      }
     }
     var data = { go, e }
     this.clickTooFast(data)

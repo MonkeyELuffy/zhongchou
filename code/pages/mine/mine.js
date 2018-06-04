@@ -46,7 +46,7 @@ Page({
     mineNav: [
       {
         img: '../../img/center/zhongcou.png',
-        name: '我的众筹',
+        name: '我的U份',
         page: 'wodezhongchou'
       },
       {

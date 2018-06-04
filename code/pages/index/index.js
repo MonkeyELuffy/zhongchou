@@ -13,6 +13,8 @@ Page({
   data: {
     imgHttp: app.globalImageUrl,
     scrollHeight: app.globalData.scrollHeight,
+    showShouquan: app.globalData.showShouquan,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     search_key: '',
     positionValue: '',
     slider1: [],
@@ -391,7 +393,7 @@ Page({
   },
   kefu(){
     wx.makePhoneCall({
-      phoneNumber: '13067998666',
+      phoneNumber: '0771-3807503',
     })
   },
   /*==========
@@ -412,6 +414,31 @@ Page({
     }
     this.setData({
       lastTime: curTime
+    })
+  },
+  bindGetUserInfo: function (e) {
+    var that=this
+    wx.login({
+      success: function (res) {
+        wx.getUserInfo({
+          success: function (msg) {
+            if (res.code) {
+              console.log('userInfo', msg.userInfo)
+              app.globalData.userInfo = msg.userInfo
+              app.getOpenid(res.code);
+              app.globalData.showShouquan = false;
+              that.setData({
+                showShouquan: false
+              });
+            } else {
+              console.log('获取用户登录态失败！' + res.errMsg);
+            }
+          }
+        });
+      },
+      fail(res) {
+        console.log('用户点击了拒绝登录')
+      }
     })
   },
   //以下全是组件事件
@@ -515,5 +542,19 @@ Page({
     } else {
       console.log('获取商铺list错误', res);
     }
-  }
+  },
+    onShareAppMessage: function (res) {
+    var that = this
+    return {
+      path: '/pages/index/index?salesman_id=' + app.globalData.member_id,
+      success: function (res) {
+        // 转发成功
+        console.log('转发成功')
+      },
+      fail: function (res) {
+        console.log('转发失败')
+        // 转发失败
+      }
+    }
+  },
 })

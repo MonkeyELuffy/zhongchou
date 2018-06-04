@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/youhuimaidan/youhuimaidan",
     "pages/login/login",
+    "pages/loginTemp/loginTemp",
     "pages/zhongchoupinglun/zhongchoupinglun",
     "pages/order/order",
     "pages/shenqingruzhu/shenqingruzhu",
@@ -90,7 +91,7 @@
       },
       {
         "pagePath": "pages/zhongchou/zhongchou",
-        "text": "众筹",
+        "text": "U份",
         "iconPath": "img/icon_canying_u.png",
         "selectedIconPath": "img/icon_canying.png"
       },

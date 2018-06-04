@@ -17,9 +17,9 @@
             <view class='label-item' wx:for='{{item.special}}' >{{item == 1 ? '满减' : (item == 2 ? '折扣' : (item == 3 ? '品牌' : '星级'))}}</view>
           </view>
           <!--好评  -->
-          <view class='haoping' hidden='{{!item.rate}}'>好评{{item.rate}}</view>
+          <view class='haoping'>{{item.number}}次浏览</view>
         </view>
-        <view class='des' hidden='{{!item.desc}}'>{{item.desc}}</view>
+        <view class='des'>{{item.desc}}</view>
         <!--销量和距离  -->
         <view class='sale-and-juli flex-between'>
           <view class='sale'>销量({{item.inventory || 0}})</view>
