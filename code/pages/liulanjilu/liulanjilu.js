@@ -107,10 +107,12 @@ Page({
   guanli: function (e) {
     var bottomBtn = this.data.bottomBtn
     if (bottomBtn === '管理') {
-      this.setData({
-        showDel: true,
-        bottomBtn: '删除'
-      })
+      if (this.data.dataList.length > 0) {
+        this.setData({
+          showDel: true,
+          bottomBtn: '删除'
+        })
+      }
     } else {
       var dataList = this.data.dataList;
       var delList = [];
