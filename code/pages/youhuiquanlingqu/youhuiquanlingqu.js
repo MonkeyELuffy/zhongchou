@@ -8,17 +8,17 @@ Page({
     index:0,
     navItems: [
       {
-        name:'未使用(2)',
+        name:'未使用',
         coupon_type: 1,
         checked:true,
       },
       {
-        name: '已使用(2)',
+        name: '已使用',
         coupon_type: 2,
         checked: false,
       },
       {
-        name: '已过期(2)',
+        name: '已过期',
         coupon_type: 3,
         checked: false,
       }],
